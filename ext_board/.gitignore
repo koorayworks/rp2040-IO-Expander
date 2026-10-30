@@ -1,0 +1,5 @@
+*.kicad_prl
+tools/*.log
+tools/__pycache__/
+tools/fr_test/
+tools/board_backup_*.kicad_pcb
