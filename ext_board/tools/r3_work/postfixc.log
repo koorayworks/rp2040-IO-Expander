@@ -1,0 +1,13 @@
+USB_D-_C net code: 55
+widened: 95
+dangling vias dropped: 2
+USB_D-_C join added
+fill: True
+saved: /home/hatch/workspace/projects/rp2040-IO-Expander/ext_board/tools/r3_work/w7.kicad_pcb
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'ZONE_FILLER *', no destructor found.

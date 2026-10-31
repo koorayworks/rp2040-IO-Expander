@@ -1,0 +1,3356 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-31T07:41:30+0000",
+    "kicad_version": "8.0.9",
+    "schematic_parity": [],
+    "source": "w5.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "03936ffb-ec43-4dd5-b1a9-ac2372360199"
+                },
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "03936ffb-ec43-4dd5-b1a9-ac2372360199"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "03936ffb-ec43-4dd5-b1a9-ac2372360199"
+                },
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                },
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                },
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "03936ffb-ec43-4dd5-b1a9-ac2372360199"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "6f5501e9-c1b8-4907-929f-4c370bd824a0"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "03936ffb-ec43-4dd5-b1a9-ac2372360199"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference 'SJ4'",
+                    "pos": {
+                        "x": 9.25,
+                        "y": 19.35
+                    },
+                    "uuid": "4ec62ea8-2ca2-47e0-95d7-e1caf9f0b851"
+                },
+                {
+                    "description": "Reference 'SJ3'",
+                    "pos": {
+                        "x": 8.75,
+                        "y": 18.15
+                    },
+                    "uuid": "23f86e41-8b8d-44c0-b138-ddf9498e43b0"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference 'SJ4'",
+                    "pos": {
+                        "x": 9.25,
+                        "y": 19.35
+                    },
+                    "uuid": "4ec62ea8-2ca2-47e0-95d7-e1caf9f0b851"
+                },
+                {
+                    "description": "Reference 'SJ6'",
+                    "pos": {
+                        "x": 10.45,
+                        "y": 20.55
+                    },
+                    "uuid": "d3433d7f-a09d-4502-8bd6-7b260f1ef63d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference 'SJ1'",
+                    "pos": {
+                        "x": 7.75,
+                        "y": 16.95
+                    },
+                    "uuid": "dba39ccb-6189-4f24-b6d7-41083efcfce1"
+                },
+                {
+                    "description": "Rectangle on f.silkscreen",
+                    "pos": {
+                        "x": 2.11,
+                        "y": 13.61
+                    },
+                    "uuid": "91ed376a-a159-4b05-b6e3-5f7ea54e6455"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on f.silkscreen",
+                    "pos": {
+                        "x": 7.41,
+                        "y": 16.63
+                    },
+                    "uuid": "4e2cbc2d-30a7-442f-8a3e-3e84bd170224"
+                },
+                {
+                    "description": "Reference 'SJ1'",
+                    "pos": {
+                        "x": 7.75,
+                        "y": 16.95
+                    },
+                    "uuid": "dba39ccb-6189-4f24-b6d7-41083efcfce1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference 'SJ3'",
+                    "pos": {
+                        "x": 8.75,
+                        "y": 18.15
+                    },
+                    "uuid": "23f86e41-8b8d-44c0-b138-ddf9498e43b0"
+                },
+                {
+                    "description": "Reference 'SJ1'",
+                    "pos": {
+                        "x": 7.75,
+                        "y": 16.95
+                    },
+                    "uuid": "dba39ccb-6189-4f24-b6d7-41083efcfce1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference 'J6'",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "2def5674-f5f2-4848-9a0a-28fc7b892203"
+                },
+                {
+                    "description": "Reference 'J5'",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "1fe1efe7-3776-4303-8da4-34c82ee561af"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 8.06
+                    },
+                    "uuid": "6cb822cc-9da1-4847-9ea2-d6bef8b21a80"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 9.3
+                    },
+                    "uuid": "2b2ad826-7c03-41af-91d6-c9810a753c06"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 8.06
+                    },
+                    "uuid": "6cb822cc-9da1-4847-9ea2-d6bef8b21a80"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 9.4
+                    },
+                    "uuid": "67d7832d-4d5c-4e88-9540-d0a2e006aeb6"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 9.3
+                    },
+                    "uuid": "2b2ad826-7c03-41af-91d6-c9810a753c06"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 5.85,
+                        "y": 9.4
+                    },
+                    "uuid": "67d7832d-4d5c-4e88-9540-d0a2e006aeb6"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 7.34,
+                        "y": 10.6
+                    },
+                    "uuid": "f3159ec7-cc94-445f-931e-2515352f514d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 8.06
+                    },
+                    "uuid": "02f4cd45-c8d6-4368-8892-85eccd59a2fa"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.4
+                    },
+                    "uuid": "ad3738f6-aca3-43d9-8be0-c17736ca553e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 8.06
+                    },
+                    "uuid": "02f4cd45-c8d6-4368-8892-85eccd59a2fa"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 11.04
+                    },
+                    "uuid": "f54f45b0-d803-4c28-8281-7b1565bb2098"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.4
+                    },
+                    "uuid": "ad3738f6-aca3-43d9-8be0-c17736ca553e"
+                },
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 11.04
+                    },
+                    "uuid": "f54f45b0-d803-4c28-8281-7b1565bb2098"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text 'TPS43: 3=GND 4=3V3' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 25.3
+                    },
+                    "uuid": "341cfac1-3b8f-4230-8bc2-5ed40ba20229"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text '     3=EX3 4=EX4' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 24.5
+                    },
+                    "uuid": "523fb9d6-9c53-45de-960d-9994f6aae4c5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text '     1=EX1 6=EX6' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 26.1
+                    },
+                    "uuid": "9d76eadf-d35a-4e93-a74d-6f2d1a286288"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text 'J3=T-BALL J4=EXP' on b.silkscreen",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 17.15
+                    },
+                    "uuid": "a33a502c-603c-4b94-8f09-3da2dbad9e32"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text 'BACK: GND,GP25..GP17' on b.silkscreen",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 18.6
+                    },
+                    "uuid": "ae928450-f54e-471a-9f94-b8c1abd1be0b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text 'J4 SJ1/3/4/6 MODE' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 22.9
+                    },
+                    "uuid": "b6dd551f-b037-464c-8ec4-36f14984d6fd"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB Text 'DEF: 1=3V3 6=GND' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 23.7
+                    },
+                    "uuid": "d0693498-8484-43c0-a538-b2f78af9e365"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Rectangle on f.silkscreen",
+                    "pos": {
+                        "x": 11.11,
+                        "y": 13.61
+                    },
+                    "uuid": "74d69899-4e45-46e9-a5e6-f975ef39385a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Circle on f.silkscreen",
+                    "pos": {
+                        "x": 13.51,
+                        "y": 16.01
+                    },
+                    "uuid": "4cd49678-5f0d-4f61-9053-60af48187b93"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Rectangle on f.silkscreen",
+                    "pos": {
+                        "x": 2.11,
+                        "y": 13.61
+                    },
+                    "uuid": "91ed376a-a159-4b05-b6e3-5f7ea54e6455"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Circle on f.silkscreen",
+                    "pos": {
+                        "x": 4.51,
+                        "y": 16.01
+                    },
+                    "uuid": "976a6c50-92ba-43a0-abab-2c5ce3494291"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Polygon on b.silkscreen",
+                    "pos": {
+                        "x": 4.2,
+                        "y": 21.06
+                    },
+                    "uuid": "83ea7b44-bd93-41b3-9e94-cea52316f73a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment on b.silkscreen",
+                    "pos": {
+                        "x": 12.15,
+                        "y": 9.3
+                    },
+                    "uuid": "ee7057cb-c806-4e9c-80e0-987a936df3f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference 'SJ1'",
+                    "pos": {
+                        "x": 7.75,
+                        "y": 16.95
+                    },
+                    "uuid": "dba39ccb-6189-4f24-b6d7-41083efcfce1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference 'SJ6'",
+                    "pos": {
+                        "x": 10.45,
+                        "y": 20.55
+                    },
+                    "uuid": "d3433d7f-a09d-4502-8bd6-7b260f1ef63d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on F.Cu, length 4.1199 mm",
+                    "pos": {
+                        "x": 9.4,
+                        "y": 23.6301
+                    },
+                    "uuid": "192ee407-6886-4c99-93b9-aadb987d0185"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on F.Cu, length 0.0709 mm",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "c8108220-17fc-4abb-8e3c-bb8f2d5aa831"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Via [GPIO4] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "965ed219-6c92-4078-84ae-48da9661ba9b"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Via [GPIO4] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "965ed219-6c92-4078-84ae-48da9661ba9b"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad 2 [RESET] of SW_RESET on F.Cu",
+                    "pos": {
+                        "x": 15.36,
+                        "y": 14.16
+                    },
+                    "uuid": "39a3232a-26df-40cd-b911-0c7fc068b427"
+                },
+                {
+                    "description": "PTH pad 5 [GPIO5] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 14.29
+                    },
+                    "uuid": "1b1c22a3-e65a-4520-9bc0-3b8027645e89"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad 3 [RESET] of SW_RESET on F.Cu",
+                    "pos": {
+                        "x": 15.36,
+                        "y": 17.86
+                    },
+                    "uuid": "c705fbe8-deac-493b-bf77-b42b7d63fce1"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad 1 [GND] of SW_BOOT on F.Cu",
+                    "pos": {
+                        "x": 2.66,
+                        "y": 14.16
+                    },
+                    "uuid": "569689c9-8da3-43f3-a7be-c64750b2167e"
+                },
+                {
+                    "description": "PTH pad 27 [GPIO27] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 14.29
+                    },
+                    "uuid": "df5cd7d7-4369-43e9-a917-758356a63e3f"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad 4 [GND] of SW_BOOT on F.Cu",
+                    "pos": {
+                        "x": 2.66,
+                        "y": 17.86
+                    },
+                    "uuid": "5d4b1d8a-b07c-47a0-adb1-6ba47a0b7f4f"
+                },
+                {
+                    "description": "PTH pad 26 [GPIO26] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 16.83
+                    },
+                    "uuid": "97767af8-7d5f-4b55-b3b4-63b8bca44767"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 11.6921,
+                        "y": 32.9396
+                    },
+                    "uuid": "1c2d0894-e3b5-404c-9822-c434e07915fa"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1077 mm",
+                    "pos": {
+                        "x": 10.5511,
+                        "y": 28.2582
+                    },
+                    "uuid": "59ea59b5-3491-4b61-9fe5-a95ad579246c"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.0830 mm",
+                    "pos": {
+                        "x": 11.6921,
+                        "y": 31.212
+                    },
+                    "uuid": "6ad0695c-4ef6-4d7a-8939-ff3d23316ff0"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 11.6921,
+                        "y": 31.3537
+                    },
+                    "uuid": "72c41521-6223-4624-93ad-f076b3d73fb1"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1535 mm",
+                    "pos": {
+                        "x": 11.0485,
+                        "y": 28.9091
+                    },
+                    "uuid": "ae692485-763e-4ef6-80c6-2b1f7355d9ae"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.3517 mm",
+                    "pos": {
+                        "x": 10.7998,
+                        "y": 28.5069
+                    },
+                    "uuid": "c88a7cc5-7869-41ef-8dc6-9c9e980ce444"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 11.6921,
+                        "y": 32.4412
+                    },
+                    "uuid": "e012a30b-f2e2-4bc9-ae39-058946361e6b"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on F.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 11.1487,
+                        "y": 29.0093
+                    },
+                    "uuid": "f37de483-ff3e-4037-a179-b12a600b628c"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO3] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 12.7459,
+                        "y": 34.6608
+                    },
+                    "uuid": "3a7b53af-b1fb-4c3f-993e-041208458986"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.0206 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 17.032
+                    },
+                    "uuid": "01497a71-8177-491b-82d7-ad6d22680bf4"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1731 mm",
+                    "pos": {
+                        "x": 13.974,
+                        "y": 18.8574
+                    },
+                    "uuid": "0a087cb8-dc63-4a1a-9f44-0f508ce99fa2"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.2291 mm",
+                    "pos": {
+                        "x": 14.7933,
+                        "y": 17.7653
+                    },
+                    "uuid": "0fd5edcf-6c3e-4d6d-a7a9-844ebc20537f"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.0027 mm",
+                    "pos": {
+                        "x": 10.0037,
+                        "y": 29.1667
+                    },
+                    "uuid": "1ef9d3cb-7d37-49f2-9bf1-3b5f9b0d73bf"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.3206 mm",
+                    "pos": {
+                        "x": 14.3265,
+                        "y": 19.1929
+                    },
+                    "uuid": "234b63ed-5390-4ad2-9b34-783e18909b05"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.8075 mm",
+                    "pos": {
+                        "x": 16.8891,
+                        "y": 17.7302
+                    },
+                    "uuid": "29215cb9-dfe5-4e28-93e2-0c8f7db33e29"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1105 mm",
+                    "pos": {
+                        "x": 14.0521,
+                        "y": 18.9355
+                    },
+                    "uuid": "308665c3-e126-4725-86ee-04c4301ee12a"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 17.1738
+                    },
+                    "uuid": "3ead36df-f15c-416d-83ef-dee0cae7f5de"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.7493 mm",
+                    "pos": {
+                        "x": 14.3265,
+                        "y": 19.9422
+                    },
+                    "uuid": "56451917-b240-4ef0-adde-4428835492df"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.3560 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.274
+                    },
+                    "uuid": "63b00116-13be-4c64-8481-375154c0d0a3"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.7908 mm",
+                    "pos": {
+                        "x": 14.9802,
+                        "y": 20.5014
+                    },
+                    "uuid": "6abe5495-d2ce-439b-a0da-32664663febe"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.2978 mm",
+                    "pos": {
+                        "x": 14.0696,
+                        "y": 24.5449
+                    },
+                    "uuid": "8cc463c8-62b5-4324-9349-226ec534b112"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1576 mm",
+                    "pos": {
+                        "x": 9.8461,
+                        "y": 29.1667
+                    },
+                    "uuid": "929824bc-cc3d-4534-9f47-4ee52babea6b"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 2.7409 mm",
+                    "pos": {
+                        "x": 14.9802,
+                        "y": 23.2423
+                    },
+                    "uuid": "b739e327-0a34-4d0a-8e47-a35b525b04ed"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.3589 mm",
+                    "pos": {
+                        "x": 10.7127,
+                        "y": 28.4577
+                    },
+                    "uuid": "c6d78921-0ccb-4aca-8410-7f198bd0e878"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1534 mm",
+                    "pos": {
+                        "x": 14.2802,
+                        "y": 24.3343
+                    },
+                    "uuid": "dff612d2-819b-4e13-9fee-18b9d60e6af5"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.8403 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 15.1917
+                    },
+                    "uuid": "e80b5b21-9c17-4168-8c3c-6a4f0f7d2b5a"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.1600 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.7302
+                    },
+                    "uuid": "ecd48381-231b-419b-9ed3-12d80f90acf5"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on F.Cu, length 0.2902 mm",
+                    "pos": {
+                        "x": 8.3217,
+                        "y": 28.5574
+                    },
+                    "uuid": "90b37425-7488-46ba-81dd-6d8b1ff5bf9c"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on F.Cu, length 0.1319 mm",
+                    "pos": {
+                        "x": 8.3217,
+                        "y": 28.4255
+                    },
+                    "uuid": "cd1182e5-a272-4cda-a3ee-d2f9c0499f91"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 2.3995 mm",
+                    "pos": {
+                        "x": 16.3233,
+                        "y": 24.8537
+                    },
+                    "uuid": "4b77ef86-f4e7-4cf9-a052-f1a1c488ea10"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.0206 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 21.7079
+                    },
+                    "uuid": "6f3aae12-7ffe-4b61-be21-228665c55e1c"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 21.5662
+                    },
+                    "uuid": "72f2a380-dadc-4f0a-a93c-b32167ae0516"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 1.4491 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 23.157
+                    },
+                    "uuid": "940a14e0-42a2-4edf-810c-16532c3b19c3"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 12.1381,
+                        "y": 33.6454
+                    },
+                    "uuid": "b82551d3-019d-40e0-998a-bad0f37bf2d3"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.3295 mm",
+                    "pos": {
+                        "x": 12.2798,
+                        "y": 33.6454
+                    },
+                    "uuid": "c9e9b19a-6c6b-425e-9a26-5a19444fd7e5"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.0708 mm",
+                    "pos": {
+                        "x": 10.8816,
+                        "y": 32.7412
+                    },
+                    "uuid": "ca7774c9-b2db-4b02-8b34-0bcb239f9bf9"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 2.7221 mm",
+                    "pos": {
+                        "x": 8.9568,
+                        "y": 30.8164
+                    },
+                    "uuid": "e63aefeb-0f1c-4b1b-86ab-b4c143430abd"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.3560 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 21.466
+                    },
+                    "uuid": "ee86b3f4-b526-43d8-824a-00ac82be905d"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 6.5267 mm",
+                    "pos": {
+                        "x": 16.3233,
+                        "y": 31.3804
+                    },
+                    "uuid": "f077eaa2-7a38-4125-a36e-67bed809deac"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Track width (board setup constraints min width 0.1000 mm; actual 0.0750 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1298 mm",
+                    "pos": {
+                        "x": 8.827,
+                        "y": 30.8164
+                    },
+                    "uuid": "f5352144-4d5e-46cc-bcdc-9e2ea67ed71f"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB Text 'TPS43: 3=GND 4=3V3' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 25.3
+                    },
+                    "uuid": "341cfac1-3b8f-4230-8bc2-5ed40ba20229"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB Text '     3=EX3 4=EX4' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 24.5
+                    },
+                    "uuid": "523fb9d6-9c53-45de-960d-9994f6aae4c5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB Text '     1=EX1 6=EX6' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 26.1
+                    },
+                    "uuid": "9d76eadf-d35a-4e93-a74d-6f2d1a286288"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB Text 'J4 SJ1/3/4/6 MODE' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 22.9
+                    },
+                    "uuid": "b6dd551f-b037-464c-8ec4-36f14984d6fd"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB Text 'DEF: 1=3V3 6=GND' on b.silkscreen",
+                    "pos": {
+                        "x": 11.9,
+                        "y": 23.7
+                    },
+                    "uuid": "d0693498-8484-43c0-a538-b2f78af9e365"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4724 mm)",
+            "items": [
+                {
+                    "description": "Reference 'U1'",
+                    "pos": {
+                        "x": 12.75,
+                        "y": 42.6
+                    },
+                    "uuid": "bd704526-a06d-4a85-ae82-420cd9455bef"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4500 mm)",
+            "items": [
+                {
+                    "description": "Reference 'SW_RESET'",
+                    "pos": {
+                        "x": 13.51,
+                        "y": 12.91
+                    },
+                    "uuid": "a925e3ba-ba62-4f03-9cae-d66003a6d9a4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4500 mm)",
+            "items": [
+                {
+                    "description": "Reference 'SW_BOOT'",
+                    "pos": {
+                        "x": 4.51,
+                        "y": 12.91
+                    },
+                    "uuid": "661b298b-8e68-43a6-9adb-9bdcfb88769b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm)",
+            "items": [
+                {
+                    "description": "Reference 'J2'",
+                    "pos": {
+                        "x": 9.0,
+                        "y": -0.875
+                    },
+                    "uuid": "d1926c98-2ed8-4e88-948c-ad7a1a793f20"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO2] on In2.Cu, length 1.4517 mm",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 6.67
+                    },
+                    "uuid": "5fbe9805-973f-4621-99bf-cc4b60cc35ac"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO2] on In2.Cu, length 7.4707 mm",
+                    "pos": {
+                        "x": 13.2701,
+                        "y": 35.2284
+                    },
+                    "uuid": "9d9cdd34-2075-4994-9cca-7100e511d7da"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO3] on In2.Cu, length 1.4517 mm",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 9.21
+                    },
+                    "uuid": "2c481418-da3d-48e8-b9ad-ab989ea5654c"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO3] on In2.Cu, length 6.7861 mm",
+                    "pos": {
+                        "x": 13.5525,
+                        "y": 34.6608
+                    },
+                    "uuid": "91d859a2-0f63-4be0-a500-fa4ca2800e0f"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.1600 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.7302
+                    },
+                    "uuid": "ecd48381-231b-419b-9ed3-12d80f90acf5"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1002 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.63
+                    },
+                    "uuid": "edc74fb4-ef42-4dbb-a6c4-a399829c9087"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 2.3737 mm",
+                    "pos": {
+                        "x": 15.7465,
+                        "y": 15.1917
+                    },
+                    "uuid": "fcfbef71-7373-4261-917d-85c45e782f7d"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 2.3995 mm",
+                    "pos": {
+                        "x": 16.3233,
+                        "y": 24.8537
+                    },
+                    "uuid": "4b77ef86-f4e7-4cf9-a052-f1a1c488ea10"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1027 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 21.11
+                    },
+                    "uuid": "c7999541-ed5f-48cc-abcf-20bc0f5937c5"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1002 mm",
+                    "pos": {
+                        "x": 18.02,
+                        "y": 23.157
+                    },
+                    "uuid": "f21d8a5e-58f7-4588-a523-824f56ad0de3"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 1.4517 mm",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 19.37
+                    },
+                    "uuid": "fc9e4bdd-4f12-41ba-a274-0d6b88505c96"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 0 [GPIO0] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 1.59
+                    },
+                    "uuid": "278e6167-01ff-40b6-bf07-48330e4b1fd6"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 1 [GPIO1] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 4.13
+                    },
+                    "uuid": "31f27800-4df7-4605-911a-ec258e143179"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 2 [GPIO2] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 6.67
+                    },
+                    "uuid": "ab04d009-f3e7-446c-b450-1a1e0453a71b"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 3 [GPIO3] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 9.21
+                    },
+                    "uuid": "3c51a8d7-1988-43b5-a8df-f4a9a7ff074b"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 4 [GPIO4] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 11.75
+                    },
+                    "uuid": "e3382732-a8c6-4635-a72a-1c9a29308320"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 5 [GPIO5] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 14.29
+                    },
+                    "uuid": "1b1c22a3-e65a-4520-9bc0-3b8027645e89"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 7 [GPIO7] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 19.37
+                    },
+                    "uuid": "dfd485c4-8524-4807-8ffa-16de4ddc212f"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 14 [GPIO14] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 21.91
+                    },
+                    "uuid": "653a41dc-5249-4722-894b-e761c0e868ab"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 15 [GPIO15] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 19.37
+                    },
+                    "uuid": "7366a471-b14d-4b25-9d4f-b2922bb6ffba"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 26 [GPIO26] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 16.83
+                    },
+                    "uuid": "97767af8-7d5f-4b55-b3b4-63b8bca44767"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 27 [GPIO27] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 14.29
+                    },
+                    "uuid": "df5cd7d7-4369-43e9-a917-758356a63e3f"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 28 [GPIO28] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 11.75
+                    },
+                    "uuid": "d11c530a-c3cc-4eb2-8990-a023e174e238"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 29 [GPIO29] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 9.21
+                    },
+                    "uuid": "8d056bee-8078-48ed-9497-1360e02b161a"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 30 [3V3] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 6.67
+                    },
+                    "uuid": "7f6eb021-2c8b-41aa-8f5d-7235adca3698"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 31 [GND] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 4.13
+                    },
+                    "uuid": "5bffd5cc-c187-4869-b605-a5ee041dfd95"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "PTH pad 32 [VSYS] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 1.59
+                    },
+                    "uuid": "d9d16f6e-a483-4097-9c04-1af3a61803ec"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Reference 'J6'",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "2def5674-f5f2-4848-9a0a-28fc7b892203"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A1 [GND] of J2 on F.Cu",
+                    "pos": {
+                        "x": 5.75,
+                        "y": 0.725
+                    },
+                    "uuid": "2e6c098a-f341-40f0-8f45-9cc841dba735"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A4 [USB_VBUS] of J2 on F.Cu",
+                    "pos": {
+                        "x": 6.55,
+                        "y": 0.725
+                    },
+                    "uuid": "41f4462f-7412-4fbd-9607-f554260fdb8b"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A5 [CC1] of J2 on F.Cu",
+                    "pos": {
+                        "x": 7.75,
+                        "y": 0.725
+                    },
+                    "uuid": "e73f344f-10aa-46cc-9b2c-66d97d87c677"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A6 [USB_D+_C] of J2 on F.Cu",
+                    "pos": {
+                        "x": 8.75,
+                        "y": 0.725
+                    },
+                    "uuid": "dd3a81d6-4bd5-4773-9845-1e706c2ffde7"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A7 [USB_D-_C] of J2 on F.Cu",
+                    "pos": {
+                        "x": 9.25,
+                        "y": 0.725
+                    },
+                    "uuid": "31038840-198a-4321-984e-f1c8961e847c"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A8 [<no net>] of J2 on F.Cu",
+                    "pos": {
+                        "x": 10.25,
+                        "y": 0.725
+                    },
+                    "uuid": "c6b97471-554e-4095-b747-54efe1ca19bf"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A9 [USB_VBUS] of J2 on F.Cu",
+                    "pos": {
+                        "x": 11.45,
+                        "y": 0.725
+                    },
+                    "uuid": "e24591bf-8d23-4372-a021-ea877f7d0d96"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad A12 [GND] of J2 on F.Cu",
+                    "pos": {
+                        "x": 12.25,
+                        "y": 0.725
+                    },
+                    "uuid": "7b3149af-ad97-4b48-a4b7-27fd5beda0d2"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B1 [GND] of J2 on F.Cu",
+                    "pos": {
+                        "x": 12.25,
+                        "y": 0.725
+                    },
+                    "uuid": "61e1824b-4010-4650-8310-f26845e3ce3b"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B4 [USB_VBUS] of J2 on F.Cu",
+                    "pos": {
+                        "x": 11.45,
+                        "y": 0.725
+                    },
+                    "uuid": "82f11741-3727-45e8-bbe6-69050be7f5f4"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B5 [CC2] of J2 on F.Cu",
+                    "pos": {
+                        "x": 10.75,
+                        "y": 0.725
+                    },
+                    "uuid": "3a910198-ecca-4c6f-a137-6e5fd80f60e1"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B6 [USB_D+_C] of J2 on F.Cu",
+                    "pos": {
+                        "x": 9.75,
+                        "y": 0.725
+                    },
+                    "uuid": "65d59628-77f4-4557-89e5-d9dc90d05611"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B7 [USB_D-_C] of J2 on F.Cu",
+                    "pos": {
+                        "x": 8.25,
+                        "y": 0.725
+                    },
+                    "uuid": "cd7dee15-5d6b-4387-8815-f0028c064d10"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B8 [<no net>] of J2 on F.Cu",
+                    "pos": {
+                        "x": 7.25,
+                        "y": 0.725
+                    },
+                    "uuid": "3761db24-db75-4719-b83f-1e93de1780d0"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B9 [USB_VBUS] of J2 on F.Cu",
+                    "pos": {
+                        "x": 6.55,
+                        "y": 0.725
+                    },
+                    "uuid": "06094607-55d4-4d25-be9c-dd24d16319d1"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Pad B12 [GND] of J2 on F.Cu",
+                    "pos": {
+                        "x": 5.75,
+                        "y": 0.725
+                    },
+                    "uuid": "eef12c40-e314-4c4c-a478-d2135556ca08"
+                }
+            ],
+            "severity": "warning",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Polygon on Edge.Cuts",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "9ffbbdb3-4e85-48c5-8cfb-b8f4000e2cc4"
+                },
+                {
+                    "description": "Reference 'J5'",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "1fe1efe7-3776-4303-8da4-34c82ee561af"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0327 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO2] on In2.Cu, length 22.8448 mm",
+                    "pos": {
+                        "x": 18.5527,
+                        "y": 29.9458
+                    },
+                    "uuid": "65eac1bb-dea6-4ac5-88e4-bf2379ed9a4d"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO3 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO3] on In2.Cu, length 20.4230 mm",
+                    "pos": {
+                        "x": 18.351,
+                        "y": 29.8623
+                    },
+                    "uuid": "00844e56-452f-4fad-bb6a-3939f00ffa9c"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO11)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on F.Cu, length 4.1199 mm",
+                    "pos": {
+                        "x": 9.4,
+                        "y": 23.6301
+                    },
+                    "uuid": "192ee407-6886-4c99-93b9-aadb987d0185"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO11)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on F.Cu, length 0.0709 mm",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "c8108220-17fc-4abb-8e3c-bb8f2d5aa831"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO11)",
+            "items": [
+                {
+                    "description": "Via [GPIO4] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "965ed219-6c92-4078-84ae-48da9661ba9b"
+                },
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.0206 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 17.032
+                    },
+                    "uuid": "01497a71-8177-491b-82d7-ad6d22680bf4"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1127 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 17.0611
+                    },
+                    "uuid": "25cf91f5-2ecd-4607-bc53-4cbd8d0a7dd2"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 17.1738
+                    },
+                    "uuid": "3ead36df-f15c-416d-83ef-dee0cae7f5de"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.3560 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.274
+                    },
+                    "uuid": "63b00116-13be-4c64-8481-375154c0d0a3"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0847 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.2386 mm",
+                    "pos": {
+                        "x": 14.3804,
+                        "y": 24.0807
+                    },
+                    "uuid": "8bf04e41-7491-453c-a6e3-a91926a4a7a7"
+                },
+                {
+                    "description": "PTH pad 9 [GPIO9] of JLEG",
+                    "pos": {
+                        "x": 14.08,
+                        "y": 21.96
+                    },
+                    "uuid": "4df38d7a-57fd-46cf-9fd1-4e6c3de25f5e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0008 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.8482 mm",
+                    "pos": {
+                        "x": 14.3804,
+                        "y": 23.8421
+                    },
+                    "uuid": "a079d9ed-20bc-4cae-a928-c533df081444"
+                },
+                {
+                    "description": "PTH pad 9 [GPIO9] of JLEG",
+                    "pos": {
+                        "x": 14.08,
+                        "y": 21.96
+                    },
+                    "uuid": "4df38d7a-57fd-46cf-9fd1-4e6c3de25f5e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.0205 mm",
+                    "pos": {
+                        "x": 18.1348,
+                        "y": 17.0466
+                    },
+                    "uuid": "d0d054a1-49ee-4801-a84b-f6f178c95cdd"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO4 and GPIO6)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 1.8403 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 15.1917
+                    },
+                    "uuid": "e80b5b21-9c17-4168-8c3c-6a4f0f7d2b5a"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0650 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO4] on In2.Cu, length 0.1002 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 17.63
+                    },
+                    "uuid": "edc74fb4-ef42-4dbb-a6c4-a399829c9087"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.0205 mm",
+                    "pos": {
+                        "x": 18.1348,
+                        "y": 21.6933
+                    },
+                    "uuid": "474e3225-bfa2-4a02-bef3-d1bf69398bc0"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.0206 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 21.7079
+                    },
+                    "uuid": "6f3aae12-7ffe-4b61-be21-228665c55e1c"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1417 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 21.5662
+                    },
+                    "uuid": "72f2a380-dadc-4f0a-a93c-b32167ae0516"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 1.4491 mm",
+                    "pos": {
+                        "x": 18.1202,
+                        "y": 23.157
+                    },
+                    "uuid": "940a14e0-42a2-4edf-810c-16532c3b19c3"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0650 mm)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1027 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 21.11
+                    },
+                    "uuid": "c7999541-ed5f-48cc-abcf-20bc0f5937c5"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.1126 mm",
+                    "pos": {
+                        "x": 18.1493,
+                        "y": 21.6788
+                    },
+                    "uuid": "df967364-9f00-4948-9fc7-71642ca4ce2b"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GPIO7 and GPIO8)",
+            "items": [
+                {
+                    "description": "Track [GPIO7] on In2.Cu, length 0.3560 mm",
+                    "pos": {
+                        "x": 18.0491,
+                        "y": 21.466
+                    },
+                    "uuid": "ee86b3f4-b526-43d8-824a-00ac82be905d"
+                },
+                {
+                    "description": "PTH pad 8 [GPIO8] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 21.91
+                    },
+                    "uuid": "9d7ca28b-b764-4572-be18-a117afda732a"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets RESET and GPIO5)",
+            "items": [
+                {
+                    "description": "Pad 2 [RESET] of SW_RESET on F.Cu",
+                    "pos": {
+                        "x": 15.36,
+                        "y": 14.16
+                    },
+                    "uuid": "39a3232a-26df-40cd-b911-0c7fc068b427"
+                },
+                {
+                    "description": "PTH pad 5 [GPIO5] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 14.29
+                    },
+                    "uuid": "1b1c22a3-e65a-4520-9bc0-3b8027645e89"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets RESET and GPIO6)",
+            "items": [
+                {
+                    "description": "Pad 3 [RESET] of SW_RESET on F.Cu",
+                    "pos": {
+                        "x": 15.36,
+                        "y": 17.86
+                    },
+                    "uuid": "c705fbe8-deac-493b-bf77-b42b7d63fce1"
+                },
+                {
+                    "description": "PTH pad 6 [GPIO6] of JLEG",
+                    "pos": {
+                        "x": 16.67,
+                        "y": 16.83
+                    },
+                    "uuid": "101e07f3-ae61-4143-8267-aca61c8a38eb"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GND and GPIO27)",
+            "items": [
+                {
+                    "description": "Pad 1 [GND] of SW_BOOT on F.Cu",
+                    "pos": {
+                        "x": 2.66,
+                        "y": 14.16
+                    },
+                    "uuid": "569689c9-8da3-43f3-a7be-c64750b2167e"
+                },
+                {
+                    "description": "PTH pad 27 [GPIO27] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 14.29
+                    },
+                    "uuid": "df5cd7d7-4369-43e9-a917-758356a63e3f"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets GND and GPIO26)",
+            "items": [
+                {
+                    "description": "Pad 4 [GND] of SW_BOOT on F.Cu",
+                    "pos": {
+                        "x": 2.66,
+                        "y": 17.86
+                    },
+                    "uuid": "5d4b1d8a-b07c-47a0-adb1-6ba47a0b7f4f"
+                },
+                {
+                    "description": "PTH pad 26 [GPIO26] of JLEG",
+                    "pos": {
+                        "x": 1.33,
+                        "y": 16.83
+                    },
+                    "uuid": "97767af8-7d5f-4b55-b3b4-63b8bca44767"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 11 [GPIO11] of JLEG",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 21.96
+                    },
+                    "uuid": "5720853d-37e0-4024-8961-c6912f46e4f3"
+                },
+                {
+                    "description": "Via [GPIO4] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "965ed219-6c92-4078-84ae-48da9661ba9b"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [GPIO4] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 9.4501,
+                        "y": 23.58
+                    },
+                    "uuid": "965ed219-6c92-4078-84ae-48da9661ba9b"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        }
+    ]
+}

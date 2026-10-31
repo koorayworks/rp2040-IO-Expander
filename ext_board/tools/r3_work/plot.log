@@ -1,0 +1,12 @@
+plotted F_Cu
+plotted In1_Cu
+plotted In2_Cu
+plotted B_Cu
+plotted F_Mask
+plotted B_Mask
+plotted F_Paste
+plotted B_Paste
+plotted F_Silkscreen
+plotted B_Silkscreen
+plotted Edge_Cuts
+PLOT DONE
