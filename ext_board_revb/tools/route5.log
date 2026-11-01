@@ -1,0 +1,36 @@
+VIN2 attempt 0 NO PATH
+checkpoint saved after VIN2 -> False
+VOUT7R OK attempt 0 items: 1
+checkpoint saved after VOUT7R -> True
+VOUT2R attempt 0 violations: 3 [(9, 'Via GPIO26', 0.34830000000000005, 0.35), (10, 'Trk GPIO26 L0', 0.34830000000000005, 0.35), (10, 'Via GPIO26', 0.4862482699198024, 0.5)]
+VOUT2R attempt 1 violations: 3 [(16, 'Via GPIO28', 0.4894622048738822, 0.5), (16, 'Pad GPIO26', 0.2828427124746158, 0.3), (16, 'Pad GPIO28', 0.28284271247462084, 0.3)]
+VOUT2R attempt 2 violations: 2 [(11, 'Via GPIO26', 0.49841486735449614, 0.5), (11, 'Trk GPIO26 L1', 0.3447852665065606, 0.35)]
+VOUT2R attempt 3 violations: 2 [(18, 'Trk GPIO26 L0', 0.3346533878507769, 0.35), (18, 'Trk GPIO26 L0', 0.3346533878507769, 0.35)]
+VOUT2R attempt 4 violations: 1 [(12, 'Trk GPIO26 L1', 0.3447852665065603, 0.35)]
+VOUT2R OK attempt 5 items: 21
+checkpoint saved after VOUT2R -> True
+VIN1 attempt 0 violations: 6 [(3, 'Trk 3V3 L0', 0.3245138182004484, 0.35), (10, 'Via GPIO28', 0.33030000000000026, 0.35), (18, 'Via GPIO28', 0.4758079969903831, 0.5)]
+VIN1 attempt 1 violations: 7 [(3, 'Via GPIO26', 0.49841486735449614, 0.5), (3, 'Trk GPIO26 L1', 0.3447852665065606, 0.35), (3, 'Trk 3V3 L0', 0.3450094277710036, 0.35)]
+VIN1 attempt 2 NO PATH
+checkpoint saved after VIN1 -> False
+PR1a attempt 0 violations: 5 [(11, 'Via GPIO26', 0.49841486735449614, 0.5), (11, 'Trk GPIO26 L1', 0.3447852665065606, 0.35), (11, 'Trk 3V3 L0', 0.3450094277710036, 0.35)]
+PR1a attempt 1 violations: 6 [(11, 'Trk 3V3 L0', 0.3245138182004484, 0.35), (18, 'Via GPIO28', 0.33030000000000026, 0.35), (58, 'Via SWDCLK', 0.348457228365262, 0.35)]
+PR1a attempt 2 violations: 3 [(13, 'Via GPIO26', 0.34830000000000005, 0.35), (15, 'Via GPIO26', 0.49227774680560404, 0.5), (15, 'Via 3V3', 0.47434164902525283, 0.5)]
+PR1a attempt 3 NO PATH
+checkpoint saved after PR1a -> False
+PR1b attempt 0 violations: 5 [(14, 'Via EX3', 0.3475999999999999, 0.35), (15, 'Trk SWDIO L0', 0.3482097069296041, 0.35), (15, 'Trk SWDIO L0', 0.3482097069296041, 0.35)]
+PR1b attempt 1 violations: 7 [(11, 'Trk 3V3 L2', 0.1802775637731998, 0.2), (11, 'Trk 3V3 L2', 0.1802775637731998, 0.2), (12, 'Trk 3V3 L2', 0.1802775637731998, 0.2)]
+PR1b attempt 2 violations: 2 [(16, 'Pad SWDIO', 0.28284271247462084, 0.3), (16, 'Pad SWDCLK', 0.28284271247462084, 0.3)]
+PR1b attempt 3 violations: 3 [(13, 'Via VBAT', 0.47169905660282896, 0.5), (57, 'Via SWDCLK', 0.34719222341521605, 0.35), (58, 'Via SWDCLK', 0.34719222341521605, 0.35)]
+PR1b attempt 4 violations: 9 [(21, 'Pad SWDCLK', 0.29154759474226427, 0.3), (25, 'Pad SWDCLK', 0.14142135623731025, 0.15), (26, 'Pad SWDCLK', 0.14142135623731025, 0.15)]
+PR1b attempt 5 violations: 5 [(15, 'Via VBAT', 0.33541019662496585, 0.35), (16, 'Via VBAT', 0.33541019662496585, 0.35), (17, 'Via VBAT', 0.32015621187164256, 0.35)]
+PR1b OK attempt 6 items: 68
+checkpoint saved after PR1b -> True
+STAIR attempt 0 violations: 6 [(29, 'Via GPIO28', 0.4758079969903831, 0.5), (40, 'Via EX1', 0.33935138131440756, 0.35), (41, 'Via EX1', 0.33935138131440756, 0.35)]
+STAIR attempt 1 violations: 3 [(26, 'Via GPIO28', 0.3254000000000019, 0.35), (27, 'Via GPIO28', 0.32680766514878634, 0.35), (30, 'Via GPIO28', 0.49293331191957446, 0.5)]
+STAIR attempt 2 violations: 3 [(32, 'Via GPIO28', 0.4837388241603137, 0.5), (32, 'Trk 3V3 L0', 0.3354101966249677, 0.35), (32, 'Trk 3V3 L0', 0.3354101966249677, 0.35)]
+STAIR OK attempt 3 items: 87
+checkpoint saved after STAIR -> True
+LEG attempt 0 NO PATH
+checkpoint saved after LEG -> False
+RESULTS: {'VIN2': False, 'VOUT7R': True, 'VOUT2R': True, 'VIN1': False, 'PR1a': False, 'PR1b': True, 'STAIR': True, 'LEG': False}

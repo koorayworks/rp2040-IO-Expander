@@ -1,0 +1,25 @@
+Ref,Qty,Value / Part,Package,Notes
+U1,1,"MDBT50Q-1MV2 (Raytac, nRF52840, chip antenna)",MDBT50Q module 10.5x15.5mm,"技適済みモジュール。**ブートローダ書き込み済みのモジュールを購入する前提** (ユーザ方針 2026-10-30)。参考価格 ¥1,243 (スイッチサイエンス, 2026-10-30確認)"
+U2,1,"TPS7A2033PDBVR (TI, 3.3V 300mA LDO)",SOT-23-5,裏面実装 (B.Cu)
+D1,1,"USBLC6-2SC6 (ST, USB ESD)",SOT-23-6,表面実装
+D2,1,"WS2812B-2020 (RGB LED)",PLCC4 2.0x2.0mm,表面実装。本物の LED 位置は近似 (要実物照合)
+J2,1,"TYPE-C-31-M-12 (HRO, USB-C receptacle)",USB-C mid-mount,表面実装。マスター基板と同一
+J3,1,"FH12-6S-0.5SH (Hirose FFC/FPC 6P 0.5mm)",FFC 6P horizontal,裏面実装。トラックボール用 (TB1-TB6)
+J4,1,"FH12-6S-0.5SH (Hirose FFC/FPC 6P 0.5mm)",FFC 6P horizontal,裏面実装。予備 GPIO (EX1-EX6)
+SW_BOOT SW_RESET,2,"TS-1088-AR02016 (XUNPU tact switch)",SMD 2P 3.9x3.0mm H2.0,"LCSC C720477 (JLC Basic)。第4ラウンドで 5.1mm 級から交換 (JLEG 干渉解消)。型番 R = 位置決めポストなし。推奨ランド 1.35x1.80 ピッチ 4.15 に対し本基板は 0.85x1.45 にカスタム化 (README_EXT 設計判断 13)"
+C1 C2,2,"10uF (ceramic, >=6.3V)",0603,裏面実装。LDO 入出力
+C3,1,"100nF (ceramic)",0603,表面実装。LED デカップリング
+R1 R2,2,"5.1k ohm",0603,裏面実装。USB-C CC1/CC2 プルダウン (Rd)
+R3,1,"0 ohm",0603,表面実装。VBUS -> VSYS 接続ジャンパ
+MH1 MH2,2,"M2 hole (no part)",drill 2.2mm NPTH,"基板下端の固定穴。M2 ネジ/スペーサーは別途"
+JLEG,1,"Castellation pads (board edge, no part)",-,"ホスト基板へはんだ付け (RP2040-Zero 互換 23 パッド)"
+J5,1,"SWD pads (no part)",B.Cu pads 1.27mm pitch,デバッグ用パッド (部品なし)
+J6,1,"Back pads GP17-25 (no part)",B.Cu pads,裏面フラットパッド (部品なし)
+U3,1,"TPS610994DRVR (TI, 3.3V fixed boost, 0.9V startup)",WSON-6 (DRV) 2x2mm,"裏面実装 (B.Cu)。乾電池 1-3.3V 入力を 3.3V へ昇圧。FB は GND 接続 (固定出力品)"
+L1,1,"2.2uH shielded inductor (2520 / 1008 metric)",2520,"裏面実装。TPS61099 推奨値。Isat >= 1A 級を選ぶこと"
+C4 C5,2,"10uF (ceramic, >=6.3V)",0603,"裏面実装。昇圧 入力 (C4) / 出力 (C5)"
+U4,1,"TPS2116DRLR (TI, power mux, priority mode)",SOT-5X3-8 (DRL),"裏面実装。VIN1=3V3_USB (USB/LDO, 優先), VIN2=3V3_BAT, VOUT=3V3。MODE=VIN1 で priority mode"
+R4,1,"180k ohm",0603,"裏面実装。PR1 分圧 (上側)。切替点 VIN1 約 2.8V"
+R5,1,"100k ohm",0603,"裏面実装。PR1 分圧 (下側)"
+SW1,1,"CAS-120A (Nidec Copal, slide switch SPDT)",SMD 3P,"裏面実装。電池ライン直列スイッチ。ON 方向は実物確認が必要 (README_REVB 参照)"
+J7,1,"Battery pads (no connector, THT pads x2)",THT pads 2.54mm pitch,"電池リード直はんだ or 2pin ヘッダ用。JST PH は配置不能のためパッド方式 (README_REVB 参照)。+ 側 = BAT_IN"

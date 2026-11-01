@@ -1,0 +1,33 @@
+rip tail: 5
+sampled (1s)
+3V3: components=2 groups=14
+   group0: cx=7.40 cy=26.85
+   group1: cx=6.60 cy=26.85
+   group2: cx=8.10 cy=14.93
+   group3: cx=9.00 cy=12.93
+   group4: cx=1.33 cy=6.67
+   group5: cx=7.09 cy=24.90
+   group6: cx=7.75 cy=9.95
+   group7: cx=12.20 cy=17.07
+   group8: cx=7.75 cy=15.65
+   group9: cx=3.50 cy=29.56
+   group10: cx=3.50 cy=31.04
+   group11: cx=7.75 cy=16.95
+   group12: cx=8.70 cy=16.95
+   group13: cx=10.20 cy=19.35
+PR1: components=2 groups=3
+   group0: cx=4.50 cy=29.56
+   group1: cx=5.00 cy=35.58
+   group2: cx=7.60 cy=37.12
+3V3_USB: components=2 groups=4
+   group0: cx=6.64 cy=20.50
+   group1: cx=4.00 cy=29.56
+   group2: cx=4.50 cy=31.04
+   group3: cx=7.60 cy=35.48
+  3V3 vc=2.0: ok=True comps=1 (8s)
+3V3: FINAL=1
+  PR1 vc=2.0: ok=False comps=2 (42s)
+  PR1 vc=5.0: ok=False comps=2 (76s)
+  PR1 vc=1.2: ok=False comps=2 (110s)
+PR1: FINAL=2
+FIX12 DONE

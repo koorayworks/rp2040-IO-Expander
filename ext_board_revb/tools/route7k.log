@@ -1,0 +1,4 @@
+== PR1a: 2 violations, NOT applied
+   cand3 ('V', 3.5, 32.05) vs Via GPIO26: 0.413 < 0.50
+   cand3 ('V', 3.5, 32.05) vs Trk GPIO26 L1: 0.203 < 0.35
+saved backups/board_route8.kicad_pcb

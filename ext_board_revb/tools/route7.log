@@ -1,0 +1,134 @@
+S0' deletions: seg_a 1 seg_b 1 vertical 1
+== S0': 1 violations, NOT applied
+   cand2 ('T', 2, 4.45, 28.58, 4.8, 29.3) vs Pad : 0.102 < 0.15
+== VIN2: 54 violations, NOT applied
+   cand0 ('T', 2, 3.5, 29.56, 4.05, 30.6) vs Trk 3V3 L2: 0.000 < 0.20
+   cand0 ('T', 2, 3.5, 29.56, 4.05, 30.6) vs Trk 3V3 L2: 0.000 < 0.20
+   cand0 ('T', 2, 3.5, 29.56, 4.05, 30.6) vs Trk 3V3 L2: 0.119 < 0.20
+   cand0 ('T', 2, 3.5, 29.56, 4.05, 30.6) vs Trk 3V3 L2: 0.016 < 0.20
+   cand0 ('T', 2, 3.5, 29.56, 4.05, 30.6) vs Pad 3V3: 0.105 < 0.15
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.050 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.050 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.000 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.150 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.150 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.050 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.100 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.150 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.000 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Trk 3V3 L2: 0.000 < 0.20
+   cand1 ('T', 2, 4.05, 30.6, 4.05, 31.82) vs Pad 3V3: 0.000 < 0.15
+   cand2 ('T', 2, 4.05, 31.82, 5.16, 31.86) vs Via GPIO27: 0.208 < 0.35
+   cand2 ('T', 2, 4.05, 31.82, 5.16, 31.86) vs Trk 3V3 L2: 0.000 < 0.20
+   cand2 ('T', 2, 4.05, 31.82, 5.16, 31.86) vs Trk 3V3_USB L2: 0.000 < 0.20
+   cand3 ('T', 2, 5.16, 31.86, 5.24, 31.38) vs Trk EX1 L2: 0.183 < 0.20
+   cand3 ('T', 2, 5.16, 31.86, 5.24, 31.38) vs Trk 3V3_USB L2: 0.160 < 0.20
+   cand4 ('T', 2, 5.24, 31.38, 5.24, 29.1) vs Trk EX1 L2: 0.183 < 0.20
+   cand5 ('T', 2, 5.24, 29.1, 5.3, 29.02) vs Trk EX1 L2: 0.123 < 0.20
+   cand6 ('V', 5.3, 29.02) vs Trk GPIO11 L0: 0.030 < 0.35
+   cand6 ('V', 5.3, 29.02) vs Trk GP23 L1: 0.144 < 0.35
+   cand6 ('V', 5.3, 29.02) vs Trk EX1 L2: 0.123 < 0.35
+   cand6 ('V', 5.3, 29.02) vs Pad GPIO11: 0.000 < 0.30
+   cand7 ('T', 0, 5.3, 29.02, 4.8, 29.3) vs Trk GPIO10 L0: 0.150 < 0.20
+   cand7 ('T', 0, 5.3, 29.02, 4.8, 29.3) vs Trk GPIO11 L0: 0.002 < 0.20
+   cand7 ('T', 0, 5.3, 29.02, 4.8, 29.3) vs Pad GPIO11: 0.000 < 0.15
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO10 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO13 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO14 L0: 0.087 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO14 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO14 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO14 L0: 0.111 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO15 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO27 L0: 0.002 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO27 L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk GPIO27 L0: 0.002 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Via GPIO27: 0.166 < 0.35
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk RESET L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk SWDIO L0: 0.000 < 0.20
+   cand8 ('T', 0, 4.8, 29.3, 4.8, 35.45) vs Trk SWDIO L0: 0.101 < 0.20
+   cand9 ('T', 0, 4.8, 35.45, 6.55, 35.45) vs Trk SWDIO L0: 0.192 < 0.20
+   cand9 ('T', 0, 4.8, 35.45, 6.55, 35.45) vs Trk EX3 L0: 0.000 < 0.20
+   cand9 ('T', 0, 4.8, 35.45, 6.55, 35.45) vs Trk EX3 L0: 0.000 < 0.20
+   cand9 ('T', 0, 4.8, 35.45, 6.55, 35.45) vs Via EX3: 0.152 < 0.35
+   cand9 ('T', 0, 4.8, 35.45, 6.55, 35.45) vs Pad EX3: 0.000 < 0.15
+   cand11 ('V', 6.9, 36.05) vs Trk 3V3_USB L2: 0.320 < 0.35
+   cand11 ('V', 6.9, 36.05) vs Trk 3V3_USB L2: 0.304 < 0.35
+   cand11 ('V', 6.9, 36.05) vs Trk 3V3_USB L2: 0.300 < 0.35
+   cand11 ('V', 6.9, 36.05) vs Trk 3V3_USB L2: 0.320 < 0.35
+   cand11 ('V', 6.9, 36.05) vs Pad 3V3_USB: 0.285 < 0.30
+== VIN1: 7 violations, NOT applied
+   cand1 ('T', 2, 3.55, 31.8, 3.45, 32.9) vs Via 3V3: 0.199 < 0.35
+   cand1 ('T', 2, 3.55, 31.8, 3.45, 32.9) vs Trk 3V3 L2: 0.195 < 0.20
+   cand1 ('T', 2, 3.55, 31.8, 3.45, 32.9) vs Trk 3V3 L2: 0.195 < 0.20
+   cand2 ('T', 2, 3.45, 32.9, 4.3, 33.7) vs Via GPIO28: 0.263 < 0.35
+   cand2 ('T', 2, 3.45, 32.9, 4.3, 33.7) vs Via 3V3: 0.137 < 0.35
+   cand2 ('T', 2, 3.45, 32.9, 4.3, 33.7) vs Trk 3V3 L2: 0.137 < 0.20
+   cand2 ('T', 2, 3.45, 32.9, 4.3, 33.7) vs Trk 3V3 L2: 0.173 < 0.20
+== PR1a: 17 violations, NOT applied
+   cand1 ('T', 2, 2.9, 31.7, 2.85, 33.3) vs Trk GPIO28 L2: 0.000 < 0.20
+   cand2 ('T', 2, 2.85, 33.3, 2.8, 33.8) vs Via 3V3_USB: 0.200 < 0.35
+   cand3 ('T', 2, 2.8, 33.8, 2.7, 33.95) vs Via 3V3_USB: 0.111 < 0.35
+   cand3 ('T', 2, 2.8, 33.8, 2.7, 33.95) vs Trk 3V3_USB L2: 0.111 < 0.20
+   cand3 ('T', 2, 2.8, 33.8, 2.7, 33.95) vs Trk 3V3_USB L2: 0.180 < 0.20
+   cand4 ('V', 2.7, 33.95) vs Via 3V3_USB: 0.112 < 0.50
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L1: 0.112 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L1: 0.180 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L1: 0.250 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L1: 0.320 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L2: 0.320 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L2: 0.112 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L2: 0.250 < 0.35
+   cand4 ('V', 2.7, 33.95) vs Trk 3V3_USB L2: 0.180 < 0.35
+   cand5 ('T', 1, 2.7, 33.95, 2.7, 35.3) vs Via 3V3_USB: 0.100 < 0.35
+   cand5 ('T', 1, 2.7, 33.95, 2.7, 35.3) vs Trk 3V3_USB L1: 0.100 < 0.20
+   cand5 ('T', 1, 2.7, 33.95, 2.7, 35.3) vs Trk 3V3_USB L1: 0.150 < 0.20
+== LEG: 31 violations, NOT applied
+   cand1 ('V', 7.2, 20.65) vs Trk 3V3 L2: 0.283 < 0.35
+   cand1 ('V', 7.2, 20.65) vs Trk 3V3 L2: 0.250 < 0.35
+   cand1 ('V', 7.2, 20.65) vs Trk 3V3 L2: 0.320 < 0.35
+   cand1 ('V', 7.2, 20.65) vs Trk 3V3 L2: 0.283 < 0.35
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Via GPIO9: 0.241 < 0.35
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk GPIO10 L1: 0.000 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk GPIO10 L1: 0.089 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk GPIO11 L1: 0.000 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Via 3V3: 0.120 < 0.35
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk 3V3 L1: 0.000 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Via SWDIO: 0.291 < 0.35
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk TB5 L1: 0.000 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Trk GP23 L1: 0.000 < 0.20
+   cand2 ('T', 1, 7.2, 20.65, 7.2, 30.45) vs Pad GPIO12: 0.000 < 0.15
+   cand3 ('T', 1, 7.2, 30.45, 6.55, 29.7) vs Via 3V3: 0.255 < 0.35
+   cand3 ('T', 1, 7.2, 30.45, 6.55, 29.7) vs Via 3V3: 0.228 < 0.35
+   cand4 ('V', 6.55, 29.7) vs Trk 3V3 L0: 0.255 < 0.35
+   cand4 ('V', 6.55, 29.7) vs Via 3V3: 0.255 < 0.50
+   cand4 ('V', 6.55, 29.7) vs Trk 3V3 L1: 0.205 < 0.35
+   cand5 ('T', 2, 6.55, 29.7, 6.3, 31.3) vs Via 3V3: 0.255 < 0.35
+   cand6 ('T', 2, 6.3, 31.3, 6.45, 33.2) vs Trk 3V3 L2: 0.000 < 0.20
+   cand6 ('T', 2, 6.3, 31.3, 6.45, 33.2) vs Trk EX4 L2: 0.000 < 0.20
+   cand7 ('T', 2, 6.45, 33.2, 6.35, 34.9) vs Trk 3V3 L2: 0.000 < 0.20
+   cand7 ('T', 2, 6.45, 33.2, 6.35, 34.9) vs Trk 3V3 L2: 0.182 < 0.20
+   cand7 ('T', 2, 6.45, 33.2, 6.35, 34.9) vs Trk 3V3 L2: 0.182 < 0.20
+   cand8 ('T', 2, 6.35, 34.9, 5.55, 35.1) vs Via EX3: 0.265 < 0.35
+   cand8 ('T', 2, 6.35, 34.9, 5.55, 35.1) vs Pad PR1: 0.106 < 0.15
+   cand9 ('T', 2, 5.55, 35.1, 5.55, 36.2) vs Via EX3: 0.304 < 0.35
+   cand9 ('T', 2, 5.55, 35.1, 5.55, 36.2) vs Pad PR1: 0.075 < 0.15
+   cand10 ('T', 2, 5.55, 36.2, 6.4, 36.2) vs Trk SWDCLK L2: 0.197 < 0.20
+   cand10 ('T', 2, 5.55, 36.2, 6.4, 36.2) vs Trk SWDCLK L2: 0.000 < 0.20
+Traceback (most recent call last):
+  File "/home/hatch/workspace/projects/rp2040-IO-Expander/ext_board_revb/tools/route7.py", line 130, in <module>
+    filler.Fill(b.GetZoneList())
+  File "/usr/lib/python3/dist-packages/pcbnew.py", line 14176, in Fill
+    return _pcbnew.ZONE_FILLER_Fill(self, aZones, aCheck, aParent)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: in method 'ZONE_FILLER_Fill', argument 2 of type 'std::vector< ZONE *,std::allocator< ZONE * > > &'
+Additional information:
+Wrong number or type of arguments for overloaded function 'ZONE_FILLER_Fill'.
+  Possible C/C++ prototypes are:
+    ZONE_FILLER::Fill(std::vector< ZONE *,std::allocator< ZONE * > > &,bool,wxWindow *)
+    ZONE_FILLER::Fill(std::vector< ZONE *,std::allocator< ZONE * > > &,bool)
+    ZONE_FILLER::Fill(std::vector< ZONE *,std::allocator< ZONE * > > &)
+
+swig/python detected a memory leak of type 'std::list< ZONE *,std::allocator< ZONE * > > *', no destructor found.
+swig/python detected a memory leak of type 'ZONE_FILLER *', no destructor found.
+swig/python detected a memory leak of type 'BOX2< VECTOR2< int > > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.

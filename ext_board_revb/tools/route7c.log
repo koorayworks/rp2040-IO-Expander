@@ -1,0 +1,75 @@
+S0' deletions: 1 1 1
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
+== S0': CLEAN, applied 4 items
+== VIN2: 17 violations, NOT applied
+   cand1 ('T', 2, 3.55, 28.8, 5.72, 28.8) vs Trk EX1 L2: 0.195 < 0.20
+   cand1 ('T', 2, 3.55, 28.8, 5.72, 28.8) vs Trk EX1 L2: 0.000 < 0.20
+   cand1 ('T', 2, 3.55, 28.8, 5.72, 28.8) vs Trk 3V3_USB L2: 0.000 < 0.20
+   cand4 ('V', 5.85, 31.2) vs Trk GPIO14 L0: 0.323 < 0.35
+   cand4 ('V', 5.85, 31.2) vs Trk GPIO14 L0: 0.148 < 0.35
+   cand4 ('V', 5.85, 31.2) vs Trk GPIO14 L0: 0.149 < 0.35
+   cand4 ('V', 5.85, 31.2) vs Trk TB4 L1: 0.173 < 0.35
+   cand5 ('T', 0, 5.85, 31.2, 7.2, 31.2) vs Trk GPIO14 L0: 0.148 < 0.20
+   cand5 ('T', 0, 5.85, 31.2, 7.2, 31.2) vs Trk GPIO14 L0: 0.149 < 0.20
+   cand5 ('T', 0, 5.85, 31.2, 7.2, 31.2) vs Trk SWDIO L0: 0.000 < 0.20
+   cand6 ('T', 0, 7.2, 31.2, 7.2, 34.35) vs Pad TB6: 0.000 < 0.15
+   cand7 ('T', 0, 7.2, 34.35, 8.55, 34.35) vs Trk GPIO8 L0: 0.000 < 0.20
+   cand7 ('T', 0, 7.2, 34.35, 8.55, 34.35) vs Via GPIO8: 0.020 < 0.35
+   cand8 ('T', 0, 8.55, 34.35, 8.55, 31.5) vs Trk TB4 L0: 0.050 < 0.20
+   cand8 ('T', 0, 8.55, 34.35, 8.55, 31.5) vs Trk TB4 L0: 0.050 < 0.20
+   cand8 ('T', 0, 8.55, 34.35, 8.55, 31.5) vs Via TB4: 0.098 < 0.35
+   cand8 ('T', 0, 8.55, 34.35, 8.55, 31.5) vs Pad TB4: 0.000 < 0.15
+== VIN1: 15 violations, NOT applied
+   cand0 ('T', 2, 3.5, 31.04, 3.85, 30.98) vs Trk 3V3 L2: 0.150 < 0.20
+   cand0 ('T', 2, 3.5, 31.04, 3.85, 30.98) vs Trk 3V3 L2: 0.069 < 0.20
+   cand0 ('T', 2, 3.5, 31.04, 3.85, 30.98) vs Trk 3V3 L2: 0.094 < 0.20
+   cand0 ('T', 2, 3.5, 31.04, 3.85, 30.98) vs Trk 3V3 L2: 0.166 < 0.20
+   cand0 ('T', 2, 3.5, 31.04, 3.85, 30.98) vs Pad 3V3: 0.000 < 0.15
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.000 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.052 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.146 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.190 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.085 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.096 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Trk 3V3 L2: 0.052 < 0.20
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Pad GND: 0.000 < 0.15
+   cand1 ('T', 2, 3.85, 30.98, 4.45, 31.05) vs Pad 3V3: 0.000 < 0.15
+   cand2 ('T', 2, 4.45, 31.05, 4.45, 31.6) vs Pad GND: 0.000 < 0.15
+== PR1a: 16 violations, NOT applied
+   cand2 ('T', 2, 3.3, 32.8, 4.2, 33.35) vs Via 3V3: 0.097 < 0.35
+   cand2 ('T', 2, 3.3, 32.8, 4.2, 33.35) vs Trk 3V3 L2: 0.097 < 0.20
+   cand2 ('T', 2, 3.3, 32.8, 4.2, 33.35) vs Trk 3V3 L2: 0.140 < 0.20
+   cand3 ('T', 2, 4.2, 33.35, 4.15, 33.6) vs Trk 3V3_USB L2: 0.180 < 0.20
+   cand3 ('T', 2, 4.2, 33.35, 4.15, 33.6) vs Trk 3V3_USB L2: 0.177 < 0.20
+   cand3 ('T', 2, 4.2, 33.35, 4.15, 33.6) vs Trk 3V3_USB L2: 0.180 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3 L2: 0.000 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3 L2: 0.050 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Via EX1: 0.200 < 0.35
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.150 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.050 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.150 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.000 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.100 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.100 < 0.20
+   cand4 ('T', 2, 4.15, 33.6, 4.15, 35.95) vs Trk 3V3_USB L2: 0.050 < 0.20
+== LEG: 9 violations, NOT applied
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk GPIO28 L2: 0.000 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Via USB_VBUS: 0.100 < 0.35
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk USB_VBUS L2: 0.000 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk USB_VBUS L2: 0.000 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk EX1 L2: 0.000 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk EX1 L2: 0.059 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Trk EX2 L2: 0.000 < 0.20
+   cand0 ('T', 2, 6.64, 20.5, 2.2, 20.5) vs Pad USB_VBUS: 0.000 < 0.15
+   cand1 ('T', 2, 2.2, 20.5, 2.2, 34.15) vs Pad GPIO14: 0.070 < 0.15
+saved backups/board_route7.kicad_pcb
+swig/python detected a memory leak of type 'ZONE_FILLER *', no destructor found.
+swig/python detected a memory leak of type 'BOX2< VECTOR2< int > > *', no destructor found.
+swig/python detected a memory leak of type 'VECTOR2< int > *', no destructor found.
