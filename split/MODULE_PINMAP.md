@@ -1,0 +1,143 @@
+# モジュール側基板 ピン・ネット凍結表
+
+2026-11-11 凍結。根拠: 本人決定「モジュール側に RP2040 は載せない」、
+MDBT50Q 割当は REV.A の `ext_board/PINMAP_EXT.md` を踏襲（多重化なし）、
+電源は REV.B（`REV_B_SPEC.md` / `ext_board_revb/README_REVB.md`）を移植、
+フレキ接続は `split/FFC_PINMAP_30P.md` が正本。
+
+## 前提
+
+- メイン MCU は MDBT50Q-1MV2（nRF52840）のみ。RP2040・フラッシュは載せない
+- 基板外形 18×34mm（上限36mm）、四隅に M2 ネジ穴（Ø2.2 NPTH、端から中心 2.5mm 目安）
+- MDBT50Q は基板端（アンテナ端）に配置しキープアウト確保。電源部はアンテナと
+  反対側の端に寄せる（REV.B の「スイッチング部をアンテナから遠ざける」を踏襲）
+- 内蔵 DC-DC は使わない（VDD と VDDH を同一 3V3 に直結する内部 LDO モード。
+  DCCH = NC、ファーム側でも DC-DC を有効化しないこと）
+- 32.768kHz 水晶は載せない（XL1/XL2 = NC、内部発振で運用）
+
+## フレキ（FH35C）チャンネル ⇔ モジュール側ネット
+
+| ch | 信号 | モジュール側の接続先 |
+|---:|---|---|
+| 1 | VSYS | USB 5V（Zero 側 VBUS と同電位）。LDO U2 の入力＋MDBT50Q VBUS (pin32) |
+| 2 | GND | GND |
+| 3 | 3V3 | mux 出力 3V3（モジュールで生成して Zero 側へ戻す） |
+| 4 | GPIO29 | MDBT50Q pin45 (P0.23) |
+| 5 | GPIO28 | pin46 (P0.22) |
+| 6 | GPIO27 | pin43 (P0.21) |
+| 7 | GPIO26 | pin44 (P0.20) |
+| 8 | GPIO15 | pin42 (P0.19) |
+| 9 | GPIO14 | pin41 (P0.17) |
+| 10 | GPIO13 | pin38 (P0.16) |
+| 11 | GPIO12 | pin39 (P0.15) |
+| 12 | GPIO11 | pin36 (P0.14) |
+| 13 | GPIO10 | pin37 (P0.13) |
+| 14 | GPIO9 | pin29 (P0.12) |
+| 15 | GPIO8 | pin27 (P0.11) |
+| 16 | GPIO7 | pin26 (P1.09) |
+| 17 | GPIO6 | pin25 (P1.08) |
+| 18 | GPIO5 | pin24 (P0.08) |
+| 19 | GPIO4 | pin23 (P0.07) |
+| 20 | GPIO3 | pin22 (P0.06) |
+| 21 | GPIO2 | pin21 (P0.05) |
+| 22 | GPIO1 | pin20 (P0.04) |
+| 23 | GPIO0 | pin9 (P0.03) |
+| 24 | GND | GND（USB 差動のシールド側） |
+| 25 | USB_D- | MDBT50Q pin34 (D-)。ESD は Zero 側で処理済み |
+| 26 | USB_D+ | MDBT50Q pin35 (D+) |
+| 27 | GND | GND |
+| 28 | BOOT | MDBT50Q pin14 (P0.30)。モジュール側ボタンと並列（押下で GND） |
+| 29 | RESET | MDBT50Q pin40 (P0.18 / nRESET)。モジュール側ボタンと並列 |
+| 30 | STATUS_LED | MDBT50Q pin16 (P0.27)。モジュール側 LED と Zero 側 LED は同一データ線に並列（両方とも先頭ワードを表示） |
+| 31 | NC | 無接続 |
+
+- FH35C は Zero 側基板と同じ規約で配置する（実装面を見てケーブル出口を下に
+  向けたとき左端がチャンネル1）。Zero 側と同様、表裏両面にフットプリントを
+  用意し、実装する面だけ部品を載せる
+- モジュール側で使わない旧裏面パッド分（GP17〜GP25）は基板に出さない。
+  該当する MDBT50Q ピン（pin3〜8 の P1.10〜P1.15、pin11 P0.02、pin13 P0.28）は
+  NC とする。ただし pin12 (P0.31 / AIN7) は下記の電池監視に使う
+
+## 電源（REV.B 移植）
+
+```
+電池（乾電池系 1〜3.3V、ケース側）
+  │ J_BAT = JST PH 2P（モジュール側は面積に余裕があるため PH を第一候補に復帰。
+  │         REV.B の延長型でパッド方式に落ちたのは延長型側の面積制約のため）
+  ▼ pin1 = BAT+
+SW_PWR = CAS-120A（電池ライン直列。pad2 = コモン = VBAT 側、pad1 = BAT+、pad3 = NC）
+  ▼ VBAT
+  ├─► U3 TPS610994DRVR 昇圧 ── 3V3_BAT
+  │     WSON-6、FB = GND（3.3V 固定品）、EN = VBAT 直結
+  │     L1 = 2.2µH 2520 シールド型、CIN/COUT = 10µF 0603
+  └─► MDBT50Q pin12 (P0.31 / AIN7) へ直結（電池生電圧の ADC 監視。
+        sekigon の non-lipo battery management を使う前提）
+        注意: 乾電池2セル新品時は約3.4V になり VDD (3.3V) を超え得る。
+        REV.B からの継続注意として、ファーム側の min/max 設定と合わせて扱う
+
+フレキ ch1 VSYS (USB 5V)
+  ├─► MDBT50Q pin32 (VBUS)
+  └─► U2 TPS7A2033PDBVR LDO ── 3V3_USB（入出力 10µF 0603）
+
+U4 TPS2116DRLR (priority mode, MODE = VIN1)
+  VIN1 = 3V3_USB（優先）、VIN2 = 3V3_BAT、VOUT = 3V3
+  PR1 分圧 R4 = 180k（上）/ R5 = 100k（下）で切替点 VIN1 ≈ 2.8V
+  ▼ 3V3
+  MDBT50Q pin28 (VDD)・pin30 (VDDH)、フレキ ch3、FFC#1/#2、LED 等の全負荷
+```
+
+- LiPo / LFP は対象外（接続禁止をシルク・説明書に明記）。充電回路は載せない
+- TPS2116 の入力デカップリング 0.1µF は REV.B では配置余地がなく未実装だった。
+  モジュール側では U4 直近に置く
+
+## MDBT50Q の残りピン
+
+| pin | nRF | 接続 |
+|---:|---|---|
+| 51 | SWDIO | SWD パッド |
+| 53 | SWDCLK | SWD パッド |
+| 56 | P1.04 (TB1) | センサー電源ゲート制御（下記） |
+| 57 | P1.06 (TB2) | FFC#1 pin2 (CS) |
+| 58 | P1.07 (TB3) | FFC#1 pin3 (MOTION) |
+| 59 | P1.05 (TB4) | FFC#1 pin4 (SDIO) |
+| 60 | P1.03 (TB5) | FFC#1 pin5 (SCLK) |
+| 61 | P1.01 (TB6) | モジュールパッドのみ（FFC には出さない、REV.A 踏襲） |
+| 48 | P0.24 (EX1) | FFC#2（ジャンパ切替、PINMAP_EXT の表どおり） |
+| 49 | P0.25 (EX2) | FFC#2 pin2（固定） |
+| 50 | P1.02 (EX3) | FFC#2（ジャンパ切替） |
+| 47 | P1.00 (EX4) | FFC#2（ジャンパ切替） |
+| 19 | P0.26 (EX5) | FFC#2 pin5（固定） |
+| 10 | P0.29 (EX6) | FFC#2（ジャンパ切替） |
+| 17, 18 | XL1, XL2 | NC |
+| 31 | DCCH | NC |
+| 52, 54 | NFC1, NFC2 | NC |
+| 1, 2, 15, 33, 55 | GND | GND |
+
+## FFC#1（トラックボール、sekigon 式 6P、FH12-6S-0.5SH）
+
+| pin | 接続 |
+|---:|---|
+| 1 | 3V3_TB（センサー電源ゲート経由） |
+| 2 | TB2 (CS) |
+| 3 | TB3 (MOTION) |
+| 4 | TB4 (SDIO) |
+| 5 | TB5 (SCLK) |
+| 6 | GND |
+| MP | GND |
+
+- センサー電源ゲート: 3V3 → ロードスイッチ → 3V3_TB、制御は TB1 (P1.04)。
+  REV.B では面積不足で見送ったが、モジュール側では実装する（推奨事項）。
+  部品は配置設計時に選定（P-ch MOS + プルアップ等の最小構成も候補）
+
+## FFC#2（拡張 6P、FH12-6S-0.5SH、はんだジャンパ切替式）
+
+- REV.A の仕様（`ext_board/PINMAP_EXT.md` の FFC#2 表）をそのまま踏襲する。
+  デフォルト = 統一モード、切替後 = TPS43 モード。切替表は基板シルクにも印刷
+
+## その他
+
+- SWD パッド（4つ、1.27mm ピッチ）: 3V3 / SWDIO / SWDCLK / GND
+- ボタン: BOOT・RESET とも TS-1088-AR02016（REV.A 実績、pad1 = 信号、pad2 = GND）
+- ステータス LED: WS2812B-2020 + 100nF デカップリング（Zero 側と同一構成）
+- ネジ穴: 四隅 Ø2.2 NPTH。アンテナ側の2穴は MDBT50Q のアンテナキープアウト
+  外に置く（SPLIT_SPEC.md のモジュール側基板の節が正）
