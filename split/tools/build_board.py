@@ -129,9 +129,11 @@ esd = pcbnew.FootprintLoad(os.path.join(STD, 'Package_TO_SOT_SMD.pretty'), 'SOT-
 esd.SetFPID(pcbnew.LIB_ID('split', 'SOT-23-6'))
 esd.SetReference('U1')
 esd.SetValue('USBLC6-2SC6')
-esd.SetPosition(pcbnew.VECTOR2I(mm(6.30), mm(7.90)))
+esd.SetPosition(pcbnew.VECTOR2I(mm(6.40), mm(8.00)))  # NOTE: with the library 1.32mm pads, pad6 sits 0.011mm from J2 shell pad S1 (4.68,5.82); pads are shrunk to 0.90mm below at build time (moving U1 broke routing completeness, 2026-11-11)
 esd.SetOrientationDegrees(90)
 board.Add(esd)
+for p in esd.Pads():
+    p.SetSize(pcbnew.VECTOR2I(mm(0.90), mm(0.60)))
 for pn, nn in {'1': 'USB_D-_C', '2': 'GND', '3': 'USB_D+_C', '4': 'USB_D+', '5': 'USB_VBUS', '6': 'USB_D-'}.items():
     assert assign(esd, pn, nn) == 1, pn
 
@@ -147,82 +149,83 @@ for ref, cx, ccnet in (('R1', 6.90, 'CC1'), ('R2', 11.10, 'CC2')):
     assert assign(r, '1', ccnet) == 1
     assert assign(r, '2', 'GND') == 1
 
-# ---------------- FH34SRJ-30S builder ----------------
-def make_fh34():
+# ---------------- FH35C connector (Plan D-kai, decided 2026-11-11) -------
+# Hirose FH35C-31S-0.3SHW(50), LCSC C424662. Land pattern from the Hirose
+# catalog (Recommended Land Dimensions): signal lands 0.23 x 0.70, two
+# staggered rows 2.15 apart (matches the connector terminal datum).
+# Front row (insertion side, 16 lands, span C=9.0) = odd contacts,
+# back row (15 lands, span B=8.4) = even contacts. Contact m sits at
+# x_local = -4.5 + 0.3*(m-1). Contacts 1..30 carry channels 1..30,
+# contact 31 is NC. Fitting (tab) lands 0.6 x 0.9 at x_local = +/-5.1
+# in the front-row band, tied to GND.
+# Convention: contact 1 is at the LEFT when looking at the populated
+# face with USB at the top and the opening facing down-board (+y).
+# NOTE: pin-1 direction is by this convention from the catalog drawings;
+# verify against the physical part at first article (a flip can be
+# absorbed on the flex side without touching this board).
+CONN_CX, CONN_CY = 9.0, 11.55
+ROW_DY = 1.075  # half of the 2.15 row separation
+
+def make_fh35c(reference, back):
     fp = pcbnew.FOOTPRINT(board)
-    fp.SetFPID(pcbnew.LIB_ID('split', 'FH34SRJ-30S-0.5SH'))
-    for k in range(1, 31):
+    fp.SetFPID(pcbnew.LIB_ID('split', 'FH35C-31S'))
+    fp.SetReference(reference)
+    fp.SetValue('FH35C-31S-0.3SHW')
+    lay = lset(pcbnew.B_Cu, pcbnew.B_Mask, pcbnew.B_Paste) if back \
+        else lset(pcbnew.F_Cu, pcbnew.F_Mask, pcbnew.F_Paste)
+
+    def add_pad(num, xl, yl, w, h, netname):
+        x = CONN_CX + xl
+        if back:
+            x = 18.0 - x
         pad = pcbnew.PAD(fp)
-        pad.SetNumber(str(k))
+        pad.SetNumber(str(num))
         pad.SetShape(pcbnew.PAD_SHAPE_RECT)
         pad.SetAttribute(pcbnew.PAD_ATTRIB_SMD)
-        pad.SetSize(pcbnew.VECTOR2I(mm(0.30), mm(1.60)))
-        pad.SetPosition(pcbnew.VECTOR2I(mm((k - 15.5) * 0.5), 0))
-        pad.SetLayerSet(lset(pcbnew.F_Cu, pcbnew.F_Mask, pcbnew.F_Paste))
+        pad.SetSize(pcbnew.VECTOR2I(mm(w), mm(h)))
+        pad.SetPosition(pcbnew.VECTOR2I(mm(x), mm(CONN_CY + yl)))
+        pad.SetLayerSet(lay)
+        if netname:
+            pad.SetNet(net(netname))
         fp.Add(pad)
-    for i, sx in enumerate((-7.75, 7.75)):
-        pad = pcbnew.PAD(fp)
-        pad.SetNumber(str(31 + i))
-        pad.SetShape(pcbnew.PAD_SHAPE_RECT)
-        pad.SetAttribute(pcbnew.PAD_ATTRIB_SMD)
-        pad.SetSize(pcbnew.VECTOR2I(mm(1.20), mm(1.45)))
-        pad.SetPosition(pcbnew.VECTOR2I(mm(sx), 0))
-        pad.SetLayerSet(lset(pcbnew.F_Cu, pcbnew.F_Mask, pcbnew.F_Paste))
-        fp.Add(pad)
-    def line(layer, x1, y1, x2, y2, w=0.12):
+
+    for m in range(1, 32):
+        xl = -4.5 + 0.3 * (m - 1)
+        yl = ROW_DY if m % 2 == 1 else -ROW_DY
+        add_pad(m, xl, yl, 0.23, 0.70, CHANNELS[m - 1] if m <= 30 else None)
+    add_pad(32, -5.1, ROW_DY, 0.6, 0.9, 'GND')
+    add_pad(33, +5.1, ROW_DY, 0.6, 0.9, 'GND')
+
+    silk = pcbnew.B_SilkS if back else pcbnew.F_SilkS
+    def line(x1, y1, x2, y2, w=0.12):
         s = pcbnew.PCB_SHAPE(fp)
         s.SetShape(pcbnew.SHAPE_T_SEGMENT)
         s.SetStart(pcbnew.VECTOR2I(mm(x1), mm(y1)))
         s.SetEnd(pcbnew.VECTOR2I(mm(x2), mm(y2)))
-        s.SetLayer(layer)
+        s.SetLayer(silk)
         s.SetWidth(mm(w))
         fp.Add(s)
-    for layer in (pcbnew.F_SilkS, pcbnew.F_Fab):
-        line(layer, -8.5, -2.45, 8.5, -2.45)
-        line(layer, 8.5, -2.45, 8.5, 1.35)
-        line(layer, 8.5, 1.35, -8.5, 1.35)
-        line(layer, -8.5, 1.35, -8.5, -2.45)
-    c = pcbnew.PCB_SHAPE(fp)
-    c.SetShape(pcbnew.SHAPE_T_CIRCLE)
-    c.SetCenter(pcbnew.VECTOR2I(mm(-7.25), mm(-2.95)))
-    c.SetRadius(mm(0.35))
-    c.SetLayer(pcbnew.F_SilkS)
-    c.SetWidth(mm(0.12))
-    fp.Add(c)
-    for (x1, y1, x2, y2) in [(-8.7, -2.65, 8.7, -2.65), (8.7, -2.65, 8.7, 1.55), (8.7, 1.55, -8.7, 1.55), (-8.7, 1.55, -8.7, -2.65)]:
-        line(pcbnew.F_CrtYd, x1, y1, x2, y2, 0.05)
+    x0, x1 = CONN_CX - 5.7, CONN_CX + 5.7
+    if back:
+        x0, x1 = 18.0 - x1, 18.0 - x0
+    y0, y1 = CONN_CY - 1.8, CONN_CY + 1.8
+    line(x0, y0, x1, y0); line(x1, y0, x1, y1)
+    line(x1, y1, x0, y1); line(x0, y1, x0, y0)
+    # pin-1 dot at the front-left corner of the outline
+    dotx = (18.0 - (CONN_CX - 5.35)) if back else (CONN_CX - 5.35)
+    dot = pcbnew.PCB_SHAPE(fp)
+    dot.SetShape(pcbnew.SHAPE_T_CIRCLE)
+    dot.SetCenter(pcbnew.VECTOR2I(mm(dotx), mm(CONN_CY + 2.25)))
+    dot.SetEnd(pcbnew.VECTOR2I(mm(dotx + 0.3), mm(CONN_CY + 2.25)))
+    dot.SetLayer(silk)
+    dot.SetWidth(mm(0.3))
+    dot.SetFilled(True)
+    fp.Add(dot)
     return fp
 
-FFC_POS = (9.0, 11.30)
-j3 = make_fh34()
-j3.SetReference('J3')
-j3.SetPosition(pcbnew.VECTOR2I(mm(FFC_POS[0]), mm(FFC_POS[1])))
-j3.SetOrientationDegrees(0)
-board.Add(j3)
-for k in range(1, 31):
-    assert assign(j3, str(k), CHANNELS[k - 1]) == 1, k
-assign(j3, '31', 'GND'); assign(j3, '32', 'GND')
-
-j4 = make_fh34()
-j4.SetReference('J4')
-j4.SetPosition(pcbnew.VECTOR2I(mm(FFC_POS[0]), mm(FFC_POS[1])))
-board.Add(j4)
-j4.Flip(pcbnew.VECTOR2I(mm(FFC_POS[0]), mm(FFC_POS[1])), False)
-# After flip, find rotation so that pad k sits at board x = 9.0 - (k-15.5)*0.5
-def pad_x(fp, num):
-    for pad in fp.Pads():
-        if str(pad.GetNumber()) == str(num):
-            return pad.GetPosition().x / 1e6
-for rot in (0, 180):
-    j4.SetOrientationDegrees(rot)
-    if abs(pad_x(j4, 1) - 16.25) < 0.01 and abs(pad_x(j4, 30) - 1.75) < 0.01:
-        print('J4 (back) rotation fixed at', rot)
-        break
-else:
-    raise RuntimeError('J4 mirror check failed: pad1 x=%s pad30 x=%s' % (pad_x(j4, 1), pad_x(j4, 30)))
-for k in range(1, 31):
-    assert assign(j4, str(k), CHANNELS[k - 1]) == 1, k
-assign(j4, '31', 'GND'); assign(j4, '32', 'GND')
+board.Add(make_fh35c('J3', back=False))
+board.Add(make_fh35c('J4', back=True))
+print('FH35C placed (front J3 / back J4)')
 
 # ---------------- buttons (fp duplicated from REV.A, proven nets) ----------
 for ref, cx, rot, sig in (('SW1', 4.51, 0, 'BOOT'), ('SW2', 13.51, 180, 'RESET')):
@@ -253,7 +256,24 @@ cap.SetOrientationDegrees(90)
 board.Add(cap)
 assign(cap, '1', '3V3'); assign(cap, '2', 'GND')
 
+# ---------------- design rules for the autorouter ----------------
+try:
+    ncs = board.GetNetClasses()
+    nc = ncs.FindNetClass('Default')
+    if nc:
+        nc.SetClearance(mm(0.10))
+        nc.SetTrackWidth(mm(0.15))
+        nc.SetViaDiameter(mm(0.45))
+        nc.SetViaDrill(mm(0.25))
+        print('netclass tuned: clearance 0.10 / track 0.15 / via 0.45/0.25')
+except Exception as e:
+    print('netclass tuning skipped:', e)
+
 # ---------------- GND plane zone on In1 ----------------
+# In1 only. A B.Cu zone in the DSN makes Freerouting treat B.Cu as a
+# plane-only layer and J4's signal connections fail (fr10, 2026-11-11:
+# 6 unrouted). The B.Cu GND zone is added post-route by
+# patch_routed.py instead.
 zone = pcbnew.ZONE(board)
 zone.SetLayer(pcbnew.In1_Cu)
 zone.SetNet(net('GND'))
@@ -263,6 +283,25 @@ outline.NewOutline()
 for (x, y) in [(0.3, 0.3), (17.7, 0.3), (17.7, 23.2), (0.3, 23.2)]:
     outline.Append(pcbnew.VECTOR2I(mm(x), mm(y)))
 board.Add(zone)
+
+# ---------------- pre-routed stubs for the two hardest fanouts ----
+# Freerouting (no-plane runs fr11/fr12) leaves exactly two links
+# unrouted: USB_D- at J3-25 and STATUS_LED at D1-4 -- both pads sit in
+# pockets whose fanout the router cannot start. Short F.Cu stubs
+# (verified clear of all fr11 copper) give it reachable endpoints.
+def stub(netname, x0, y0, x1, y1):
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(pcbnew.VECTOR2I(mm(x0), mm(y0)))
+    t.SetEnd(pcbnew.VECTOR2I(mm(x1), mm(y1)))
+    t.SetWidth(mm(0.15))
+    t.SetLayer(pcbnew.F_Cu)
+    t.SetNet(net(netname))
+    board.Add(t)
+
+stub('USB_D-', 11.70, 12.97, 11.70, 13.60)      # J3-25 pad -> south
+stub('STATUS_LED', 9.93, 14.68, 9.93, 13.90)    # D1-4 pad -> north
+stub('GPIO14', 6.90, 12.97, 6.90, 13.60)        # J3-9 pad -> south (fr13
+                                                # left this fanout open)
 
 out = os.path.join(OUT, 'zero_board.kicad_pcb')
 pcbnew.SaveBoard(out, board)
