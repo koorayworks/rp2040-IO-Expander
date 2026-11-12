@@ -48,9 +48,9 @@ MDBT50Q 割当は REV.A の `ext_board/PINMAP_EXT.md` を踏襲（多重化な�
 | 25 | USB_D- | MDBT50Q pin34 (D-)。ESD は Zero 側で処理済み |
 | 26 | USB_D+ | MDBT50Q pin35 (D+) |
 | 27 | GND | GND |
-| 28 | BOOT | MDBT50Q pin14 (P0.30)。モジュール側ボタンと並列（押下で GND） |
-| 29 | RESET | MDBT50Q pin40 (P0.18 / nRESET)。モジュール側ボタンと並列 |
-| 30 | STATUS_LED | MDBT50Q pin16 (P0.27)。モジュール側 LED と Zero 側 LED は同一データ線に並列（両方とも先頭ワードを表示） |
+| 28 | BOOT | MDBT50Q pin14 (P0.30)。Zero 側ボタンが押下で GND（モジュール側にボタンは置かない、2026-11-11 削除決定） |
+| 29 | RESET | MDBT50Q pin40 (P0.18 / nRESET)。Zero 側ボタン用（モジュール側にボタンは置かない） |
+| 30 | STATUS_LED | MDBT50Q pin16 (P0.27)。Zero 側 LED のみを駆動（モジュール側に LED は置かない、2026-11-11 削除決定） |
 | 31 | NC | 無接続 |
 
 - FH35C は Zero 側基板と同じ規約で配置する（実装面を見てケーブル出口を下に
@@ -86,7 +86,7 @@ U4 TPS2116DRLR (priority mode, MODE = VIN1)
   VIN1 = 3V3_USB（優先）、VIN2 = 3V3_BAT、VOUT = 3V3
   PR1 分圧 R4 = 180k（上）/ R5 = 100k（下）で切替点 VIN1 ≈ 2.8V
   ▼ 3V3
-  MDBT50Q pin28 (VDD)・pin30 (VDDH)、フレキ ch3、FFC#1/#2、LED 等の全負荷
+  MDBT50Q pin28 (VDD)・pin30 (VDDH)、フレキ ch3、FFC#1/#2 等の全負荷
 ```
 
 - LiPo / LFP は対象外（接続禁止をシルク・説明書に明記）。充電回路は載せない
@@ -136,8 +136,8 @@ U4 TPS2116DRLR (priority mode, MODE = VIN1)
 ## 配置メモ（2026-11-11、build_module.py / module_board.kicad_pcb）
 
 - 表面: MDBT50Q（アンテナは上端）、SWD パッド、FH35C（表面分）、
-  BOOT/RESET ボタン、ステータス LED、LDO (U2)＋入出力コンデンサ、
-  PR1 分圧 (R4/R5)、センサー電源ゲート (Q1/R6)、JST PH
+  LDO (U2)＋入出力コンデンサ、PR1 分圧 (R4/R5)、センサー電源ゲート
+  (Q1/R6)、I2C プルアップ (JP1–JP4／R7–R10)、JST PH
 - 裏面: FH35C（裏面分）、FFC#1/#2、はんだジャンパ SJ1/3/4/6、
   昇圧 (U3/L1/C4)、mux (U4)、電源スイッチ SW3 (CAS-120A)、MDBT デカップリング
 - 電源スイッチは下端の帯に穴のない置き場がなく、**裏面・左端**
@@ -150,11 +150,31 @@ U4 TPS2116DRLR (priority mode, MODE = VIN1)
 
 - REV.A の仕様（`ext_board/PINMAP_EXT.md` の FFC#2 表）をそのまま踏襲する。
   デフォルト = 統一モード、切替後 = TPS43 モード。切替表は基板シルクにも印刷
+- 実装注意（2026-11-12 訂正）: SJ3／SJ4 は電源ネットが切替側（TPS43 側）に
+  あるため、生成スクリプトでデフォルト／切替を取り違えた初版があった。
+  正しくはデフォルト側パッド = EX3／EX4（西）、切替側 = GND／3V3（東）で、
+  SJ3 の GND 引き出し（スタブ＋ビア）は東パッド（13.9, 30.6）から取る
+
+## I2C プルアップ（2026-11-12 追加、ジャンパー選択式）
+
+Cirque 等の I2C ポインティングデバイス用に、信号線へ 4.7k（0603）プルアップを
+はんだジャンパー経由で接続できるようにした。構成は
+信号 ─[JP]─ PU_xx ─[4.7k]─ レール。
+
+| ジャンパー | 信号 | 抵抗 | レール | デフォルト |
+|---|---|---|---|---|
+| JP1 | TB4 (FFC#1 pin4) | R7 | 3V3_TB | OFF（ネックなし） |
+| JP2 | TB5 (FFC#1 pin5) | R8 | 3V3_TB | OFF（ネックなし） |
+| JP3 | EX2 (FFC#2 pin2, SDA) | R9 | 3V3 | ON（ネック接続） |
+| JP4 | EX5 (FFC#2 pin5, SCL) | R10 | 3V3 | ON（ネック接続） |
+
+- FFC#1 側はトラックボール（SPI）使用時にプルアップ不要なためデフォルト OFF、
+  I2C デバイスを使うときだけブリッジする。FFC#2 側は I2C 前提のためデフォルト ON
 
 ## その他
 
 - SWD パッド（4つ、1.27mm ピッチ）: 3V3 / SWDIO / SWDCLK / GND
-- ボタン: BOOT・RESET とも TS-1088-AR02016（REV.A 実績、pad1 = 信号、pad2 = GND）
-- ステータス LED: WS2812B-2020 + 100nF デカップリング（Zero 側と同一構成）
+- ボタン／LED: モジュール側には置かない（2026-11-11 削除決定）。BOOT／RESET／
+  STATUS_LED はフレキ経由で Zero 側のボタン・LED がそのまま効く
 - ネジ穴: 四隅 Ø2.2 NPTH。アンテナ側の2穴は MDBT50Q のアンテナキープアウト
   外に置く（SPLIT_SPEC.md のモジュール側基板の節が正）

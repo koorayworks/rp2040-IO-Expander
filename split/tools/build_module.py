@@ -7,8 +7,15 @@ tree transplanted (TPS610994 boost + TPS2116 priority mux + TPS7A2033 LDO),
 FH35C flex link to the Zero-side board, FFC#1 trackball + FFC#2 expansion,
 JST PH battery, CAS-120A power switch, sensor power gate on TB1.
 
+Redo of 2026-11-12 (owner decisions): the module-side copies of the
+BOOT / RESET buttons and the status LED are GONE -- the back-flip flex
+variant leaves the Zero-side buttons and LED uncovered, so the copies
+only cost routing room. BOOT / RESET / STATUS_LED still arrive over
+the flex channels. I2C pull-ups for FFC#1 (TB4/TB5) and FFC#2
+(EX2/EX5) are fitted behind solder jumpers (see the pull-up section).
+
 Frame: origin at board top-left corner (antenna end), x right, y down, mm.
-Board: 18.0 x 34.0, 4 layers. Pad pinouts for U2/U3/U4/SW1/L1 and the FH12
+Board: 18.0 x 36.0, 4 layers. Pad pinouts for U2/U3/U4/SW1/L1 and the FH12
 were read off the proven REV.A / REV.B board files, not from memory.
 """
 import os, pcbnew
@@ -194,25 +201,24 @@ def make_fh35c(reference, back):
     return fp
 
 board.Add(make_fh35c('J1', back=False))
-_j2 = make_fh35c('J2', back=True)
-_j2.SetLayer(pcbnew.B_Cu)
-board.Add(_j2)
+# NOTE: do NOT SetLayer(B_Cu) on the back FH35C (or on the SJ pads
+# below). These hand-built footprints carry pads at absolute board
+# coordinates with the footprint at the origin. Marking the footprint
+# as a back component makes the Specctra exporter emit "back 180",
+# and Freerouting then applies the back-side transform to the
+# already-absolute pins, throwing them outside the board outline
+# (module run frm1: all 33 J2 pins flagged, routing collapsed).
+# The Zero board's J4 uses the un-marked construction and routes
+# cleanly; the pads' own B.Cu layer set is what defines the copper.
+board.Add(make_fh35c('J2', back=True))
 print('FH35C placed (front J1 / back J2), centre y =', CONN_CY)
 
-# ---------------- buttons + LED (front) ----------------
-for ref, cx, rot, sig in (('SW1', 4.6, 0, 'BOOT'), ('SW2', 13.4, 180, 'RESET')):
-    sw = dup_match(ext, 'SW-SMD_4P')
-    sw.SetReference(ref)
-    place(sw, cx, 25.9, rot)
-    a = assign(sw, '1', sig); b = assign(sw, '2', 'GND')
-    print(ref, 'signal pads:', a, 'gnd pads:', b)
-
-led = load('LED_SMD.pretty', 'LED_WS2812B-2020_PLCC4_2.0x2.0mm', 'D1', 'WS2812B-2020')
-place(led, 16.25, 24.6, 0)
-assign(led, '1', '3V3'); assign(led, '3', 'GND'); assign(led, '4', 'STATUS_LED')
-c9 = load('Capacitor_SMD.pretty', 'C_0603_1608Metric', 'C9', '100n')
-place(c9, 11.9, 27.4, 90)
-assign(c9, '1', '3V3'); assign(c9, '2', 'GND')
+# ---------------- buttons + LED: REMOVED (2026-11-12) ----------------
+# The module-side BOOT/RESET buttons (SW1/SW2), the status LED (D1)
+# and its decoupling cap (C9) were placed here in v1. Owner decision:
+# with the back-flip flex variant the Zero-side buttons/LED are fully
+# usable, so the copies are dropped. The BOOT / RESET / STATUS_LED
+# nets remain -- they terminate at the module MCU and the flex pads.
 
 # ---------------- SWD pads (front, slot below the module) ----------------
 swd = pcbnew.FOOTPRINT(board)
@@ -283,13 +289,38 @@ def make_sj(ref, cx, cy, center_net, def_net, alt_net):
         pad.SetLayerSet(lset(pcbnew.B_Cu, pcbnew.B_Mask))
         pad.SetNet(net(nn))
         fp.Add(pad)
-    fp.SetLayer(pcbnew.B_Cu)
+    # no SetLayer(B_Cu): see the FH35C note (Specctra back-transform)
     board.Add(fp)
 
 make_sj('SJ1', 10.4, 30.6, 'FFC2_1', '3V3', 'EX1')
-make_sj('SJ3', 13.0, 30.6, 'FFC2_3', 'GND', 'EX3')
-make_sj('SJ4', 15.6, 30.6, 'FFC2_4', '3V3', 'EX4')
+make_sj('SJ3', 13.0, 30.6, 'FFC2_3', 'EX3', 'GND')
+make_sj('SJ4', 15.6, 30.6, 'FFC2_4', 'EX4', '3V3')
 make_sj('SJ6', 13.0, 32.6, 'FFC2_6', 'GND', 'EX6')
+# NOTE (fixed 2026-11-12): SJ3/SJ4 originally had def/alt swapped --
+# their power net is the TPS43 (alt) side, unlike SJ1/SJ6 where power
+# is the default side. PINMAP_EXT.md's table is the spec: default =
+# unified mode (pin3 = EX3, pin4 = EX4). SJ3's GND pad therefore sits
+# on the EAST (alt) pad, and its GND stub/via moved to x 13.9 below.
+
+# Default-mode neck traces (REV.A pattern): a 0.20mm neck joins each
+# jumper's centre pad to its DEFAULT pad, so the board works as the
+# unified mode out of the box. Switching = cut the neck, bridge the
+# other side. The neck endpoints sit on the default net's pad, so the
+# segment carries the centre net (FFC2_x) -- electrically the two pads
+# become one node, which is exactly the default connection.
+def sj_neck(cx, cy, center_net):
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(pcbnew.VECTOR2I(mm(cx - 0.9), mm(cy)))
+    t.SetEnd(pcbnew.VECTOR2I(mm(cx), mm(cy)))
+    t.SetWidth(mm(0.20))
+    t.SetLayer(pcbnew.B_Cu)
+    t.SetNet(net(center_net))
+    board.Add(t)
+
+sj_neck(10.4, 30.6, 'FFC2_1')
+sj_neck(13.0, 30.6, 'FFC2_3')
+sj_neck(15.6, 30.6, 'FFC2_4')
+sj_neck(13.0, 32.6, 'FFC2_6')
 
 # ---------------- power tree (back; footprints/nets from REV.B) ----------
 u3 = dup_ref(revb, 'U3'); u3.SetReference('U3')
@@ -353,6 +384,46 @@ rg = load('Resistor_SMD.pretty', 'R_0603_1608Metric', 'R6', '100k')
 place(rg, 10.9, 24.9, 0)
 assign(rg, '1', '3V3'); assign(rg, '2', 'TB1')
 
+# ---------------- I2C pull-ups (jumper-selectable, front) -------------
+# Owner decision 2026-11-12: FFC#1 (TB4/TB5) and FFC#2 (EX2/EX5) get
+# 4.7k pull-ups for I2C pointing devices (Cirque pads, Azoteq TPS43),
+# each behind a 2-pad solder jumper so plain trackball (SPI) use
+# carries no pull-up. FFC#1 defaults OFF (the trackball is its day
+# job: pads only, bridge JP1/JP2 to enable). FFC#2 defaults ON
+# (EX2/EX5 are SDA/SCL in both FFC#2 modes: a 0.20mm neck
+# pre-connects, cut it to disable). The pull-up rail matches the
+# port's sensor rail: 3V3_TB for FFC#1, plain 3V3 for FFC#2.
+# Chain per pull-up: signal --[JP pads]-- PU_xx net --[4.7k]-- rail.
+def make_pu_jumper(ref, cx, cy, sig_net, mid_net):
+    # Hand-built 2-pad bridge, F.Cu, SJ pad geometry (0.7x0.9 at
+    # 0.9 pitch). No SetLayer on the footprint: see the FH35C note.
+    fp = pcbnew.FOOTPRINT(board)
+    fp.SetFPID(pcbnew.LIB_ID('split', 'SJ-2P'))
+    fp.SetReference(ref)
+    fp.SetValue('PU-JP')
+    for i, (dx, nn) in enumerate([(-0.45, sig_net), (0.45, mid_net)], start=1):
+        pad = pcbnew.PAD(fp)
+        pad.SetNumber(str(i))
+        pad.SetShape(pcbnew.PAD_SHAPE_RECT)
+        pad.SetAttribute(pcbnew.PAD_ATTRIB_SMD)
+        pad.SetSize(pcbnew.VECTOR2I(mm(0.7), mm(0.9)))
+        pad.SetPosition(pcbnew.VECTOR2I(mm(cx + dx), mm(cy)))
+        pad.SetLayerSet(lset(pcbnew.F_Cu, pcbnew.F_Mask))
+        pad.SetNet(net(nn))
+        fp.Add(pad)
+    board.Add(fp)
+
+def pullup(ref_r, ref_j, jx, jy, rx, sig_net, mid_net, rail_net):
+    make_pu_jumper(ref_j, jx, jy, sig_net, mid_net)
+    r = load('Resistor_SMD.pretty', 'R_0603_1608Metric', ref_r, '4.7k')
+    place(r, rx, jy, 0)
+    assign(r, '1', mid_net); assign(r, '2', rail_net)
+
+pullup('R7', 'JP1', 4.35, 26.9, 6.8, 'TB4', 'PU_TB4', '3V3_TB')
+pullup('R8', 'JP2', 4.35, 29.3, 6.8, 'TB5', 'PU_TB5', '3V3_TB')
+pullup('R9', 'JP3', 12.75, 23.8, 15.4, 'EX2', 'PU_EX2', '3V3')
+pullup('R10', 'JP4', 11.35, 26.6, 13.5, 'EX5', 'PU_EX5', '3V3')
+
 # MDBT decoupling (back, under the module)
 c10 = load('Capacitor_SMD.pretty', 'C_0603_1608Metric', 'C10', '10u')
 place(c10, 5.2, 8.0, 90, back=True)
@@ -382,37 +453,455 @@ for (x, y) in [(0.3, 0.3), (17.7, 0.3), (17.7, 35.7), (0.3, 35.7)]:
     outline.Append(pcbnew.VECTOR2I(mm(x), mm(y)))
 board.Add(zone)
 
-out = os.path.join(OUT, 'module_board.kicad_pcb')
-pcbnew.SaveBoard(out, board)
-print('saved', out)
+# ---- Pre-route stubs -------------------------------------------------
+# Round frm2 left 45 unconnected: the FH35C pad field, several module
+# GND pads and scattered GND pads sit in pockets the router cannot
+# enter. Short fixed stubs give it a doorway (same pattern as the
+# Zero board's three stubs). Coordinates from the frm2 DRC report.
+def stub(x1, y1, x2, y2, layer, net_name):
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(pcbnew.VECTOR2I(mm(x1), mm(y1)))
+    t.SetEnd(pcbnew.VECTOR2I(mm(x2), mm(y2)))
+    t.SetWidth(mm(0.15))
+    t.SetLayer(layer)
+    t.SetNet(net(net_name))
+    board.Add(t)
 
-# ---------------- report (pad extents; fp bbox is text-polluted) --------
-def pad_extent(fp):
-    xs, ys = [], []
-    for p in fp.Pads():
-        c, s = p.GetPosition(), p.GetSize()
-        xs += [(c.x - s.x / 2) / 1e6, (c.x + s.x / 2) / 1e6]
-        ys += [(c.y - s.y / 2) / 1e6, (c.y + s.y / 2) / 1e6]
-    return (min(xs), max(xs), min(ys), max(ys)) if xs else (0, 0, 0, 0)
+F, B = pcbnew.F_Cu, pcbnew.B_Cu
+# FH35C near row (y 22.075) escapes downward, far row (y 19.925) upward.
+stub(3.9, 22.075, 3.9, 22.75, F, 'GND')      # J1 tab 32
+stub(14.1, 22.075, 14.1, 22.75, F, 'GND')    # J1 tab 33
+stub(12.3, 22.075, 12.3, 22.75, F, 'GND')    # J1 pad27 (ch24 GND)
+stub(8.1, 22.075, 8.1, 22.75, F, 'GPIO10')   # J1 pad13
+stub(7.5, 22.075, 7.5, 22.75, F, 'GPIO12')   # J1 pad11
+stub(8.4, 19.925, 8.4, 18.98, F, 'GPIO9')    # J1 pad14 (extended north to the round-5 via)
+stub(7.8, 19.925, 7.85, 21.15, F, 'GPIO11')  # J1 pad12 (round-5 pre-dive to its via)
+stub(3.9, 22.075, 3.9, 22.75, B, 'GND')      # J2 tab 33
+stub(14.1, 22.075, 14.1, 22.75, B, 'GND')    # J2 tab 32
+stub(6.6, 19.925, 6.6, 19.15, B, 'GND')      # J2 pad24 (ch27 GND)
+stub(6.6, 19.15, 6.0, 19.15, B, 'GND')       # -> GND via (moved west, see via list)
+stub(13.2, 19.925, 13.2, 19.25, B, 'GND')    # J2 pad2 (ch2 GND)
+stub(8.1, 22.075, 8.1, 22.75, B, 'GPIO4')    # J2 pad19
+stub(7.2, 19.925, 7.2, 19.25, B, 'GPIO1')    # J2 pad22
+# Module pads.
+stub(4.35, 6.4635, 3.55, 6.4635, F, 'GND')   # U1 pin1
+stub(4.35, 7.5635, 3.55, 7.5635, F, 'GND')   # U1 pin2
+stub(4.2, 17.3635, 3.5, 17.3635, F, 'GND')   # U1 pin15
+stub(13.65, 6.4635, 14.45, 6.4635, F, 'GND') # U1 pin55
+stub(7.4, 17.3635, 7.4, 18.1, F, 'GPIO1')    # U1 pin20 -> corridor
+# Scattered GND / power pads.
+stub(6.21, 18.5, 6.21, 19.2, F, 'GND')       # J5 pad4, down to corridor
+stub(12.9, 30.125, 12.9, 29.3, F, 'GND')     # C1 pad2
+stub(11.8, 31.025, 10.2, 31.025, F, 'GND')   # C5 pad2 (joins C6 stub below)
+stub(10.2, 31.025, 10.2, 31.925, F, 'GND')   # C5/C6 GND bridge
+stub(10.2, 31.925, 8.9, 31.925, F, 'GND')    # C6 pad2 (under JST housing)
+stub(16.3, 28.7375, 16.3, 29.75, F, 'GND')   # U2 pad2
+stub(9.5, 30.6, 9.5, 32.3, B, '3V3')         # SJ1 default pad
+stub(6.6, 19.925, 6.6, 19.4, F, 'GPIO15')   # J1 pad8 (GND via moved to (6.0,19.15))
+stub(7.2, 19.925, 7.2, 19.25, F, 'GPIO13')   # J1 pad10
+stub(10.8, 19.925, 10.8, 19.25, F, 'GPIO1')  # J1 pad22
+stub(12.9, 22.075, 12.9, 22.75, B, '3V3')    # J2 pad3 (flex ch3, main 3V3 feed)
+stub(10.5, 22.075, 10.5, 22.75, B, 'GPIO12') # J2 pad11
+stub(8.7, 22.075, 8.7, 22.9, B, 'GPIO6')    # J2 pad17 (round 12: extended; tip via is in the round-12 block -- net_via is defined later)
+stub(10.075, 24.9, 10.075, 26.5, F, '3V3')   # R6 pad1 (gate pull-up feed)
+stub(13.9, 30.6, 13.9, 29.7, B, 'GND')       # SJ3 alt pad (TPS43 GND) -> via
+stub(12.1, 32.6, 12.1, 33.5, B, 'GND')       # SJ6 default pad -> via
 
-b2 = pcbnew.LoadBoard(out)
-for fp in sorted(b2.GetFootprints(), key=lambda f: str(f.GetReference())):
-    e = pad_extent(fp)
-    flag = '  <-- OUT OF BOARD' if e[0] < -0.01 or e[1] > BW + 0.01 or e[2] < -0.01 or e[3] > BH + 0.01 else ''
-    print(fp.GetReference(), fp.GetValue()[:22],
-          'pads x %.2f..%.2f y %.2f..%.2f' % e,
-          'layer', 'F' if fp.GetLayer() == 0 else 'B', flag)
-for fp in b2.GetFootprints():
-    if fp.GetReference() == 'U1':
-        pos = {}
-        for pn in ('1', '14', '15', '28', '34', '56'):
-            for pad in fp.Pads():
-                if str(pad.GetNumber()) == pn:
-                    pos[pn] = (pad.GetPosition().x / 1e6, pad.GetPosition().y / 1e6)
-                    print('U1 pad', pn, pad.GetNet().GetNetname(),
-                          round(pos[pn][0], 2), round(pos[pn][1], 2))
-        # antenna end is the pad-free end: in REV.A (antenna down) pad1 sat
-        # at larger y than pad15. Here the antenna faces up, so pad1.y must
-        # be SMALLER than pad15.y.
-        print('antenna-up check (pad1.y < pad15.y):', pos['1'][1] < pos['15'][1])
-print('nets:', len(nets), 'footprints:', len(b2.GetFootprints()))
+# ---- Fixed GND vias to the In1 plane ---------------------------------
+# Round frm3 showed GND keeps fragmenting into islands the router
+# cannot unite. These pads get a via straight into the In1 GND pour,
+# so they are connected no matter what the router does. Positions are
+# the stub ends above, checked against the FH12 pad map (pins span
+# y 26.95-28.25, MP pads y 23.25-25.45) and the FH35C pad edges.
+def net_via(x, y, net_name):
+    v = pcbnew.PCB_VIA(board)
+    v.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
+    v.SetWidth(mm(0.45))
+    v.SetDrill(mm(0.25))
+    v.SetViaType(pcbnew.VIATYPE_THROUGH)
+    v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+    v.SetNet(net(net_name))
+    board.Add(v)
+
+def gnd_via(x, y):
+    net_via(x, y, 'GND')
+
+for (vx, vy) in [
+    (3.9, 22.75), (14.1, 22.75),      # FH35C tabs (serve J1 F + J2 B stubs)
+    (6.0, 19.15),                    # J2 pad24 / J5 GND (was (6.6,19.25): 0.05mm from GPIO15 stub)
+    (3.55, 6.4635), (3.55, 7.5635),  # U1 pin1 / pin2 stub ends
+    (3.5, 17.3635),                  # U1 pin15 stub end
+    (14.45, 6.4635),                 # U1 pin55 stub end
+    (12.9, 29.3),                    # C1 pad2 stub end
+    (8.9, 31.925),                   # C6/C5 stub end
+    (16.3, 29.75),                   # U2 pad2 stub end
+    (13.9, 29.7), (12.1, 33.5),      # SJ3 alt pad (GND) / SJ6 default pad
+]:
+    gnd_via(vx, vy)
+
+# ---- Round-4 fixed links (from the frm4 island map) -------------------
+# GPIO4: the B stub is walled off by the FFC MP pads (GND, y 23.25-
+# 25.45); the only B gap is x 2.9-7.4. Lead the stub west, then south
+# through the gap, and drop a via there for the other layers.
+stub(8.1, 22.75, 7.0, 22.75, B, 'GPIO4')
+stub(7.0, 22.75, 7.0, 23.3, B, 'GPIO4')
+net_via(7.0, 23.3, 'GPIO4')   # (23.55 would pierce Q1's gate pad on F)
+# 3V3: give every frm4 island a fixed node on all layers.
+stub(6.34, 34.45, 7.4, 34.45, B, '3V3')   # U4 VOUT pad7 -> trunk via
+net_via(7.4, 34.45, '3V3')   # (7.7 would touch L1's BOOST_SW pad)
+# SJ1 island: no via at the stub end (a via at (9.5,32.3) would sit
+# 0.025mm from C6's GND pad on F). Instead the B stub runs west at
+# y 32.52 into the trunk column (x 7.7). (y 32.45 measured 0.0911mm
+# from J6 pin1's annulus -- 0.009 short of the 0.1 rule, hence 32.52.)
+stub(9.5, 32.3, 9.5, 32.52, B, '3V3')
+stub(9.5, 32.52, 7.7, 32.52, B, '3V3')
+net_via(7.7, 32.52, '3V3')
+net_via(10.075, 26.5, '3V3')              # R6 stub end
+stub(6.66, 25.85, 8.3, 25.85, F, '3V3')   # Q1 source pad -> via
+net_via(8.3, 25.85, '3V3')
+net_via(12.9, 22.75, '3V3')               # J2 pad3 stub end
+# U1 VDD (pin28) + VDDH (pin30): join and stub south into the corridor.
+stub(10.6, 17.3635, 11.4, 17.3635, F, '3V3')
+stub(11.4, 17.3635, 11.4, 18.3, F, '3V3')
+net_via(11.4, 18.3, '3V3')
+
+# ---- 3V3 trunk on In2 --------------------------------------------------
+# Rounds frm4/frm6 both left 3V3 in ~5 islands: the router links pads
+# to the nearest fixed via but will not chain via-to-via. So chain
+# them by hand on In2 (the emptiest layer): one fixed trunk ties the
+# U4 feed, the SJ1/Q1/R6 cluster, the FH35C feed and the module's
+# VDD stub into a single node before routing starts. The x 7.7 column
+# keeps 0.175mm from J6 pin1's PTH annulus on In2 (x 7.3 measured
+# inside the ring). SWD pad1 (3V3 test pad) joins via a short F stub.
+I2 = pcbnew.In2_Cu
+stub(7.7, 25.85, 7.7, 34.45, I2, '3V3')          # main column
+stub(7.7, 34.45, 7.4, 34.45, I2, '3V3')          # -> U4 via (jog west)
+stub(7.7, 25.85, 8.3, 25.85, I2, '3V3')          # -> Q1 via
+stub(7.7, 29.0, 12.3, 29.0, I2, '3V3')           # east rail (R6/SJ4)
+stub(12.3, 29.0, 12.3, 28.55, I2, '3V3')         # dip under C1's GND via (12.9,29.3)
+stub(12.3, 28.55, 14.7, 28.55, I2, '3V3')        # east rail cont. (SJ4)
+stub(14.7, 28.55, 14.7, 28.7, I2, '3V3')
+stub(10.075, 29.0, 10.075, 26.5, I2, '3V3')      # -> R6 via
+stub(12.9, 28.55, 12.9, 18.3, I2, '3V3')         # north rail (J2 pad3 via)
+stub(12.9, 18.3, 11.4, 18.3, I2, '3V3')          # -> U1 VDD stub via
+stub(11.4, 18.3, 11.4, 17.9, I2, '3V3')
+stub(11.4, 17.9, 1.9, 17.9, I2, '3V3')           # west rail (SWD feed)
+net_via(14.7, 28.7, '3V3')                       # SJ4 hop point
+net_via(1.9, 17.9, '3V3')
+stub(1.9, 17.9, 2.4, 17.9, F, '3V3')
+stub(2.4, 17.9, 2.4, 18.5, F, '3V3')             # -> SWD pad1
+
+# ---- I2C pull-up fixed links -------------------------------------------
+# Jumper pad -> resistor pad on the same row (the PU_xx hop). For the
+# FFC#2 pair a 0.20mm neck also pre-connects the signal pad to the
+# pull-up (default ON, same pattern as the SJ necks: the neck carries
+# the PU_xx net and touches the signal pad, so DRC shows one
+# intentional shorting item per neck). FFC#1 stays open (default OFF).
+stub(4.8, 26.9, 6.0, 26.9, F, 'PU_TB4')
+stub(4.8, 29.3, 6.0, 29.3, F, 'PU_TB5')
+stub(13.2, 23.8, 14.6, 23.8, F, 'PU_EX2')
+stub(11.8, 26.6, 12.7, 26.6, F, 'PU_EX5')
+
+def pu_neck(x1, x2, y, mid_net):
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(pcbnew.VECTOR2I(mm(x1), mm(y)))
+    t.SetEnd(pcbnew.VECTOR2I(mm(x2), mm(y)))
+    t.SetWidth(mm(0.20))
+    t.SetLayer(pcbnew.F_Cu)
+    t.SetNet(net(mid_net))
+    board.Add(t)
+
+pu_neck(12.3, 13.2, 23.8, 'PU_EX2')
+pu_neck(10.9, 11.8, 26.6, 'PU_EX5')
+
+# ---- Round-5 fixed links (redo round-1 hand-finish findings) -----------
+# Hand-finishing round 1 proved two FH35C escapes are boxed in at
+# 0.15mm/0.099mm rules once every other net is routed:
+# - GPIO9 (J1 pad14): the F stub is fenced by the GPIO3 pair, the
+#   GPIO13 via+diag and the GPIO15 In2 rail; no via touching the stub
+#   clears all four. Pre-drop a via at the stub's north end (B pad18
+#   rect is 0.595mm away at placement) plus a short B lead, so the
+#   router lands on B from the start.
+# - GPIO11 (J1 pad12): no stub existed and its F escape crosses the
+#   same cluster. Pre-dive it between the pad rows to a via with a
+#   B lead into the row band.
+net_via(8.4, 18.98, 'GPIO9')
+stub(8.4, 18.98, 8.9, 19.3, B, 'GPIO9')
+net_via(7.85, 21.15, 'GPIO11')
+stub(7.85, 21.15, 8.6, 21.45, B, 'GPIO11')
+
+# ---- Round-6 fixed links (redo round-5 hand-finish findings) ---------
+# Round 5 (redo_v5) routed everything except 7 pairs; hand-finishing
+# closed the EX2/EX5 pull-up taps and the USB_D- A<->B hop, but three
+# nets proved fully fenced at 0.15mm/0.099mm rules once the router's
+# own copper was in place, so they get fixed seeds like round 5's:
+# - GPIO10 (J1 pad13 <-> J2 pad13): full fixed bridge. F dives north
+#   from the pad between the pad rows (the south stub stays as a
+#   router doorway), via at (8.50,20.60) sits 0.10mm clear of the
+#   pad14/pad18 rects on both faces, B lead lands inside J2 pad13's
+#   rect. Router-independent: the two FH35C pads are tied before
+#   routing starts.
+# - GPIO1 (J1 pad22 <-> U1 pin20): the whole hand-found F path is
+#   seeded (via-minefield bisector between the router's GPIO7/GPIO3
+#   vias does not exist yet at placement, so the path is clear of
+#   fixed copper; the router must simply respect it).
+# - EX3 / EX4 (U1 pin50 / pin47): the router left both with zero
+#   copper -- the east-edge escapes were blocked by its own EX1/EX2
+#   tracks. Seed a short F escape + via each: EX3 west into the open
+#   north area, EX4 east into the pin47/pin46 gap.
+# - USB_D- (J2 pad25): the B pocket south of the pad got fenced by
+#   the router's GPIO0 diagonal + GPIO28 via + J2 pad27 rect. Seed
+#   the B south lead and a via at (6.30,22.85) (0.20mm clear of J1
+#   pad7's rect on F) so the router starts from a firm node.
+stub(8.1, 22.075, 8.5, 21.35, F, 'GPIO10')   # J1 pad13 -> north dive
+stub(8.5, 21.35, 8.5, 20.6, F, 'GPIO10')
+net_via(8.5, 20.6, 'GPIO10')
+stub(8.5, 20.6, 9.9, 21.5, B, 'GPIO10')
+stub(9.9, 21.5, 9.9, 22.1, B, 'GPIO10')      # into J2 pad13 rect
+stub(10.8, 19.6, 10.65, 18.9, F, 'GPIO1')    # J1 pad22 stub -> NW
+stub(10.65, 18.9, 10.43, 19.07, F, 'GPIO1')  # jog (via-minefield entry)
+stub(10.43, 19.07, 9.89, 18.23, F, 'GPIO1')  # bisector run
+stub(9.89, 18.23, 8.4, 17.95, F, 'GPIO1')
+stub(8.4, 17.95, 7.4, 17.95, F, 'GPIO1')     # into U1 pin20 stub (y17.95:
+# 17.80 measured 0.0615mm from U1 pad22 (GPIO3) -- south pad row rects
+# end at y ~17.71, so the west run needs y >= ~17.93)
+stub(12.75, 8.76, 11.5, 8.3, F, 'EX3')       # U1 pin50 escape west
+net_via(11.5, 8.3, 'EX3')
+stub(12.75, 10.36, 11.6, 11.05, F, 'EX4')    # U1 pin47 escape WEST:
+# east is walled by pad46 (GPIO28) at (13.65,10.76) -- the east edge
+# alternates pad columns x=12.75 / x=13.65, so the pin47/pin46 gap
+# does not exist. Via clears TB6's rect (x <= 11.23) by 0.145mm.
+net_via(11.6, 11.05, 'EX4')
+stub(6.3, 22.075, 6.3, 22.85, B, 'USB_D-')   # J2 pad25 south lead
+net_via(6.3, 22.85, 'USB_D-')
+
+# ---- Round-7 fixed links (redo round-6 hand-finish findings) ---------
+# Round 6 closed GPIO9/10/11/1 + USB_D- with the round-5/6 seeds, but
+# three more nets proved fully fenced once router copper was in, and
+# EX3/EX4's long runs never happened from one anchored end:
+# - GPIO14 (J1 pad9): F fenced by the router's GPIO12 vertical +
+#   GPIO2 via + J1 pad7 rect; B fenced by the near-row stub field.
+#   Seed a north dive + via at placement (corridor is empty there).
+# - GPIO13 (J1 pad10 stub end (7.20,19.25)): fenced by GPIO15's F
+#   diagonal + GPIO1's via + GPIO3's B column + the far-row pad
+#   rects. Seed a short F lead + via at (7.45,19.05).
+# - GPIO8 (U1 pin27): no copper at all in round 6; F north slot is
+#   fenced by GPIO7's track end + GPIO9's via, B by two diagonals
+#   under the pad. Seed the north escape + via at (10.20,15.60).
+# - EX3 / EX4: anchor the SJ end too (B lead + via), so the router
+#   only has to meet in the middle instead of completing a ~20mm
+#   run from the U1 escape alone.
+stub(6.9, 22.075, 6.9, 21.3, F, 'GPIO14')    # J1 pad9 north dive
+net_via(6.9, 21.3, 'GPIO14')
+stub(7.2, 19.25, 7.55, 18.95, F, 'GPIO13')  # J1 pad10 stub -> via
+net_via(7.55, 18.95, 'GPIO13')  # (7.45,19.05 measured 0.020mm from
+# GPIO1's J2 B stub end (7.20,19.25) -- moved NE)
+stub(10.2, 16.4635, 10.2, 15.6, F, 'GPIO8') # U1 pin27 north escape
+net_via(10.2, 15.6, 'GPIO8')
+stub(10.2, 15.6, 11.12, 18.95, pcbnew.In1_Cu, 'GPIO8')  # round 10:
+# seeded I1 lead south-east + anchor via; in round 9 the router
+# never bridged the U1 island to either J pad
+net_via(11.12, 18.95, 'GPIO8')
+stub(12.1, 30.6, 11.85, 29.75, B, 'EX3')    # SJ3 west pad anchor
+net_via(11.85, 29.75, 'EX3')  # (11.6,29.9 measured 0.125mm hole
+# clearance from SJ1 pad3 -- moved SE)
+stub(14.7, 30.6, 14.7, 29.7, B, 'EX4')      # SJ4 west pad anchor
+net_via(14.7, 29.7, 'EX4')
+
+# ---- Round-8 fixed links (redo round-7 hand-finish findings) ---------
+# Round 7's router left EX2(tap)/EX5/GPIO5/GPIO6 bare and GPIO2's pads
+# bare; eleven hand-finish iterations (r7a-r7k) showed each is fenced
+# by router copper in ways that need placement-time anchors instead:
+# - EX2 tap: every via spot near JP3 pad1 is fenced (RESET I1 diag,
+#   GPIO12 I1 rail, GND B rail, 3V3 I2 vertical, TB1 via). Seed a
+#   via at (12.00,24.20) inside pad1's west edge + short F lead.
+# - EX5: U1 pin19's only exit is the x=7.00 slot under its own pad;
+#   the F run south then needs a via west of GPIO15's F vertical and
+#   clear of SWD pad4: seed via (6.80,19.65).
+# - GPIO5: U1 pin24 is fenced by GPIO1's seeded diagonal (F),
+#   STATUS_LED's I2 rail and GPIO13's I1 vertical. Seed the south
+#   dive + via (9.00,18.30) on pin24's own column.
+# - GPIO6: seed pin25's north escape via (9.40,13.75) (placement is
+#   clear there; router vias blocked every hand attempt).
+# - GPIO2: seed pin21's escape to the point the round-7 router
+#   itself chose as its island end, via (8.669,14.379).
+stub(12.3, 23.8, 11.92, 24.03, F, 'EX2')    # JP3 pad1 tap lead
+net_via(11.92, 24.03, 'EX2')
+stub(7.0, 16.4635, 7.0, 18.55, F, 'EX5')    # U1 pin19 south slot run
+stub(7.0, 18.55, 6.95, 18.9, F, 'EX5')
+net_via(6.95, 18.9, 'EX5')
+stub(9.0, 17.3635, 9.0, 16.55, F, 'GPIO5')  # U1 pin24 north escape stub
+stub(9.0, 16.55, 8.96, 15.82, F, 'GPIO5')   # round 14: tip via ride
+stub(8.96, 15.82, 8.87, 15.36, F, 'GPIO5')
+net_via(8.87, 15.36, 'GPIO5')
+# (round 14: via at (8.87,15.36): 0.712 from GPIO3's tip via,
+# 0.62 from GPIO4's new tip via (8.68,15.95), 0.33 west of
+# pin25's rect; ride stays north of pin23's NE corner; the old
+# note about GPIO1's diagonal owning (9.0,18.06) concerned the
+# SOUTH side)
+# and the row-A pad gap (0.40) cannot take a 0.45 via; the stub end
+# at (9.0,16.55) gives the router an island north of the pad field.
+stub(9.4, 16.4635, 9.4, 13.75, F, 'GPIO6')  # U1 pin25 north escape
+net_via(9.4, 13.75, 'GPIO6')
+stub(7.8, 16.4635, 7.7, 14.95, F, 'GPIO2')   # U1 pin21 escape (west jog,
+stub(7.7, 14.95, 8.669, 14.379, F, 'GPIO2')  # round 10: the round-9
+# diagonal fenced GPIO3's north escape completely; the jog hugs
+# pin21's NW corner (0.18) and frees the x=8.2 column)
+net_via(8.669, 14.379, 'GPIO2')
+
+# ---- Round-9 fixed links (redo round-8 hand-finish findings) ---------
+# Round 8 closed EX2/GPIO6 by seed and GPIO7/EX5 by hand, but six nets
+# still failed: every via spot the hand-finish tried was fenced by
+# round-8 router copper (USB_D+/- I1 diagonals, RESET I1 diagonal,
+# GPIO0 I1/I2, GPIO5 I2, GPIO6 I1, 3V3 F). Seed them all instead:
+# - GPIO3: no placement copper at all in round 8. North escape from
+#   U1 pin22 (the row-A gap takes a via at (8.2,16.5), corner dist
+#   0.331), a J1 pad20 dive via (10.35,20.85), and a plain J2 stub.
+# - GPIO1: extend J2 pad22's B stub to a via (7.35,18.5) + F landing
+#   on the seeded chain end (7.4,17.95).
+# - GPIO5: extend J2 pad18 with B stubs to via (8.15,18.9).
+# - GPIO4: J1 pad19 dive via (10.05,23.1).
+# - GPIO26: J1 pad7 dive via (6.2,22.75).
+# - GPIO2: J-side vias (10.5,21.3) F / (7.5,21.3) B + an I1 lead
+#   east from the U1 island via.
+# - GPIO7: via-in-pad at (9.0,19.925) joins J1.16 (F) and J2.16 (B)
+#   directly (proved by hand in round 8, checker clr 0.124).
+# - EX5: JP4 pad1 hop via (10.9,25.791) + F lead to the pad edge
+#   (proved by hand in round 8).
+stub(8.2, 17.3635, 8.2, 15.6, F, 'GPIO3')   # U1 pin22 north escape
+net_via(8.2, 15.6, 'GPIO3')
+# Round 10: with GPIO2's diagonal gone (west jog), the stub runs the
+# full column to (8.2,15.6) and takes a via there (0.598 clear of
+# pin23's NW corner). In round 9 the stub tip at (8.2,16.2) was
+# fenced on every layer (diag N / pin23 E / pin21 W / chain S).
+stub(10.2, 19.925, 10.15, 20.7, F, 'GPIO3')  # J1 pad20 dive
+net_via(10.15, 20.7, 'GPIO3')
+stub(7.8, 19.925, 7.8, 19.3, B, 'GPIO3')    # J2 pad20 stub
+# GPIO1 J2: no via seed -- the pocket is fenced by EX5's via (6.95,18.9),
+# GPIO13's via/stub and the 3V3 In2 rail (y=17.9); its B stub end
+# (7.2,19.25) stays as the router's island end (bridged in rounds 5/7).
+stub(8.4, 19.925, 8.4, 19.42, B, 'GPIO5')   # J2 pad18 stub (via fenced
+# by GPIO9's via (8.4,18.98) + GPIO13's via + J2 pad20 rect: stub only)
+stub(9.9, 22.075, 10.05, 22.9, F, 'GPIO4')  # J1 pad19 dive
+net_via(10.05, 22.9, 'GPIO4')
+stub(6.3, 22.075, 6.05, 22.5, F, 'GPIO26')  # J1 pad7 dive
+stub(6.05, 22.5, 5.7, 22.75, F, 'GPIO26')
+net_via(5.7, 22.75, 'GPIO26')
+stub(10.5, 22.075, 10.5, 21.3, F, 'GPIO2')  # J1 pad21 dive
+net_via(10.5, 21.3, 'GPIO2')
+stub(7.5, 22.075, 7.45, 21.55, B, 'GPIO2')  # J2 pad21 dive
+stub(7.45, 21.55, 7.35, 20.6, B, 'GPIO2')
+net_via(7.35, 20.6, 'GPIO2')
+stub(8.669, 14.379, 10.6, 14.6, pcbnew.In1_Cu, 'GPIO2')  # U1 island I1 lead
+net_via(9.0, 19.925, 'GPIO7')               # via-in-pad J1.16/J2.16
+stub(10.9, 25.791, 10.9, 26.15, F, 'EX5')   # JP4 pad1 hop
+net_via(10.9, 25.791, 'EX5')
+
+# ---- Round-11 fixed links (redo round-10 hand-finish findings) --------
+# Round 10 closed GPIO4/GPIO8 by seed and EX5 by hand (4 elements),
+# but five pairs still failed: on round-10 router copper every via
+# spot for GPIO1-J2 / GPIO3-J2 / GPIO6-J1 / GPIO28-J2 was fenced, and
+# the router left EX5's J4.5 pad with no copper at all. Seed anchors
+# the router must respect instead (all clear placement copper):
+# - GPIO1: B lead off the J2 stub end west to via (6.9,18.85) --
+#   placement-clear of GPIO13's stub corner (0.50) and GND's B stubs.
+# - GPIO3: B lead off the J2 stub end east to via (8.35,19.05).
+# - GPIO6: F lead off J1 pad17 to via (9.5,21.5) (0.363 clear of
+#   J1.19's rect, 0.446 of J2.16's far rect).
+# - GPIO28: B lead off J2 pad5 south-west to via (11.9,22.6)
+#   (0.471 clear of J1.27/J2.4's shared corner).
+# - EX5: B lead off J4 pad5 north to via (13.88,25.74) (0.41 clear
+#   of R10 pad2's rect corner -- the r10 hand-finish end point).
+stub(7.2, 19.25, 7.2, 20.15, B, 'GPIO1')    # J2 stub extended south
+# (ends at y=20.15: 0.474 clear of GPIO2's dive via (7.35,20.6))
+# (every via anchor tried collides with another placement anchor:
+# EX5 (6.95,18.9), GPIO13 (7.55,18.95), GPIO14 (6.9,21.3), GPIO2
+# (7.35,20.6), GPIO11 (7.85,21.15), GPIO10 (8.5,20.6)+(8.5,21.35),
+# U1 rects, the 3V3 I2 rail, on-stub = GPIO13's F stub endpoint.
+# So: no via -- just extend the B stub south in its own column to
+# (7.2,20.5) as a longer router island end; the router bridged
+# this stub unaided in rounds 5/7)
+
+# GPIO3 J2: NO anchor (round-11 conclusion). Every candidate was
+# fenced by placement copper: GPIO13's via (7.55,18.95) + GPIO9's
+# via (8.4,18.98) + GPIO5's B stub end (8.4,19.42) block all B
+# leads off the stub; on-stub vias hit J1's F pads; the south
+# column is fenced by GPIO2's via (7.35,20.6), GPIO11's via
+# (7.85,21.15) and J1.12's rect. The plain stub stays the router's
+# island end, as with GPIO1.
+stub(9.3, 22.075, 9.35, 21.3, F, 'GPIO6')    # J1 pad17 dive
+stub(9.35, 21.3, 9.28, 20.6, F, 'GPIO6')
+# (via (9.5,21.5) sat on GPIO10's placement B diagonal
+# (8.5,20.6)->(9.9,21.5); the west jog to (8.45,20.05) crossed
+# GPIO10's via and GPIO9's F track. The anchor (9.28,20.6) is
+# 0.422 clear of GPIO10's diagonal, 0.364 of J2.16's rect corner)
+net_via(9.28, 20.6, 'GPIO6')
+stub(12.3, 22.075, 12.1, 22.55, B, 'GPIO28')  # J2 pad5 south lead
+stub(12.1, 22.55, 11.75, 22.85, B, 'GPIO28')
+# (via (11.9,22.6) overlapped J1.25/J2.7's rects; the anchor
+# (11.75,22.85) is 0.425 south of them)
+net_via(11.75, 22.85, 'GPIO28')
+stub(13.9, 27.6, 13.88, 25.74, B, 'EX5')    # J4 pad5 north lead
+net_via(13.88, 25.74, 'EX5')
+
+# ---- Round-13 fixed links -------------------------------------------
+# Round 12 seeded all six round-11 stragglers and REGRESSED to 16
+# pairs: the GPIO9 via move broke GPIO9, and EX5's long I2 ride
+# fenced the west/south nets (GPIO8/GPIO14/USB_D-/GPIO28/GND).
+# Round 13 = round-11 seeds + only the three small local anchors
+# that round 12 proved out (GPIO0's dive fixed GPIO0's J1 side,
+# GPIO6's tip via fixed GPIO6, GPIO5's tip via is free space):
+# - GPIO0 J1: F dive east to via (11.6,20.85) (0.581 clear of
+#   J1.24's SE corner in placement).
+stub(11.1, 22.075, 11.6, 20.85, F, 'GPIO0')
+net_via(11.6, 20.85, 'GPIO0')
+# - GPIO6 J2: tip via for the extended stub (see the J2 pad17 stub).
+net_via(8.7, 22.9, 'GPIO6')
+
+# ---- Round-14 fixed links -------------------------------------------
+# Round 13 (round-11 base + the 3 anchors above) scored best yet
+# (847.67) with 5 pairs left: GPIO1, GPIO3 x2, GPIO4, USB_D+.
+# Hand-finish in round-13 copper fenced all five. Round 14 adds:
+# - GPIO4 U1: NO tip via -- the pocket north of U1's row A fits
+#   only two vias (GPIO3's (8.2,15.6) + GPIO5's); every GPIO4 via
+#   candidate lands <0.55 from one of them or from GPIO5's ride.
+#   GPIO4 connected without one in rounds 10/11; round 13's bare
+#   U1.23 was router variance.
+# - USB_D+ J2: pad26 had NO placement stub at all (bare in r13).
+#   B stub south + via (6.0,20.6), 0.325 clear of J2.27/J1.6 rects.
+stub(6.0, 19.925, 6.0, 20.6, B, 'USB_D+')
+net_via(6.0, 20.6, 'USB_D+')
+
+# ---- Round-17 fixed links (0.40-via round) --------------------------
+# Round 16 (0.40/0.20 vias allowed) left only 3 pairs -- GPIO0 J2,
+# GPIO3 J2, GPIO4 U1 -- and hand-finish fenced all three on
+# router copper. These placement vias (0.40 dia) claim the spots
+# first so the router works around them:
+def net_via40(x, y, net_name):
+    v = pcbnew.PCB_VIA(board)
+    v.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
+    v.SetWidth(mm(0.40))
+    v.SetDrill(mm(0.20))
+    v.SetViaType(pcbnew.VIATYPE_THROUGH)
+    v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+    v.SetNet(net(net_name))
+    board.Add(v)
+
+# - GPIO4 U1: F escape + via (8.58,15.98): 0.537 from GPIO3's
+#   tip via (8.2,15.6), 0.388 clear of GPIO5's tip ride
+#   ((8.6,15.95) grazed the ride at 0.0916 clearance).
+stub(8.6, 16.4635, 8.58, 15.98, F, 'GPIO4')
+net_via40(8.58, 15.98, 'GPIO4')
+# - GPIO0 J2: B ride west then north + via (6.8,20.65): the
+#   y=21.3 band is full (GPIO14 (6.9,21.3) / GPIO11 (7.85,21.15))
+#   and (7.3,20.9) hit GPIO2's via (7.35,20.6); the west jog
+#   clears GPIO14's via by 0.409.
+stub(6.9, 22.075, 6.42, 21.32, B, 'GPIO0')
+stub(6.42, 21.32, 6.8, 20.65, B, 'GPIO0')
+net_via40(6.8, 20.65, 'GPIO0')
+# - GPIO3 J2: NO seed. The stub end (7.8,19.3) is fenced on
+#   all four sides by placement copper (GPIO13 via W, GPIO9
+#   via E, GPIO5 B web E, GND B stub + GPIO15 stub W, GPIO2
+#   via (7.35,20.6) + GPIO11 via (7.85,21.15) S -- five seed
+#   attempts all failed placement DRC). Closing it needs a
+#   placement change (move GPIO13's dive via), not a seed.
