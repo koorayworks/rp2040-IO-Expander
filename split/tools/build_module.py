@@ -626,7 +626,10 @@ pu_neck(10.9, 11.8, 26.6, 'PU_EX5')
 #   same cluster. Pre-dive it between the pad rows to a via with a
 #   B lead into the row band.
 net_via(8.4, 18.98, 'GPIO9')
-stub(8.4, 18.98, 8.9, 19.3, B, 'GPIO9')
+stub(8.4, 18.98, 8.38, 18.85, B, 'GPIO9')  # round 22: tail
+# swung W from (8.9,19.3); the E tail fenced GPIO5's J2 stub
+# end (8.4,19.42) completely (see Round-22 block). Kept short:
+# (8.15,18.6) grazed GPIO13's via (7.85,18.35)
 net_via(7.85, 21.15, 'GPIO11')
 stub(7.85, 21.15, 8.6, 21.45, B, 'GPIO11')
 
@@ -693,9 +696,13 @@ net_via(6.3, 22.85, 'USB_D-')
 #   run from the U1 escape alone.
 stub(6.9, 22.075, 6.9, 21.3, F, 'GPIO14')    # J1 pad9 north dive
 net_via(6.9, 21.3, 'GPIO14')
-stub(7.2, 19.25, 7.55, 18.95, F, 'GPIO13')  # J1 pad10 stub -> via
-net_via(7.55, 18.95, 'GPIO13')  # (7.45,19.05 measured 0.020mm from
-# GPIO1's J2 B stub end (7.20,19.25) -- moved NE)
+stub(7.2, 19.25, 7.85, 18.35, F, 'GPIO13')  # J1 pad10 stub -> via
+net_via(7.85, 18.35, 'GPIO13')  # round 20: moved from (7.55,18.95)
+# to open GPIO3's J2 stub-end fan (the old spot sat 0.43 from
+# (7.8,19.3) and fenced every GPIO3 seed). West was blocked by
+# EX5's via (6.95,18.9), east by GPIO1's F web (y=17.95 rail);
+# (7.85,18.35) sits S of that rail (0.40) and 0.70 from GPIO3's
+# new seed via (7.85,19.05)
 stub(10.2, 16.4635, 10.2, 15.6, F, 'GPIO8') # U1 pin27 north escape
 net_via(10.2, 15.6, 'GPIO8')
 stub(10.2, 15.6, 11.12, 18.95, pcbnew.In1_Cu, 'GPIO8')  # round 10:
@@ -896,12 +903,217 @@ net_via40(8.58, 15.98, 'GPIO4')
 #   y=21.3 band is full (GPIO14 (6.9,21.3) / GPIO11 (7.85,21.15))
 #   and (7.3,20.9) hit GPIO2's via (7.35,20.6); the west jog
 #   clears GPIO14's via by 0.409.
-stub(6.9, 22.075, 6.42, 21.32, B, 'GPIO0')
-stub(6.42, 21.32, 6.8, 20.65, B, 'GPIO0')
-net_via40(6.8, 20.65, 'GPIO0')
-# - GPIO3 J2: NO seed. The stub end (7.8,19.3) is fenced on
-#   all four sides by placement copper (GPIO13 via W, GPIO9
-#   via E, GPIO5 B web E, GND B stub + GPIO15 stub W, GPIO2
-#   via (7.35,20.6) + GPIO11 via (7.85,21.15) S -- five seed
-#   attempts all failed placement DRC). Closing it needs a
-#   placement change (move GPIO13's dive via), not a seed.
+stub(6.9, 22.075, 6.3, 21.1, B, 'GPIO0')
+net_via40(6.3, 21.1, 'GPIO0')  # round 27: via moved W
+# from (6.8,20.65) -- it + USB_D+'s via caged GPIO15's
+# pad completely; solver-verified pair with (6.7,20.75)
+# - GPIO3 J2: with GPIO13's dive via moved W to (7.0,18.7)
+#   (round 20), the stub-end fan opens: B lead + via40
+#   (7.85,19.05): 0.525 clear of J1.12's rect, 0.554 from
+#   GPIO9's via (8.4,18.98), 0.919 from GPIO13's via.
+stub(7.8, 19.3, 7.85, 19.05, B, 'GPIO3')
+net_via40(7.85, 19.05, 'GPIO3')
+
+# ---- Round-21 fixed links (round-20 stragglers) -----------------------
+# Round 20 closed GPIO3 (the seed above worked) but left USB_D-
+# J1, GPIO5 (both J pads), EX5 J4 and GPIO4's U1-to-web gap;
+# hand-finish on round-20 copper was fenced for all of them
+# (patch_finish_r20a-d.py). Seed the fenced ends at placement:
+# - USB_D- J1.25: F dive north into the inter-row band + via;
+#   south dives are fenced by GPIO28's via (11.75,22.85), GND's
+#   F vertical x=12.3 and J1.23's rect.
+stub(11.7, 22.075, 12.2, 21.0, F, 'USB_D-')
+net_via40(12.2, 21.0, 'USB_D-')  # (11.7,21.3) hit GPIO0's J1
+# dive via (11.6,20.85) + its F diagonal; NE jog clears both
+# - GPIO5 J1.18: F dive north + via (clears GPIO1's F web by
+#   0.81); J2.18: B jog off the stub end + via (8.3,19.5),
+#   0.529 from GPIO9's via (8.4,18.98).
+stub(9.6, 19.925, 9.6, 19.0, F, 'GPIO5')
+net_via40(9.6, 19.0, 'GPIO5')
+# - GPIO5 J2: NO via seed -- the stub-end pocket is fully
+#   fenced by GPIO3's B stub/via (W) and GPIO9's F stub/via
+#   (E); (8.3,19.5) hit GPIO9's F stub, (7.95,19.5) hit
+#   GPIO3's. The J1 seed + U1 anchor must carry it.
+# - EX5 J4: the placement via (13.88,25.74) dead-ended on inner
+#   layers in round 20 (3V3's I2 rail + GPIO14's via fence the
+#   exits); anchor it north on I1.
+stub(13.88, 25.74, 13.88, 24.3, pcbnew.In1_Cu, 'EX5')
+# - GPIO4 U1: anchor the seed via (8.58,15.98) south-east on
+#   both inner layers toward the web.
+stub(8.58, 15.98, 9.8, 17.3, pcbnew.In1_Cu, 'GPIO4')
+stub(8.58, 15.98, 9.8, 17.3, I2, 'GPIO4')
+
+# ---- Round-22 fixed links (round-21 stragglers) -----------------------
+# Round 21 closed USB_D-/EX5/GPIO4/GPIO3/GPIO0; GPIO2 and
+# GPIO5 (x2) survived ten hand-finish scripts (r21a-j) -- their
+# fields are via/track tiled on router copper. Placement help:
+# - GPIO5 J2: with GPIO9's B tail swung W (above), the stub
+#   end's NE fan opens: B lead + via40 (8.95,19.15), 0.576
+#   from GPIO9's via (8.4,18.98).
+stub(8.4, 19.42, 9.0, 19.2, B, 'GPIO5')
+net_via40(9.0, 19.2, 'GPIO5')
+# - GPIO5 U1: anchor the tip via (8.87,15.36) NW on I1 and
+#   SE on I2 (the S field is fenced by GPIO3/GPIO4 copper).
+stub(8.87, 15.36, 8.05, 14.35, pcbnew.In1_Cu, 'GPIO5')
+stub(8.87, 15.36, 10.5, 17.3, I2, 'GPIO5')
+# - GPIO2 U1: anchor the tip via (8.669,14.379) SE on I2
+#   (its W field is via-tiled; the I1 anchor exists already).
+stub(8.669, 14.379, 9.9, 16.1, I2, 'GPIO2')
+
+# ---- Round-23 fixed links (round-22 stragglers) -----------------------
+# Round 22 closed GPIO5/GPIO2; the last two pairs (GND's J2.2
+# island, GPIO27's J1.6) survived hand-finish r22a (their
+# pockets are router-via tiled). Seed both at placement:
+# - GND J2.2: B lead off the stub end (13.2,19.25) + via.
+stub(13.2, 19.25, 13.45, 19.25, B, 'GND')
+net_via40(13.45, 19.25, 'GND')  # (13.05,19.35) shorted 3V3's
+# I2 rail x=12.9 and grazed J1.30's rect
+# - GPIO27 J1.6: F dive SOUTH-EAST into the inter-row band
+#   (router copper fenced every N/E exit in round 22) + via;
+#   USB_D+'s placement via (6.0,20.6) fences the straight S.
+stub(6.0, 19.925, 5.05, 21.2, F, 'GPIO27')
+net_via40(5.05, 21.2, 'GPIO27')  # long SW dive: USB_D+'s via
+# (6.0,20.6) sits on the column and GPIO0's seeds tile the
+# SE pocket; the SW ray clears USB_D+'s via by 0.403
+
+# ---- Round-24 fixed links (GPIO7 straggler) ---------------------------
+# Round 23 closed GND/GPIO27; GPIO7 (new break) survived
+# patch_finish_r23a v1-v13: every layer's corridor between
+# its U1 via (10.04,13.823) and the J dive via (9.0,19.925)
+# is via/track tiled on router copper. Anchor both ends on
+# In2 at placement and let the router close the middle.
+net_via40(10.15, 13.75, 'GPIO7')  # round 30: nudged from
+# (10.04,13.823) -- items saved at that exact point came
+# back with GPIO2's net after SaveBoard (positional net
+# flip in this KiCad build; verified by save+load tests)
+stub(10.15, 13.75, 10.6, 15.0, I2, 'GPIO7')  # round 30:
+# end pulled NE -- the (9.0,14.6) end sat 0.141 from
+# GPIO2's I2 anchor and board load merged the two nets
+# bent S -- the straight (8.6,13.9) run passed 0.107 from
+# GPIO6's via (9.4,13.75) (a latent short the r30 DRC
+# caught; earlier rounds' reports missed it)
+stub(9.0, 19.925, 10.3, 19.2, I2, 'GPIO7')  # ENE fan: the
+# straight N stub spears GPIO5's seed via (9.0,19.2), and
+# the NE fan grazes its other via (9.6,19.0)
+
+# ---- Round-26 fixed links (GPIO15 straggler) ---------------------------
+# Round 25 closed GPIO7/GND; GPIO15 (new break) survived
+# patch_finish_r25a v1-v14: J1.8's stub tip (6.6,19.4) sits
+# in a four-disk trap (GND via W, J5.4 corner N, EX5 via NE,
+# GPIO13 stub E) and every dive south threads USB_D+/GPIO0
+# vias at exactly the floor. Seed a long SE dive at
+# placement like GPIO27's SW dive.
+# (the SE dive died on the far-row dive fan: GPIO13's stub,
+# GPIO2's via, GPIO11's and GPIO10's dives tile y~21)
+# Seed the U1 side instead: I2 anchor off the web's via.
+net_via40(11.96, 13.158, 'GPIO15')  # round 30: this via
+# was never actually in the script (the comment assumed a
+# router via from r25); without it the anchor was a
+# floating stub that DSN export drops
+stub(11.96, 13.158, 10.55, 16.0, I2, 'GPIO15')
+stub(10.55, 16.0, 10.75, 16.95, I2, 'GPIO15')
+stub(10.75, 16.95, 7.0, 18.0, I2, 'GPIO15')  # waypoints
+# dodge GPIO8's via (10.2,15.6) and GPIO2's anchor tip
+
+# ---- Round-27 fixed links (GPIO15, J-side dive) -------------------------
+# Rounds 25/26 + patch_finish_r25a (14 tries) and r26a (2)
+# all failed: every F ray from the stub tip is disk-tiled.
+# The one ray that clears EX5's via and GPIO13's stub end
+# lands at (8.3,18.4); seed it as a placement dive.
+stub(6.6, 19.925, 6.7, 20.75, F, 'GPIO15')
+net_via40(6.7, 20.75, 'GPIO15')  # round 27: S dive --
+# open once GPIO0's via moved W to (6.3,21.1); every
+# other ray/landing in the pocket is disk-tiled
+
+# ---- Round-28 fixed links (GPIO1/GPIO10/GPIO28) -------------------------
+# Round 27 closed GPIO15/GPIO0 (the via-cage pair) but
+# broke GPIO1, GPIO10, GPIO28. Seed all three.
+stub(13.65, 14.764, 14.5, 15.2, F, 'GPIO10')
+stub(14.5, 15.2, 14.35, 15.7, F, 'GPIO10')
+net_via40(14.35, 15.7, 'GPIO10')
+# (round 29: the I2 anchor segment is dropped -- in r28
+# GPIO10 still broke with it and the run regressed to 9
+# pairs; the via + F stub stay as the router's target)
+stub(5.7, 22.075, 5.15, 22.8, F, 'GPIO28')
+net_via40(5.15, 22.8, 'GPIO28')
+
+# ---- Round-30 fixed links (r29 stragglers) ------------------------------
+# GND J2.27, STATUS_LED J2.30, GPIO7 U1, GPIO11 J2.12,
+# GPIO27 J2.6: give each bare stub a via + short lead.
+# (round 30: GND J2.27 seed tried and dropped -- the SW
+# B band is tiled by GPIO26's via (5.7,22.75), USB_D-'s
+# lead/via (6.3,22.85) and J2.28/29 pads; GND closed in
+# most rounds without a seed anyway)
+# (round 30: STATUS_LED J2.30 seed tried at (4.8,18.6),
+# (4.8,19.65), (5.45,19.3) -- all inside/grazing the
+# J5/J1 pad rects or flipped on save; dropped, STATUS
+# closed in most rounds unseeded)
+# (round 30: no I1 anchor for GPIO7 -- every SW run from
+# the via crosses GPIO2's I1 anchor (8.669,14.379)->
+# (10.6,14.6); crossing same-layer tracks merge nets on
+# board load, which is what flipped this seed to GPIO2)
+stub(10.2, 19.25, 10.5, 18.45, B, 'GPIO11')
+net_via40(10.5, 18.45, 'GPIO11')  # (10.35,18.6) flipped
+# to GPIO1's net on save -- nudged
+stub(12.0, 19.25, 11.85, 18.75, B, 'GPIO27')
+net_via40(11.85, 18.75, 'GPIO27')  # (12.0,18.6) grazed
+# 3V3's I2 run at y=18.3
+
+# ---- Round-31 fixed links (GPIO1/GPIO9/USB_D+) ---------------------------
+# (round 31: GPIO1 J2 seed abandoned after 6 candidate
+# vias -- the pocket N of the far row is tiled by EX5's
+# via/stub, GPIO13's via + I1 dive, GPIO3's via; GPIO1
+# closes unseeded in ~half the rounds anyway)
+stub(9.6, 19.925, 9.6, 19.45, B, 'GPIO9')
+# round 32 final: base stub only. Every via/ride design
+# for J2.14 died in the via tiling (GPIO5 (9.6,19.0)/
+# (9.0,19.2), GPIO10 (8.5,20.6), GPIO11 (7.85,21.15),
+# GPIO1's F wall); the stub at least hands the router a
+# B-side start it never had.
+# round 32: J2.14 had NO stub at all; the N pocket is
+# walled by GPIO5's vias (9.6,19.0)/(9.0,19.2) + its B
+# track -- go S around the row, via at (8.6,21.2), then
+# I1 north into GPIO9's own via (8.4,18.98). The r31
+# seed via (9.25,18.6) overlapped GPIO5's via copper
+# and merged into GPIO5 on save.
+stub(6.0, 20.6, 7.3, 19.9, I2, 'USB_D+')
+# short NE anchor on I2 (the long I1 ride E along y~21
+# is tiled by the J-side seed vias: GPIO15/GPIO14/GPIO11)
+# ---- Round-33: USB_D+ south I2 anchor ----------------------------
+# r30 post-mortem: the (6.0,20.6) via is imprisoned on
+# routed boards (GPIO15/GPIO0/GPIO14/GPIO2 vias + I2
+# fences). Give the router a pre-drawn I2 escape: SW
+# then S along the board's south band to a via under
+# the J1.26 approach.
+stub(6.0, 20.6, 5.55, 22.2, I2, 'USB_D+')
+stub(5.55, 22.2, 4.6, 22.5, I2, 'USB_D+')
+stub(4.6, 22.5, 5.0, 23.9, I2, 'USB_D+')
+stub(5.0, 23.9, 8.2, 23.95, I2, 'USB_D+')
+# SW dip W of GPIO28's via (5.15,22.8); the GPIO26
+# (5.7,22.75) / GPIO28 pair has no corridor between
+stub(8.2, 23.95, 10.6, 23.5, I2, 'USB_D+')
+stub(10.6, 23.5, 11.2, 22.95, I2, 'USB_D+')
+net_via40(11.2, 22.95, 'USB_D+')
+# end via S of the near-row pad band (band y 21.7-22.4
+# is pad-dense at every 0.3 step)
+# jogs clear USB_D-'s via (6.3,22.85) and GPIO4's
+# vias (7.0,23.3) / (10.05,22.9)
+# jogged S of GPIO4's via (7.0,23.3); end via at
+# (11.3,22.6) -- (11.3,21.35) hit GPIO0's F track
+
+# ---- Round-34 base stubs (chronic J2 pads had none) ----------------------
+stub(10.8, 19.925, 10.8, 19.45, B, 'GPIO13')  # J2.10
+stub(10.2, 19.925, 10.2, 19.25, B, 'GPIO11')  # J2.12: join
+# the floating r30 seed stub at (10.2,19.25)
+stub(11.1, 22.075, 11.1, 22.55, B, 'GPIO14')  # J2.9
+stub(9.3, 22.075, 9.3, 22.55, B, 'GPIO8')     # J2.15
+
+# ---- Round-35 inner targets ----------------------------------------------
+# GPIO1 I1-target seed REVERTED: its via/stub died on
+# GPIO13's via (7.85,18.35) + GPIO15's I1 vertical
+# (x=7.41) -- the corridor is impassable at I1 too.
+stub(8.4, 18.98, 8.9, 18.62, pcbnew.In1_Cu, 'GPIO9')
+stub(8.9, 18.62, 9.3, 18.75, pcbnew.In1_Cu, 'GPIO9')
+# bent N around GPIO5's via (9.0,19.2)
+# GPIO9: extend its via's I1 reach E toward the J2
+# stub tip (9.6,19.45).

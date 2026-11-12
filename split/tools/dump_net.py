@@ -3,10 +3,11 @@
 Usage: python3 dump_net.py NET [NET ...]"""
 import os, sys, pcbnew
 
-P = os.path.expanduser('~/workspace/projects/rp2040-IO-Expander/split/module_board/module_board.kicad_pcb')
+P = os.environ.get('BOARD_PATH', os.path.expanduser(
+    '~/workspace/projects/rp2040-IO-Expander/split/module_board/module_board.kicad_pcb'))
 b = pcbnew.LoadBoard(P)
 LAY = {0: 'F', 1: 'I1', 2: 'I2', 31: 'B'}
-want = set(sys.argv[1:])
+want = set(a for a in sys.argv[1:] if not a.endswith('.kicad_pcb'))
 
 for fp in b.GetFootprints():
     for pad in fp.Pads():
