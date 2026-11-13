@@ -1,0 +1,114 @@
+2026-11-12 17:40:11.690 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+2026-11-12 17:40:12.157 INFO   Hardware: 4 CPU cores, 203 CPU score, 1984 MB RAM
+2026-11-12 17:40:12.161 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 17:40:12.162 WARN   Couldn't get screen resolution. If you are running in a headless environment, disable the GUI by setting gui.enabled to false.
+2026-11-12 17:40:12.167 INFO   Configured network proxy: hatch-egress-proxy:3128
+2026-11-12 17:40:12.699 WARN   Analytics tracking: first delivery failure in this window - /v1/analytics/identify - NoSuchElementException: (no message). Further failures will be aggregated and reported every 60 minutes.
+2026-11-12 17:40:13.281 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 17:40:13.595 INFO   [A9E5BB\60349F] Loading board file 'module_board.dsn'...
+2026-11-12 17:40:13.977 INFO   [A9E5BB\60349F] Job 'A9E5BB\60349F' started at 2026-11-12T08:40:13.977051685Z.
+2026-11-12 17:40:14.280 WARN   Design Warning: Board has 20 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 20 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 20 fixed trace/via clearance violations (first 5 shown):
+          - FixedTrace#678 [net PU_EX5] <-> JP4.1 [net EX5]
+          - FixedTrace#676 [net PU_EX2] <-> FixedTrace#667 [net EX2]
+          - FixedTrace#676 [net PU_EX2] <-> JP3.1 [net EX2]
+          - FixedTrace#673 [net FFC2_6] <-> FixedTrace#590 [net GND]
+          - FixedTrace#673 [net FFC2_6] <-> SJ6.1 [net GND]
+          ... and 15 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 20 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-11-12 17:40:14.443 INFO   [A9E5BB\60349F] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=3.
+2026-11-12 17:40:14.596 INFO   [A9E5BB\60349F] Fanout stage started on board '0004ebbb2c4c82b638efa62208ffde05' with 204 of 223 SMD pins needing fanout (1 already connected, 18 netless).
+2026-11-12 17:40:24.264 INFO   [A9E5BB\60349F] Fanout pass #1 on board '8e54711ec6dc2a3f06c6cb2fec135902' completed in 9.54 seconds with 150 SMD pins fanouted, 5 not routed, 0 insert errors, +53 extra vias (0 SMD pins still to check in pass, ripup costs=100).
+2026-11-12 17:40:30.096 INFO   [A9E5BB\60349F] Fanout pass #2 on board '9ee0ea301dcf13dc87cd45ea0d920250' completed in 5.80 seconds with 80 SMD pins fanouted, 5 not routed, 0 insert errors, +9 extra vias (0 SMD pins still to check in pass, ripup costs=200).
+2026-11-12 17:40:32.784 INFO   [A9E5BB\60349F] Fanout pass #3 on board '7eb3c065a4927737aecc872b7bd84c4b' completed in 2.62 seconds with 63 SMD pins fanouted, 5 not routed, 0 insert errors, +5 extra vias (0 SMD pins still to check in pass, ripup costs=300).
+2026-11-12 17:40:35.257 INFO   [A9E5BB\60349F] Fanout pass #4 on board 'fc32f33d21e316671b73a405c43e9776' completed in 2.45 seconds with 55 SMD pins fanouted, 5 not routed, 0 insert errors, +1 extra via (0 SMD pins still to check in pass, ripup costs=400).
+2026-11-12 17:40:37.374 INFO   [A9E5BB\60349F] Fanout pass #5 on board 'd66a1bfd3265ca6f9df27fb8c749fa40' completed in 2.09 seconds with 51 SMD pins fanouted, 5 not routed, 0 insert errors, +4 extra vias (0 SMD pins still to check in pass, ripup costs=500).
+2026-11-12 17:40:39.054 INFO   [A9E5BB\60349F] Fanout pass #6 on board 'f16bbe8d6181cb1d2ae94bb49c19417c' completed in 1.62 seconds with 43 SMD pins fanouted, 7 not routed, 0 insert errors, +3 extra vias (0 SMD pins still to check in pass, ripup costs=600).
+2026-11-12 17:40:40.457 INFO   [A9E5BB\60349F] Fanout pass #7 on board '052e081969e92893b01e92d597d55fec' completed in 1.38 seconds with 41 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=700).
+2026-11-12 17:40:42.010 INFO   [A9E5BB\60349F] Fanout pass #8 on board '55af7fea5dd028e039d5ad111fecfec1' completed in 1.53 seconds with 43 SMD pins fanouted, 6 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=800).
+2026-11-12 17:40:43.669 INFO   [A9E5BB\60349F] Fanout pass #9 on board '7959a9409e1dce75e0356696458f4486' completed in 1.64 seconds with 44 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=900).
+2026-11-12 17:40:45.733 INFO   [A9E5BB\60349F] Fanout pass #10 on board '9b0b2955488e3b6b3744a56f1c691a91' completed in 2.01 seconds with 48 SMD pins fanouted, 5 not routed, 0 insert errors, +2 extra vias (0 SMD pins still to check in pass, ripup costs=1000).
+2026-11-12 17:40:47.587 INFO   [A9E5BB\60349F] Fanout pass #11 on board '352ed55d8d3a72b13553a2a7b63b62ba' completed in 1.84 seconds with 45 SMD pins fanouted, 5 not routed, 0 insert errors, +1 extra via (0 SMD pins still to check in pass, ripup costs=1100).
+2026-11-12 17:40:49.645 INFO   [A9E5BB\60349F] Fanout pass #12 on board 'd857ba81fa3a75397b68e6f570a94858' completed in 2.01 seconds with 45 SMD pins fanouted, 6 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1200).
+2026-11-12 17:40:51.485 INFO   [A9E5BB\60349F] Fanout pass #13 on board '677f960a68ae48478413ddf14a8752b0' completed in 1.82 seconds with 42 SMD pins fanouted, 5 not routed, 0 insert errors, +4 extra vias (0 SMD pins still to check in pass, ripup costs=1300).
+2026-11-12 17:41:05.795 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO9' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:41:06.799 INFO   [A9E5BB\60349F] Fanout pass #14 on board '9b13708e435458a3be47758e6ee3d80c' completed in 15.30 seconds with 40 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1400).
+2026-11-12 17:41:08.636 INFO   [A9E5BB\60349F] Fanout pass #15 on board '23cdeacb3da445ba3748448d93a5bd1f' completed in 1.79 seconds with 42 SMD pins fanouted, 6 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1500).
+2026-11-12 17:41:10.416 INFO   [A9E5BB\60349F] Fanout pass #16 on board 'cce48c27a28ad615035a1c11b904db44' completed in 1.76 seconds with 40 SMD pins fanouted, 6 not routed, 0 insert errors, +3 extra vias (0 SMD pins still to check in pass, ripup costs=1600).
+2026-11-12 17:41:11.927 INFO   [A9E5BB\60349F] Fanout pass #17 on board '56883808c7b142b53b9626d63357a348' completed in 1.49 seconds with 44 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1700).
+2026-11-12 17:41:13.501 INFO   [A9E5BB\60349F] Fanout pass #18 on board '7fb60df543d9dca4896b7954dbf112e0' completed in 1.56 seconds with 38 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1800).
+2026-11-12 17:41:14.945 INFO   [A9E5BB\60349F] Fanout pass #19 on board 'd94356af5b6f2c6b07cbdbd80ad539c9' completed in 1.43 seconds with 38 SMD pins fanouted, 6 not routed, 0 insert errors, +2 extra vias (0 SMD pins still to check in pass, ripup costs=1900).
+2026-11-12 17:41:16.282 INFO   [A9E5BB\60349F] Fanout pass #20 on board 'afdd1d0890b58df4fb071a53b7c07c75' completed in 1.32 seconds with 35 SMD pins fanouted, 7 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=2000).
+2026-11-12 17:41:16.368 INFO   [A9E5BB\60349F] Fanout stage completed: started with 205 total SMD pins, completed in 61.65 seconds, escaped pins: 174/205 (84.9%), using 47.60 total CPU seconds, 29.20 GB total allocated, and 241.2 MB peak heap usage.
+2026-11-12 17:41:16.540 INFO   [A9E5BB\60349F] Auto-routing stage started on board 'afdd1d0890b58df4fb071a53b7c07c75' with baseline score 216.56 for 101 unrouted items.
+2026-11-12 17:41:51.000 INFO   [A9E5BB\60349F] Auto-routing pass #1 on board 'afdd1d0890b58df4fb071a53b7c07c75' was completed in 34.34 seconds with score 536.56 (52 unrouted and 20 violations), using 76.93 CPU seconds and the job allocated 51.62 GB of memory so far.
+2026-11-12 17:42:15.036 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO12' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:42:18.251 INFO   [A9E5BB\60349F] Auto-routing pass #2 on board '254dc871af75d977e9ea21a5267368e2' was completed in 27.16 seconds with score 678.78 (36 unrouted and 20 violations), using 104.15 CPU seconds and the job allocated 70.22 GB of memory so far.
+2026-11-12 17:42:37.948 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:42:45.715 INFO   [A9E5BB\60349F] Auto-routing pass #3 on board 'd70b33949c27ec17bcb8de442be8fb9f' was completed in 27.38 seconds with score 696.56 (34 unrouted and 20 violations), using 130.49 CPU seconds and the job allocated 90.51 GB of memory so far.
+2026-11-12 17:43:02.944 INFO   [A9E5BB\60349F] Auto-routing pass #4 on board '15bd8156f63462ddf48635cdd350e980' was completed in 17.14 seconds with score 749.89 (28 unrouted and 20 violations), using 146.54 CPU seconds and the job allocated 102.67 GB of memory so far.
+2026-11-12 17:43:18.465 INFO   [A9E5BB\60349F] Auto-routing pass #5 on board 'bf3e2eca4a5e61c6b968355e13c31323' was completed in 15.44 seconds with score 758.78 (27 unrouted and 20 violations), using 162.14 CPU seconds and the job allocated 114.98 GB of memory so far.
+2026-11-12 17:43:35.045 INFO   [A9E5BB\60349F] Auto-routing pass #6 on board 'be49370b5b8be15aa869ae9c7242959a' was completed in 16.49 seconds with score 723.22 (31 unrouted and 20 violations), using 177.65 CPU seconds and the job allocated 127.50 GB of memory so far.
+2026-11-12 17:43:52.700 INFO   [A9E5BB\60349F] Auto-routing pass #7 on board '584dd19d125a754811cbcee62c57ae21' was completed in 17.58 seconds with score 776.56 (25 unrouted and 20 violations), using 195.25 CPU seconds and the job allocated 141.10 GB of memory so far.
+2026-11-12 17:44:09.063 INFO   [A9E5BB\60349F] Auto-routing pass #8 on board '0bf6a42603d4ecef34d72f3cb3656d27' was completed in 16.28 seconds with score 776.56 (25 unrouted and 20 violations), using 210.93 CPU seconds and the job allocated 153.71 GB of memory so far.
+2026-11-12 17:44:21.600 INFO   [A9E5BB\60349F] Auto-routing pass #9 on board 'ac459962a16e288e7cf5c5a6a9c209eb' was completed in 12.46 seconds with score 785.44 (24 unrouted and 20 violations), using 222.95 CPU seconds and the job allocated 162.64 GB of memory so far.
+2026-11-12 17:44:41.924 INFO   [A9E5BB\60349F] Auto-routing pass #10 on board 'c5e6c7b76edcd183910a4e519767f8b6' was completed in 20.22 seconds with score 794.33 (23 unrouted and 20 violations), using 242.13 CPU seconds and the job allocated 178.21 GB of memory so far.
+2026-11-12 17:44:56.290 INFO   [A9E5BB\60349F] Auto-routing pass #11 on board 'f4bd65997fe04ebb96b76c96cc4650a4' was completed in 14.29 seconds with score 794.33 (23 unrouted and 20 violations), using 255.73 CPU seconds and the job allocated 188.87 GB of memory so far.
+2026-11-12 17:45:12.597 INFO   [A9E5BB\60349F] Auto-routing pass #12 on board 'da89791bf2057f5dffa47298092449d2' was completed in 16.23 seconds with score 829.89 (19 unrouted and 20 violations), using 272.27 CPU seconds and the job allocated 202.04 GB of memory so far.
+2026-11-12 17:45:29.274 INFO   [A9E5BB\60349F] Auto-routing pass #13 on board '12c69dc5071e98108892ad661ff25289' was completed in 16.59 seconds with score 794.33 (23 unrouted and 20 violations), using 287.86 CPU seconds and the job allocated 215.02 GB of memory so far.
+2026-11-12 17:45:51.209 INFO   [A9E5BB\60349F] Auto-routing pass #14 on board 'e34da9511c3f3d5363637d76ac936a24' was completed in 21.85 seconds with score 794.33 (23 unrouted and 20 violations), using 309.17 CPU seconds and the job allocated 232.43 GB of memory so far.
+2026-11-12 17:46:07.717 INFO   [A9E5BB\60349F] Auto-routing pass #15 on board '4d1dd763e690fa1425dc78124e7e4220' was completed in 16.42 seconds with score 785.44 (24 unrouted and 20 violations), using 325.82 CPU seconds and the job allocated 246.03 GB of memory so far.
+2026-11-12 17:46:24.074 INFO   [A9E5BB\60349F] Auto-routing pass #16 on board '12c69dc5071e98108892ad661ff25289' was completed in 0.00 seconds with score 829.89 (19 unrouted and 20 violations), using 341.44 CPU seconds and the job allocated 258.64 GB of memory so far.
+2026-11-12 17:46:42.083 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:46:51.017 INFO   [A9E5BB\60349F] Auto-routing pass #17 on board '12c69dc5071e98108892ad661ff25289' was completed in 26.92 seconds with score 785.44 (24 unrouted and 20 violations), using 367.45 CPU seconds and the job allocated 282.07 GB of memory so far.
+2026-11-12 17:47:07.447 INFO   [A9E5BB\60349F] Auto-routing pass #18 on board '89c472ba7db2adb777c41a877bf55307' was completed in 16.36 seconds with score 794.33 (23 unrouted and 20 violations), using 383.96 CPU seconds and the job allocated 296.19 GB of memory so far.
+2026-11-12 17:47:21.511 INFO   [A9E5BB\60349F] Auto-routing pass #19 on board '64aaa001f06ba794e986626a6536311c' was completed in 14.00 seconds with score 785.44 (24 unrouted and 20 violations), using 397.65 CPU seconds and the job allocated 307.65 GB of memory so far.
+2026-11-12 17:47:42.396 INFO   [A9E5BB\60349F] Auto-routing pass #20 on board '12c69dc5071e98108892ad661ff25289' was completed in 0.00 seconds with score 829.89 (19 unrouted and 20 violations), using 417.16 CPU seconds and the job allocated 324.65 GB of memory so far.
+2026-11-12 17:48:02.236 INFO   [A9E5BB\60349F] Auto-routing pass #21 on board '12c69dc5071e98108892ad661ff25289' was completed in 19.80 seconds with score 794.33 (23 unrouted and 20 violations), using 436.49 CPU seconds and the job allocated 341.97 GB of memory so far.
+2026-11-12 17:48:22.311 INFO   [A9E5BB\60349F] Auto-routing pass #22 on board '88c27454e1369b6177dcb8de1cedfc67' was completed in 20.01 seconds with score 812.11 (21 unrouted and 20 violations), using 456.01 CPU seconds and the job allocated 359.24 GB of memory so far.
+2026-11-12 17:48:22.373 INFO   [A9E5BB\60349F] The router's best score (829.89) has not improved by more than 0.5 points since pass #12. Stopping the auto-router after 22 passes (19 items still unconnected).
+The following connections could not be routed -- please review your design (e.g. check pad clearances, trace width rules, and available routing space):
+  Net 'GND' (1 unrouted connection):
+    - J5-4  ->  via
+  Net 'GPIO0' (1 unrouted connection):
+    - J2-23  ->  J1-23
+  Net 'EX5' (2 unrouted connections):
+    - via  ->  JP4-1
+    - U1-19  ->  via
+  Net 'GPIO1' (2 unrouted connections):
+    - J2-22  ->  U1-20
+    - J2-22  ->  J1-22
+  Net 'GPIO3' (1 unrouted connection):
+    - J1-20  ->  J2-20
+  Net 'GPIO5' (2 unrouted connections):
+    - J2-18  ->  J1-18
+    - J2-18  ->  U1-24
+  Net 'GPIO6' (1 unrouted connection):
+    - J2-17  ->  J1-17
+  Net '3V3' (4 unrouted connections):
+    - J2-3  ->  R9-2
+    - J2-3  ->  R6-1
+    - J2-3  ->  via
+    - via  ->  SJ1-1
+  Net 'USB_D-' (1 unrouted connection):
+    - U1-34  ->  J1-25
+  Net 'GPIO10' (1 unrouted connection):
+    - J2-13  ->  J1-13
+  Net 'EX4' (1 unrouted connection):
+    - via  ->  U1-47
+  Net 'PU_TB4' (1 unrouted connection):
+    - JP1-2  ->  R7-1
+  Net 'PU_TB5' (1 unrouted connection):
+    - R8-1  ->  JP2-2
+  Net 'PU_EX2' (1 unrouted connection):
+    - R9-1  ->  JP3-2
+  Net 'PU_EX5' (1 unrouted connection):
+    - JP4-2  ->  R10-1
+2026-11-12 17:48:22.704 INFO   [A9E5BB\60349F] Auto-routing stage completed: started with 144 unrouted nets, completed in 488.20 seconds, final score: 829.89 (19 unrouted and 20 violations), using 456.97 total CPU seconds, 359.85 GB total allocated, and 425.3 MB peak heap usage.
+2026-11-12 17:48:22.790 INFO   [A9E5BB\60349F] Skipping optimization stage: the board has 19 unrouted connection(s) (optimizer only runs on completely routed boards).
+2026-11-12 17:48:22.849 INFO   [A9E5BB\60349F] Job 'A9E5BB\60349F' finished with state: COMPLETED (elapsed: 8 minutes 8.87 seconds, finished at UTC: 2026-11-12T08:48:22.847812546Z).
+2026-11-12 17:48:22.884 INFO   Saving output file '/tmp/module_board.ses' (SES)...
+2026-11-12 17:48:22.953 INFO   Successfully saved output file '/tmp/module_board.ses' (93538 bytes).

@@ -1,0 +1,47 @@
+2026-11-12 14:26:57.618 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+2026-11-12 14:26:58.062 INFO   Hardware: 4 CPU cores, 203 CPU score, 1984 MB RAM
+2026-11-12 14:26:58.066 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 14:26:58.071 WARN   Couldn't get screen resolution. If you are running in a headless environment, disable the GUI by setting gui.enabled to false.
+2026-11-12 14:26:58.080 INFO   Configured network proxy: hatch-egress-proxy:3128
+2026-11-12 14:26:58.611 WARN   Analytics tracking: first delivery failure in this window - /v1/analytics/identify - NoSuchElementException: (no message). Further failures will be aggregated and reported every 60 minutes.
+2026-11-12 14:26:59.214 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 14:26:59.755 INFO   [0732E3\A1E48A] Loading board file 'module_board.dsn'...
+2026-11-12 14:27:00.095 INFO   [0732E3\A1E48A] Job '0732E3\A1E48A' started at 2026-11-12T05:27:00.095095082Z.
+2026-11-12 14:27:00.323 WARN   Design Warning: Board has 15 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 15 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 15 fixed trace/via clearance violations (first 5 shown):
+          - FixedTrace#638 [net PU_EX5] <-> JP4.1 [net EX5]
+          - FixedTrace#637 [net PU_EX2] <-> JP3.1 [net EX2]
+          - FixedTrace#633 [net FFC2_6] <-> FixedTrace#592 [net GND]
+          - FixedTrace#633 [net FFC2_6] <-> SJ6.1 [net GND]
+          - FixedTrace#632 [net FFC2_4] <-> SJ4.1 [net 3V3]
+          ... and 10 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 15 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-11-12 14:27:00.483 INFO   [0732E3\A1E48A] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=3.
+2026-11-12 14:27:00.662 INFO   [0732E3\A1E48A] Fanout stage started on board 'efe661c788db6f6c0951e614ef26c8cd' with 204 of 223 SMD pins needing fanout (1 already connected, 18 netless).
+2026-11-12 14:27:11.159 INFO   [0732E3\A1E48A] Fanout pass #1 on board '374d526232880dda6906c2f11b1a7065' completed in 10.41 seconds with 173 SMD pins fanouted, 5 not routed, 0 insert errors, +48 extra vias (0 SMD pins still to check in pass, ripup costs=100).
+2026-11-12 14:27:18.677 INFO   [0732E3\A1E48A] Fanout pass #2 on board 'b10029cdb2ca601ae866f3db6b6e6a7c' completed in 7.43 seconds with 111 SMD pins fanouted, 4 not routed, 0 insert errors, +16 extra vias (0 SMD pins still to check in pass, ripup costs=200).
+2026-11-12 14:27:25.566 INFO   [0732E3\A1E48A] Fanout pass #3 on board 'c2c9617a17b51c75395b1a448c71f889' completed in 6.83 seconds with 98 SMD pins fanouted, 6 not routed, 0 insert errors, +2 extra vias (0 SMD pins still to check in pass, ripup costs=300).
+2026-11-12 14:27:30.367 INFO   [0732E3\A1E48A] Fanout pass #4 on board '74be5b293376be5ba0c7fb1e6f3a9d3c' completed in 4.73 seconds with 77 SMD pins fanouted, 4 not routed, 0 insert errors, +3 extra vias (0 SMD pins still to check in pass, ripup costs=400).
+2026-11-12 14:27:36.376 INFO   [0732E3\A1E48A] Fanout pass #5 on board '863e00e98a528d01eff9418cdec70a03' completed in 5.93 seconds with 65 SMD pins fanouted, 6 not routed, 0 insert errors, +8 extra vias (0 SMD pins still to check in pass, ripup costs=500).
+2026-11-12 14:27:41.676 INFO   [0732E3\A1E48A] Fanout pass #6 on board '7228ece779976806cf6745dc2ca32883' completed in 5.28 seconds with 54 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=600).
+2026-11-12 14:27:46.788 INFO   [0732E3\A1E48A] Fanout pass #7 on board '7152a07dbf9083bcbf110671a0f8e8a4' completed in 5.09 seconds with 60 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=700).
+2026-11-12 14:27:49.698 INFO   [0732E3\A1E48A] Fanout pass #8 on board 'b1005c43b7f63932d336a31d786b8cbc' completed in 2.89 seconds with 57 SMD pins fanouted, 4 not routed, 0 insert errors, +8 extra vias (0 SMD pins still to check in pass, ripup costs=800).
+2026-11-12 14:27:51.931 INFO   [0732E3\A1E48A] Fanout pass #9 on board '3bff205ee846d453209c82827776b9a5' completed in 2.22 seconds with 53 SMD pins fanouted, 4 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=900).
+2026-11-12 14:28:01.252 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO15' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 14:28:02.791 INFO   [0732E3\A1E48A] Fanout pass #10 on board '8f16b3ea5945436b9e11fb323a301580' completed in 10.84 seconds with 55 SMD pins fanouted, 4 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1000).
+2026-11-12 14:28:05.050 INFO   [0732E3\A1E48A] Fanout pass #11 on board '85154fe61c61d9cca1a90ce49960086e' completed in 2.24 seconds with 52 SMD pins fanouted, 6 not routed, 0 insert errors, +1 extra via (0 SMD pins still to check in pass, ripup costs=1100).
+2026-11-12 14:28:07.446 INFO   [0732E3\A1E48A] Fanout pass #12 on board 'f5c9f72b5d2b02bf077fdfcdbd3f668f' completed in 2.38 seconds with 51 SMD pins fanouted, 8 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1200).
+2026-11-12 14:28:10.074 INFO   [0732E3\A1E48A] Fanout pass #13 on board 'f0559f8c25d85a83e42095bdac6167a9' completed in 2.59 seconds with 59 SMD pins fanouted, 5 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1300).
+2026-11-12 14:28:12.581 INFO   [0732E3\A1E48A] Fanout pass #14 on board '285a585d2edff53267139564daf46d0d' completed in 2.49 seconds with 59 SMD pins fanouted, 7 not routed, 0 insert errors, +3 extra vias (0 SMD pins still to check in pass, ripup costs=1400).
+2026-11-12 14:28:15.103 INFO   [0732E3\A1E48A] Fanout pass #15 on board '24686a5716d63abb8385bfc28a80bd54' completed in 2.50 seconds with 57 SMD pins fanouted, 4 not routed, 0 insert errors, +4 extra vias (0 SMD pins still to check in pass, ripup costs=1500).
+2026-11-12 14:28:23.700 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'GPIO12' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 14:28:24.234 INFO   [0732E3\A1E48A] Fanout pass #16 on board '1200b5ca1462e0d3ac865538963b3380' completed in 9.11 seconds with 50 SMD pins fanouted, 3 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1600).
+2026-11-12 14:28:25.894 INFO   [0732E3\A1E48A] Fanout pass #17 on board 'd780896af186f79905d2563e343807f9' completed in 1.64 seconds with 47 SMD pins fanouted, 3 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1700).
+2026-11-12 14:28:27.787 INFO   [0732E3\A1E48A] Fanout pass #18 on board 'b972e0cad71922e6158331a01727bf55' completed in 1.87 seconds with 47 SMD pins fanouted, 4 not routed, 0 insert errors, +4 extra vias (0 SMD pins still to check in pass, ripup costs=1800).
+2026-11-12 14:28:29.654 INFO   [0732E3\A1E48A] Fanout pass #19 on board 'd8db133d2993fd50c01c90cc45bd1ad5' completed in 1.85 seconds with 47 SMD pins fanouted, 4 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1900).
+2026-11-12 14:28:31.330 INFO   [0732E3\A1E48A] Fanout pass #20 on board 'f9dfea6dc4ca99c4fd37f211bfabd799' completed in 1.66 seconds with 45 SMD pins fanouted, 4 not routed, 0 insert errors, +1 extra via (0 SMD pins still to check in pass, ripup costs=2000).
+2026-11-12 14:28:31.399 INFO   [0732E3\A1E48A] Fanout stage completed: started with 205 total SMD pins, completed in 90.65 seconds, escaped pins: 175/205 (85.4%), using 67.81 total CPU seconds, 38.84 GB total allocated, and 168.4 MB peak heap usage.
+2026-11-12 14:28:31.508 INFO   [0732E3\A1E48A] Auto-routing stage started on board 'f9dfea6dc4ca99c4fd37f211bfabd799' with baseline score 265.75 for 90 unrouted items.
