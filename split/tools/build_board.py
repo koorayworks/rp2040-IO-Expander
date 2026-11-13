@@ -245,7 +245,11 @@ led.SetReference('D1')
 led.SetPosition(pcbnew.VECTOR2I(mm(9.01), mm(15.48)))
 led.SetOrientationDegrees(0)
 board.Add(led)
-assign(led, '1', '3V3'); assign(led, '3', 'GND'); assign(led, '4', 'STATUS_LED')
+# WS2812B-2020 pinout (datasheet V1.3): 1=DO, 2=GND, 3=DI, 4=VDD.
+# NOT the 5050 order (1=VDD, 2=DOUT, 3=GND, 4=DIN) -- the first routed
+# board used the 5050 assignment and was fixed by hand 2026-11-13.
+# BOM must specify WS2812B-2020-V6 (3.3-5.3V) for the 3.3V rail.
+assign(led, '2', 'GND'); assign(led, '3', 'STATUS_LED'); assign(led, '4', '3V3')
 
 cap = pcbnew.FootprintLoad(os.path.join(STD, 'Capacitor_SMD.pretty'), 'C_0402_1005Metric')
 cap.SetFPID(pcbnew.LIB_ID('split', 'C_0402_1005Metric'))
@@ -286,7 +290,7 @@ board.Add(zone)
 
 # ---------------- pre-routed stubs for the two hardest fanouts ----
 # Freerouting (no-plane runs fr11/fr12) leaves exactly two links
-# unrouted: USB_D- at J3-25 and STATUS_LED at D1-4 -- both pads sit in
+# unrouted: USB_D- at J3-25 and STATUS_LED at D1-3 -- both pads sit in
 # pockets whose fanout the router cannot start. Short F.Cu stubs
 # (verified clear of all fr11 copper) give it reachable endpoints.
 def stub(netname, x0, y0, x1, y1):
@@ -299,7 +303,7 @@ def stub(netname, x0, y0, x1, y1):
     board.Add(t)
 
 stub('USB_D-', 11.70, 12.97, 11.70, 13.60)      # J3-25 pad -> south
-stub('STATUS_LED', 9.93, 14.68, 9.93, 13.90)    # D1-4 pad -> north
+stub('STATUS_LED', 9.93, 16.38, 9.93, 17.30)    # D1-3 pad -> south
 stub('GPIO14', 6.90, 12.97, 6.90, 13.60)        # J3-9 pad -> south (fr13
                                                 # left this fanout open)
 

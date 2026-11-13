@@ -6,7 +6,7 @@ LCSC = {'MDBT50Q-1MV2':'C5118826','TYPE-C-31-M-12':'C165948','USBLC6-2SC6':'C751
         'FH35C-31S-0.3SHW':'C424662','TS-1088-AR02016':'C720477'}
 COMMENT = {'100n':'100nF','10u':'10uF','5.1k':'5.1k','4.7k':'4.7k','100k':'100k','180k':'180k','22u':'22uF',
            '2.2uH_2520':'2.2uH shielded 2520','FFC6_TB':'FH12-6S-0.5SH','B2B-PH-K':'B2B-PH-K (THT)',
-           'LED_WS2812B-2020_PLCC4_2.0x2.0mm':'WS2812B-2020'}
+           'LED_WS2812B-2020_PLCC4_2.0x2.0mm':'WS2812B-2020-V6'}
 EXCLUDE = {'zero_board': {'J1','J4'}, 'module_board': {'J2','J5','SJ1','SJ3','SJ4','SJ6','JP1','JP2','JP3','JP4','H1','H2','H3','H4'}}[name]
 CENTER_OVERRIDE = {'zero_board': {'J3': (9.00, 11.55)}, 'module_board': {'J1': (9.00, 21.50)}}[name]
 rows = []

@@ -73,10 +73,14 @@ SW_PWR = CAS-120A（電池ライン直列。pad2 = コモン = VBAT 側、pad1 =
   ├─► U3 TPS610994DRVR 昇圧 ── 3V3_BAT
   │     WSON-6、FB = GND（3.3V 固定品）、EN = VBAT 直結
   │     L1 = 2.2µH 2520 シールド型、CIN/COUT = 10µF 0603
-  └─► MDBT50Q pin12 (P0.31 / AIN7) へ直結（電池生電圧の ADC 監視。
-        sekigon の non-lipo battery management を使う前提）
-        注意: 乾電池2セル新品時は約3.4V になり VDD (3.3V) を超え得る。
-        REV.B からの継続注意として、ファーム側の min/max 設定と合わせて扱う
+  └─► R11 1M / R12 1M 分圧（ネット VBAT_SENSE）─► MDBT50Q pin12
+        (P0.31 / AIN7)（電池電圧の ADC 監視。2026-11-13 に直結から変更）
+        分圧比 1/2: 乾電池2セル新品 約3.4V → 約1.7V で SAADC 仕様内。
+        直結時は絶対最大定格（VDD+0.3V）は超えないが入力 > VDD で飽和する
+        ため分圧化した。分圧電流は約1.7µA（VBAT はスイッチ後段）。
+        ファーム注意: ソース抵抗 500k のため SAADC のアクイジション時間を
+        長く取ること。sekigon の non-lipo battery management を使う前提で、
+        読み値の換算は分圧比 1/2 を反映すること
 
 フレキ ch1 VSYS (USB 5V)
   ├─► MDBT50Q pin32 (VBUS)
