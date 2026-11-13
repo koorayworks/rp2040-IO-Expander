@@ -1113,7 +1113,43 @@ stub(9.3, 22.075, 9.3, 22.55, B, 'GPIO8')     # J2.15
 # GPIO13's via (7.85,18.35) + GPIO15's I1 vertical
 # (x=7.41) -- the corridor is impassable at I1 too.
 stub(8.4, 18.98, 8.9, 18.62, pcbnew.In1_Cu, 'GPIO9')
-stub(8.9, 18.62, 9.3, 18.75, pcbnew.In1_Cu, 'GPIO9')
+stub(8.9, 18.62, 9.2, 18.7, pcbnew.In1_Cu, 'GPIO9')
 # bent N around GPIO5's via (9.0,19.2)
 # GPIO9: extend its via's I1 reach E toward the J2
 # stub tip (9.6,19.45).
+
+# ---- Round-37 perturbations ----------------------------------------------
+# NOTE: Freerouting is deterministic -- same DSN, same
+# result (r36 == r35 exactly). Every round needs a real
+# placement change. These are today's:
+net_via40(9.2, 18.7, 'GPIO9')   # tip via on GPIO9's I1 stub
+# (9.3,18.75) was hole-too-close to GPIO5's via (9.6,19.0)
+stub(10.15, 13.75, 9.6, 15.2, I2, 'GPIO7')  # 2nd I2 branch
+# off GPIO7's anchor via, SW toward the pad row
+# GPIO12 dive REVERTED: no via home in the SW corner
+# (GPIO4's via (7.0,23.3), its B track y=22.75, and
+# J3's MP pad (x>=7.4, y>=23.25) tile every candidate)
+stub(8.7, 22.9, 8.9, 22.65, B, 'GPIO6')  # jog off GPIO6's
+# J2 tip via toward the J1.17 approach
+stub(9.3, 22.55, 9.3, 22.85, B, 'GPIO8')  # extend J2 stub S
+net_via40(9.3, 22.85, 'GPIO8')
+stub(9.3, 22.85, 9.0, 22.6, F, 'GPIO8')
+# via at the stub tip (9.3,22.55) hit J1.17's pad rect
+# (same x on F, rect reaches y=22.425)
+
+# ---- Round-38 perturbations ----------------------------------------------
+stub(10.9, 25.79, 12.6, 25.8, pcbnew.In1_Cu, 'EX5')
+# EX5: I1 reach E from its JP4 tap via toward J4
+stub(8.7, 22.075, 8.95, 22.5, F, 'GPIO8')  # J1.15 F stub S
+stub(11.1, 22.075, 11.1, 21.2, B, 'GPIO14')  # J2.9 B stub N
+# between the rows (r37's router remnant ended y=21.1)
+stub(6.66, 23.95, 6.5, 23.35, F, 'TB1')  # Q1 gate stub N
+# (full N run grazed USB_D-/GPIO4 vias)
+
+# ---- Round-39 perturbations ----------------------------------------------
+stub(8.669, 14.379, 8.2, 15.1, I2, 'GPIO2')
+# GPIO2: I2 branch SW off its U1 escape via (SE died
+# on GPIO5's via (8.87,15.36) + I2 web)
+stub(11.7, 22.075, 11.7, 22.4, B, 'GPIO26')  # J2.7 B stub
+# (22.55 grazed GPIO28's via (11.75,22.85))
+# (no tip via: GPIO28's via (11.75,22.85) is too close)
