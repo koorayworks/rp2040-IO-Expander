@@ -1,9 +1,10 @@
 Comment,Designator,Footprint,LCSC Part #
 100k,"R5,R6",R_0603_1608Metric,
 100nF,"C11,C6",C_0603_1608Metric,
-10uF,"C1,C10,C2,C4,C5",C_0603_1608Metric,
+10uF,"C1,C10,C2,C4",C_0603_1608Metric,
 180k,R4,R_0603_1608Metric,
 2.2uH shielded 2520,L1,L_1008_2520Metric,
+22uF,C5,C_0603_1608Metric,
 4.7k,"R10,R7,R8,R9",R_0603_1608Metric,
 AO3401,Q1,SOT-23,
 B2B-PH-K (THT),J6,JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,
