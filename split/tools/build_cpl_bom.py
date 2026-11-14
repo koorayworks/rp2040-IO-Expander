@@ -3,7 +3,7 @@
 import csv, sys, os
 pos_file, bdir, name, H = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
 LCSC = {'MDBT50Q-1MV2':'C5118826','TYPE-C-31-M-12':'C165948','USBLC6-2SC6':'C7519',
-        'FH35C-31S-0.3SHW':'C424662','TS-1088-AR02016':'C720477'}
+        'FH35C-31S-0.3SHW':'C424662','TS-1088-AR02016':'C720477','PCM12SMTR':'C221841'}
 COMMENT = {'100n':'100nF','10u':'10uF','5.1k':'5.1k','4.7k':'4.7k','100k':'100k','180k':'180k','22u':'22uF',
            '2.2uH_2520':'2.2uH shielded 2520','FFC6_TB':'FH12-6S-0.5SH','B2B-PH-K':'B2B-PH-K (THT)',
            'LED_WS2812B-2020_PLCC4_2.0x2.0mm':'WS2812B-2020-V6'}

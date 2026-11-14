@@ -33,8 +33,16 @@
   10µF×1 では不足。フットプリント (0603) はそのまま BOM の値を変更
 
 ## 発注前の残確認
-- LCSC番号が未記入の部品が多い（電源IC類・FH12・B2B-PH-K・CAS-120A・AO3401・受動部品）。
+- LCSC番号が未記入の部品が多い（電源IC類・FH12・B2B-PH-K・AO3401・受動部品）。
   発注時に LCSC/JLC ライブラリで照合して埋めること
 - J6 (B2B-PH-K) はスルーホール部品。JLC の THT 対応可否を発注時に確認すること
-- SW3 (CAS-120A) の ON 方向は実物で確認すること
+- SW3 (PCM12SMTR) の ON 方向は実物で確認すること
+- SW3 は裏面実装かつ回転 -90° のため、発注時に JLC の CPL プレビューで
+  SW3 の向き（pin1 マークと BAT+ = pin3 の対応）を必ず目視確認すること
 - MDBT50Q はブートローダ未書き込みで納品される前提（初回のみ SWD から書き込みが必要）
+
+## SW3 変更（2026-11-14）
+
+- SW3 を CAS-120A → C&K PCM12SMTR（0.3A、LCSC C221841、JLC Extended）へ変更し、
+  ガーバー/BOM/CPL を再出力済み。詳細は ROUTING_STATUS.md の同日節を参照
+- 控え: backup/pre_sw3fix_20261114.kicad_pcb / backup/final_sw3fix_20261114.kicad_pcb

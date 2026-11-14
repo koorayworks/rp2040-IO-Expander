@@ -109,6 +109,7 @@
         "zones_intersect": "error"
       },
       "rules": {
+        "max_error": 0.005,
         "min_clearance": 0.1,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.15,
@@ -126,9 +127,11 @@
         "min_via_diameter": 0.4,
         "solder_mask_clearance": 0.0,
         "solder_mask_min_width": 0.0,
+        "solder_mask_to_copper_clearance": 0.0,
         "solder_paste_clearance": 0.0,
         "solder_paste_margin_ratio": 0.0,
         "track_widths": [],
+        "use_height_for_length_calcs": true,
         "via_dimensions": [],
         "wiring_rule": 0
       },

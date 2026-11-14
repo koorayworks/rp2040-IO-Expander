@@ -68,7 +68,8 @@ MDBT50Q 割当は REV.A の `ext_board/PINMAP_EXT.md` を踏襲（多重化な�
   │         SMD サイドエントリー S2B-PH-SM4-TB はパッド占有 8.2×9.2mm が
   │         下端の帯に入らなかった）。pin1 (基板座標 x=6.6) = BAT+、pin2 = GND
   ▼ pin1 = BAT+
-SW_PWR = CAS-120A（電池ライン直列。pad2 = コモン = VBAT 側、pad1 = BAT+、pad3 = NC）
+SW_PWR = PCM12SMTR（C&K、電池ライン直列。pin2 = コモン = VBAT 側、pin3 = BAT+、pin1 = NC。
+  2026-11-14 に CAS-120A から変更: 定格 100mA では昇圧入力の想定最大 ~156mA に不足のため 0.3A 品へ）
   ▼ VBAT
   ├─► U3 TPS610994DRVR 昇圧 ── 3V3_BAT
   │     WSON-6、FB = GND（3.3V 固定品）、EN = VBAT 直結
@@ -143,7 +144,7 @@ U4 TPS2116DRLR (priority mode, MODE = VIN1)
   LDO (U2)＋入出力コンデンサ、PR1 分圧 (R4/R5)、センサー電源ゲート
   (Q1/R6)、I2C プルアップ (JP1–JP4／R7–R10)、JST PH
 - 裏面: FH35C（裏面分）、FFC#1/#2、はんだジャンパ SJ1/3/4/6、
-  昇圧 (U3/L1/C4)、mux (U4)、電源スイッチ SW3 (CAS-120A)、MDBT デカップリング
+  昇圧 (U3/L1/C4)、mux (U4)、電源スイッチ SW3 (PCM12SMTR)、MDBT デカップリング
 - 電源スイッチは下端の帯に穴のない置き場がなく、**裏面・左端**
   （MDBT の横）に配置した。基板の端から操作する前提
 - 昇圧出力コンデンサ C5 と mux 入力コンデンサ C6 は裏面の帯が満杯のため
