@@ -46,3 +46,7 @@
 - SW3 を CAS-120A → C&K PCM12SMTR（0.3A、LCSC C221841、JLC Extended）へ変更し、
   ガーバー/BOM/CPL を再出力済み。詳細は ROUTING_STATUS.md の同日節を参照
 - 控え: backup/pre_sw3fix_20261114.kicad_pcb / backup/final_sw3fix_20261114.kicad_pcb
+- **2026-11-16 追記**: 独立監査で判明した SW3 周辺の干渉（SWDIO の穴切断、
+  GPIO29 のタブ経由ショート、R11/R12 パッド欠け、GPIO11 の穴切断ほか）を
+  修正し、ガーバー/BOM/CPL を再出力済み。詳細は ROUTING_STATUS.md の
+  2026-11-16 節を参照。発注はこの再出力版で行うこと
