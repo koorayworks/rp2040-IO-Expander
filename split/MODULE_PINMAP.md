@@ -71,8 +71,10 @@ MDBT50Q 割当は REV.A の `ext_board/PINMAP_EXT.md` を踏襲（多重化な�
 SW_PWR = PCM12SMTR（C&K、電池ライン直列。pin2 = コモン = VBAT 側、pin3 = BAT+、pin1 = NC。
   2026-11-14 に CAS-120A から変更: 定格 100mA では昇圧入力の想定最大 ~156mA に不足のため 0.3A 品へ）
   ▼ VBAT
-  ├─► U3 TPS610994DRVR 昇圧 ── 3V3_BAT
-  │     WSON-6、FB = GND（3.3V 固定品）、EN = VBAT 直結
+  ├─► U3 TPS61099DRVR 昇圧 ── 3V3_BAT
+  │     WSON-6（可変版。2026-11-17 に固定版 TPS610994 から変更）、
+  │     FB は分圧 R13 576k（VOUT側）／R14 249k（GND側）の中点で公称 3.313V、
+  │     EN = VBAT 直結
   │     L1 = 2.2µH 2520 シールド型、CIN/COUT = 10µF 0603
   └─► R11 1M / R12 1M 分圧（ネット VBAT_SENSE）─► MDBT50Q pin12
         (P0.31 / AIN7)（電池電圧の ADC 監視。2026-11-13 に直結から変更）
