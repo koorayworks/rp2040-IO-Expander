@@ -50,3 +50,18 @@
   GPIO29 のタブ経由ショート、R11/R12 パッド欠け、GPIO11 の穴切断ほか）を
   修正し、ガーバー/BOM/CPL を再出力済み。詳細は ROUTING_STATUS.md の
   2026-11-16 節を参照。発注はこの再出力版で行うこと
+
+## シルク追加（2026-11-16）
+
+MODULE_PINMAP／PINMAP_EXT が謳う基板シルク2件を追加（gr_text のみ、銅・部品は不変、
+DRC 全カテゴリ不変、Gerber 再出力済み、BOM/CPL 差分なし）:
+
+- 電池警告（F.SilkS、基板東端の空き帯）: `BAT: DRY CELL 1-3.3V` /
+  `NO LiPo/LFP NO CHARGE`
+- FFC#2 切替表（B.SilkS、基板北端の空き領域）: `SJ1 3V3>EX1` /
+  `SJ3 EX3>GND` / `SJ4 EX4>3V3` / `SJ6 GND>EX6` / `FFC2 DEF=UNI ALT=TPS43`
+
+文字高は 0.8mm（線幅 0.15mm）。基板が高密度で J6／J4 近傍には判読可能な
+文字が入る空きがなく（実測で最大でも約2.5×1.8mm）、配置は同一面内の最大の
+空き領域とした。文書側の「J4 脇」「J6 の近く」の文言とはズレが残る点に注意。
+控え: backup/pre_silk_20261116.kicad_pcb
