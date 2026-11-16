@@ -397,6 +397,8 @@ hf41a の残り4ペアについて、既存銅を一切動かさない手仕上�
   意図的ジョイントのみ、tracks_crossing 5（従来と同一箇所）、
   track_width 0。警告カテゴリの増加は R13/R14 追加分のみ
 - 生産データ再出力済み（Gerber zip／BOM／CPL）。BOM: U3 = C2842395、
-  R13/R14 は LCSC 空欄（発注時に BOM ツールで照合）。詳細は
+  R13 = C227145（YAGEO AC0402FR-07576KL。当初候補の UNI-ROYAL
+  C27012 は Pre-order で小ロット不可のため仕様同一品へ）、
+  R14 = C11425 で、BOM の LCSC は全行記入済み。詳細は
   PRODUCTION.md の「TPS61099 への設計変更」節
 - 控え: backup/pre_tps61099_20261116.kicad_pcb（Phase 1 前）
