@@ -28,8 +28,10 @@ only as coverlay/stiffener edges), and the p.1 insertion photo
 - Stiffener zones 2.85 from each tip, drawn on User.1 (both ends);
   exported as the JLC PI stiffener layer (back side, pib_).
   Mating thickness 0.2 +/- 0.03 is an order-time spec.
-- Channel order = split/FFC_PINMAP_30P.md (contact m = channel m,
-  contact 31 = dummy fingers only, no trace).
+- Channel order = split/FFC_PINMAP_30P.md (contact m = channel m).
+  Contact 31 is NC but gets a full through trace on net NC31 like
+  every other lane: the assembled mating parity lands this lane on
+  the ch1 (VSYS) path, so a finger-only dummy would leave VSYS open.
 - If the first-article continuity check shows the channel order
   reversed, the fix is a mirrored flex (fingers on B.Cu); the two
   rigid boards stay untouched.
@@ -52,13 +54,18 @@ CU_END = 2.25      # finger copper (0.2 wide) ends this far from tip
 WIN_END = 2.1      # coverlay window ends this far from tip
 STIFF = 2.85       # stiffener length from tip
 
-# channel -> net name (FFC_PINMAP_30P.md); contact 31 unused
+# channel -> net name (FFC_PINMAP_30P.md). Contact 31 is NC on the
+# rigid boards, but its lane still needs a through trace on a named
+# net (NC31): in the assembled state the connector mating parity
+# puts this lane on the ch1 (VSYS) path, and an unnamed finger-only
+# lane is invisible to DRC and net-based audits (this was a real
+# defect until 2026-11-16: VSYS open end to end).
 CHAN = {1:'VSYS',2:'GND',3:'3V3',4:'GPIO29',5:'GPIO28',6:'GPIO27',
         7:'GPIO26',8:'GPIO15',9:'GPIO14',10:'GPIO13',11:'GPIO12',
         12:'GPIO11',13:'GPIO10',14:'GPIO9',15:'GPIO8',16:'GPIO7',
         17:'GPIO6',18:'GPIO5',19:'GPIO4',20:'GPIO3',21:'GPIO2',
         22:'GPIO1',23:'GPIO0',24:'GND',25:'USB_D-',26:'USB_D+',
-        27:'GND',28:'BOOT',29:'RESET',30:'STATUS_LED'}
+        27:'GND',28:'BOOT',29:'RESET',30:'STATUS_LED',31:'NC31'}
 
 def mm(v): return pcbnew.FromMM(v)
 
