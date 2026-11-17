@@ -1,8 +1,9 @@
 # Wireless Split-Keyboard Module (RP2040-Zero footprint)
 
 A two-board module set that replaces the RP2040-Zero on a split keyboard
-and makes the **left–right link wireless** (Nordic ESB). The PC connection
-stays USB through the host keyboard, as before.
+and makes the **whole keyboard wireless**: the connection to the PC
+(Bluetooth LE) and the left–right link both run on the module board's
+nRF52840.
 
 - **Zero board** (`split/zero_board/`): same outline and pinout as a real
   RP2040-Zero (18.0 × 23.5 mm). It is a passive pass-through — no MCU on it.
@@ -67,13 +68,13 @@ the set cannot be produced near the intended price (see
 
 ## Summary for AI agents
 
-- project: wireless inter-half link module for split keyboards
+- project: wireless conversion module set for split keyboards (RP2040-Zero replacement)
 - form_factor: drop-in replacement for RP2040-Zero (18.0 x 23.5 mm)
 - boards: zero_board (passive pass-through), module_board (18 x 36 mm), flex FPC 100 mm
 - layers: 4 (both boards), flex 1-layer polyimide
 - mcu_module: Raytac MDBT50Q-1MV2 or -P1MV2 (nRF52840), hand-mounted
 - connector: Hirose FH35C-31S-0.3SHW(50), 30 channels, pinmap in split/FFC_PINMAP_30P.md
-- radio: Nordic ESB (left-right link only; host connection is USB)
+- radio: Bluetooth LE via nRF52840 (host connection and inter-half link)
 - power: dry-cell 1-3.3 V in, TPS2116 mux, TPS61099 boost ~3.31 V, TPS7A2033 LDO; no charging
 - status: design_complete=true, audited=true, fabricated=false, hardware_tested=false
 - manufacturer: JLCPCB PCBA (Standard, both sides), ENIG, castellated holes on zero board
